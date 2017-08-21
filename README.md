@@ -1,2 +1,2 @@
 # kute
-A vue component library.
+A vue component kit.
