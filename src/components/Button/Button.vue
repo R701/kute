@@ -1,0 +1,88 @@
+<template>
+  <component :is="root"
+             :to="href"
+             :href="href"
+             :disabled="disabled"
+             :class="['button', `${type}-btn`, size, { 'link-btn': routerLink || link, 'btn--plain': plain, 'no-outline': !outline, 'btn--flat': flat, 'btn-block': block, 'btn--active': active, 'no-text': emptySlot } ]"
+             @click="onClick"
+             @focus="onFocus"
+             @blur="onBlur">
+    <i class="btn-spinner"
+       v-if="loading">
+    </i>
+    <i :class="[`${iconClassPrefix}${icon}`, { 'btn--faded': loading } ]"
+       v-if="icon && iconPosition == 'prepend'"></i>
+    <span :class="[ 'btn-text', size, { 'btn--faded': loading } ]">
+      <slot></slot>
+    </span>
+    <i :class="[`${iconClassPrefix}${icon}`, { 'btn--faded': loading } ]"
+       v-if="icon && iconPosition == 'append'"></i>
+  </component>
+</template>
+
+<script>
+  import props from './_props'
+  import events from './_events'
+
+  export default {
+    props: props,
+
+    inheritAttrs: false,
+
+    computed: {
+      root () {
+        if (this.routerLink) {
+          return 'nuxt-link'
+        } else if (this.link) {
+          return 'a'
+        } else {
+          return 'button'
+        }
+      },
+
+      emptySlot () {
+        return !this.$slots.default
+      }
+    },
+
+    methods: {
+      onClick (evt) {
+        if (this.disabled || (this.loading && this.disableWhileLoading)) {
+          return
+        }
+        this.$emit(events.CLICK, evt)
+      },
+
+      onFocus (evt) {
+        this.$emit(events.FOCUS, evt)
+      },
+
+      onBlur (evt) {
+        this.$emit(events.BLUR, evt)
+      }
+    }
+  }
+</script>
+
+<style lang="stylus" scoped>
+
+.button
+  display: inline-block
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  text-transform: uppercase
+  line-height: 1
+  box-sizing: border-box
+  position: relative
+  user-select: none
+
+@keyframes spinning
+  0%
+    transform: rotate(0)
+  50%
+    transform: rotate(180deg)
+  100%
+    transform: rotate(360deg)
+
+</style>
