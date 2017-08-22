@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "dev": "cross-env NODE_ENV=development webpack --config webpack.dev.config.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js"
   },
   "repository": {
     "type": "git",
@@ -26,17 +27,32 @@
   "homepage": "https://github.com/R701/kute#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
+    "clean-webpack-plugin": "^0.1.16",
+    "cross-env": "^5.0.5",
     "css-loader": "^0.28.5",
     "eslint": "^4.5.0",
+    "eslint-config-standard": "^10.2.1",
     "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^3.2.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "postcss": "^6.0.9",
+    "postcss-cssnext": "^3.0.2",
     "postcss-loader": "^2.0.6",
     "style-loader": "^0.18.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
+    "url-loader": "^0.5.9",
     "vue-loader": "^13.0.4",
     "vue-template-compiler": "^2.4.2",
-    "webpack": "^3.5.5"
+    "webpack": "^3.5.5",
+    "webpack-merge": "^4.1.0"
   }
 }

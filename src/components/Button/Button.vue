@@ -64,7 +64,7 @@
   }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 
 .button
   display: inline-block
