@@ -6,8 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=development webpack --config webpack.dev.config.js",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js"
+    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js",
+    "build:min": "cross-env NODE_ENV=production PROD_TARGET=MIN webpack --config webpack.prod.config.js"
   },
+  "eslintIgnore": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/R701/kute.git"
@@ -26,6 +30,7 @@
   },
   "homepage": "https://github.com/R701/kute#readme",
   "devDependencies": {
+    "axis": "^1.0.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.2",
@@ -34,6 +39,8 @@
     "clean-webpack-plugin": "^0.1.16",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.5",
+    "cssnano": "^3.10.0",
+    "cssnano-preset-default": "^4.0.0-rc.2",
     "eslint": "^4.5.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-loader": "^1.9.0",
@@ -44,6 +51,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
+    "optimize-css-assets-webpack-plugin": "^3.1.1",
     "postcss": "^6.0.9",
     "postcss-cssnext": "^3.0.2",
     "postcss-loader": "^2.0.6",

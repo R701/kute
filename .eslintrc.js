@@ -16,5 +16,6 @@ module.exports = {
     "camelcase": 0
   },
   globals: {
+    window: true
   }
 }

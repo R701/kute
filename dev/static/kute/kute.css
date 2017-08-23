@@ -19,6 +19,8 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  color: #0287c8;
+  font-family: "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
 }
 @-webkit-keyframes spinning {
 0% {

@@ -74,6 +74,8 @@
   box-sizing border-box
   position relative
   user-select none
+  color $theme-primary
+  font-family $helvetica-neue
 
 @keyframes spinning
   0%

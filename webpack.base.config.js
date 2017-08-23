@@ -1,13 +1,37 @@
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const axis = require('axis')
+const webpack = require('webpack')
+
+const extractPlugin = ExtractTextPlugin.extract({
+  use: [
+    'css-loader?sourceMap',
+    {
+      loader: 'stylus-loader',
+      options: {
+        sourceMap: true
+      }
+    }
+  ],
+  fallback: 'vue-style-loader'
+})
 
 module.exports = {
-  entry: path.resolve(__dirname, './src/index.js'),
+  entry: {
+    kute: path.resolve(__dirname, './src/index.js')
+  },
   output: {
-    filename: 'kute.js',
+    filename: '[name].js',
     library: 'Kute',
     libraryTarget: 'umd'
     // libraryExport: 'default'
+  },
+  resolve: {
+    extensions: ['.js', '.json', '.vue', '.ts'],
+    alias: {
+      '~': path.resolve(__dirname, 'src'),
+      'stylus': path.resolve(__dirname, './src/stylus')
+    }
   },
   module: {
     rules: [
@@ -22,52 +46,43 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
-            css: ExtractTextPlugin.extract({
-              use: 'css-loader?soureceMap',
-              fallback: 'vue-style-loader' // <- 这是vue-loader的依赖，所以如果使用npm3，则不需要显式安装
-            }),
-            stylus: ExtractTextPlugin.extract({
-              use: 'css-loader?sourceMap!stylus-loader?sourceMap',
-              fallback: 'vue-style-loader' // <- 这是vue-loader的依赖，所以如果使用npm3，则不需要显式安装
-            })
+            stylus: extractPlugin
           },
           postcss: [require('postcss-cssnext')()]
         }
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader'
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        loader: 'babel-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.styl$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'stylus-loader',
-            options: {
-              preferPathResolver: 'webpack'
-            }
-          }
-        ]
+        use: extractPlugin,
+        exclude: /node_modules/
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        loader: 'url-loader'
+        loader: 'url-loader',
+        exclude: /node_modules/
       }
     ]
   },
 
   plugins: [
     new ExtractTextPlugin({
-      filename: 'kute.css'
+      filename: '[name].css'
+    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        stylus: {
+          use: [axis()],
+          import: ['~stylus/main.styl']
+        }
+      }
     })
-  ]
+  ],
+  performance: {
+    hints: 'error'
+  }
 }
