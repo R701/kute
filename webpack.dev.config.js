@@ -6,7 +6,7 @@ const webpack = require('webpack')
 
 module.exports = merge(webpackBaseConfig, {
   output: {
-    path: path.resolve(__dirname, './page/static/kute')
+    path: path.resolve(__dirname, './dev/static/kute')
   },
   stats: 'minimal',
   watch: true,
@@ -17,7 +17,7 @@ module.exports = merge(webpackBaseConfig, {
         NODE_ENV: '"development"'
       }
     }),
-    new CleanWebpackPlugin('./page/static/kute', {
+    new CleanWebpackPlugin('./dev/static/kute', {
       root: __dirname,
       verbose: false
     })

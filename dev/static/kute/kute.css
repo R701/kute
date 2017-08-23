@@ -1,5 +1,5 @@
 
-.button {
+.button[data-v-61c76d52] {
   display: inline-block;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -34,7 +34,7 @@
             transform: rotate(360deg);
 }
 }
-@keyframes spinning {
+@keyframes spinning-data-v-61c76d52 {
 0% {
     -webkit-transform: rotate(0);
             transform: rotate(0);

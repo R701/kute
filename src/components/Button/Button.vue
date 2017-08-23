@@ -3,7 +3,7 @@
              :to="href"
              :href="href"
              :disabled="disabled"
-             :class="['button', `${type}-btn`, size, { 'link-btn': routerLink || link, 'btn--plain': plain, 'no-outline': !outline, 'btn--flat': flat, 'btn-block': block, 'btn--active': active, 'no-text': emptySlot } ]"
+             :class="['button', `${state}-btn`, size, { 'link-btn': routerLink || link, 'no-outline': !outline,  'btn-block': block,  'no-text': emptySlot } ]"
              @click="onClick"
              @focus="onFocus"
              @blur="onBlur">
@@ -11,12 +11,10 @@
        v-if="loading">
     </i>
     <i :class="[`${iconClassPrefix}${icon}`, { 'btn--faded': loading } ]"
-       v-if="icon && iconPosition == 'prepend'"></i>
+       v-if="icon"></i>
     <span :class="[ 'btn-text', size, { 'btn--faded': loading } ]">
       <slot></slot>
     </span>
-    <i :class="[`${iconClassPrefix}${icon}`, { 'btn--faded': loading } ]"
-       v-if="icon && iconPosition == 'append'"></i>
   </component>
 </template>
 
@@ -64,25 +62,25 @@
   }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 
 .button
-  display: inline-block
-  display: inline-flex
-  align-items: center
-  justify-content: center
-  text-transform: uppercase
-  line-height: 1
-  box-sizing: border-box
-  position: relative
-  user-select: none
+  display inline-block
+  display inline-flex
+  align-items center
+  justify-content center
+  text-transform uppercase
+  line-height 1
+  box-sizing border-box
+  position relative
+  user-select none
 
 @keyframes spinning
   0%
-    transform: rotate(0)
+    transform rotate(0)
   50%
-    transform: rotate(180deg)
+    transform rotate(180deg)
   100%
-    transform: rotate(360deg)
+    transform rotate(360deg)
 
 </style>

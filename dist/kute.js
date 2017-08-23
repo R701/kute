@@ -80,15 +80,22 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var Button = __webpack_require__(1);
+var _Button = __webpack_require__(1);
 
-exports.default = {
+var _Button2 = _interopRequireDefault(_Button);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = {
   install: function install(Vue) {
-    Vue.component('k-button', Button);
-  }
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    var prefix = options.prefix || 'k';
+    Vue.component(prefix + '-button', _Button2.default);
+  },
+
+
+  Button: _Button2.default
 };
 
 /***/ }),
@@ -99,7 +106,7 @@ exports.default = {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Button_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Button_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Button_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_61c76d52_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Button_vue__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_61c76d52_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_Button_vue__ = __webpack_require__(7);
 function injectStyle (ssrContext) {
   __webpack_require__(2)
 }
@@ -111,12 +118,12 @@ var normalizeComponent = __webpack_require__(3)
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-61c76d52"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Button_vue___default.a,
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_61c76d52_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Button_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_61c76d52_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_Button_vue__["a" /* default */],
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
@@ -269,8 +276,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
 
 exports.default = {
   props: _props2.default,
@@ -373,13 +378,10 @@ exports.default = {
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c(_vm.root, {
     tag: "component",
-    class: ['button', (_vm.type + "-btn"), _vm.size, {
+    class: ['button', (_vm.state + "-btn"), _vm.size, {
       'link-btn': _vm.routerLink || _vm.link,
-      'btn--plain': _vm.plain,
       'no-outline': !_vm.outline,
-      'btn--flat': _vm.flat,
       'btn-block': _vm.block,
-      'btn--active': _vm.active,
       'no-text': _vm.emptySlot
     }],
     attrs: {
@@ -394,7 +396,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }, [(_vm.loading) ? _c('i', {
     staticClass: "btn-spinner"
-  }) : _vm._e(), _vm._v(" "), (_vm.icon && _vm.iconPosition == 'prepend') ? _c('i', {
+  }) : _vm._e(), _vm._v(" "), (_vm.icon) ? _c('i', {
     class: [("" + _vm.iconClassPrefix + _vm.icon), {
       'btn--faded': _vm.loading
     }]
@@ -402,11 +404,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     class: ['btn-text', _vm.size, {
       'btn--faded': _vm.loading
     }]
-  }, [_vm._t("default")], 2), _vm._v(" "), (_vm.icon && _vm.iconPosition == 'append') ? _c('i', {
-    class: [("" + _vm.iconClassPrefix + _vm.icon), {
-      'btn--faded': _vm.loading
-    }]
-  }) : _vm._e()])
+  }, [_vm._t("default")], 2)])
 }
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }

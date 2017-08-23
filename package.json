@@ -2,7 +2,7 @@
   "name": "kute",
   "version": "0.0.1",
   "description": "A vue component kit.",
-  "main": "index.js",
+  "main": "dist/kute.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=development webpack --config webpack.dev.config.js",
@@ -30,6 +30,7 @@
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
+    "babel-preset-vue-app": "^1.2.1",
     "clean-webpack-plugin": "^0.1.16",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.5",

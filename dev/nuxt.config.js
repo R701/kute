@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   /*
   ** Headers of the page
@@ -33,6 +35,12 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+
+      config.resolve.alias.kute = path.resolve(__dirname, '../src')
     }
-  }
+  },
+
+  plugins: [
+    '~/plugins/kute'
+  ]
 }
