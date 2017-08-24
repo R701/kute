@@ -17,8 +17,8 @@ module.exports = {
   output: {
     filename: '[name].js',
     library: 'Kute',
-    libraryTarget: 'umd'
-    // libraryExport: 'default'
+    libraryTarget: 'umd',
+    libraryExport: 'default'
   },
   resolve: {
     extensions: ['.js', '.json', '.vue', '.ts', '.styl'],
@@ -28,6 +28,7 @@ module.exports = {
       '~directive': resolve('./src/directive'),
       '~assets': resolve('./src/assets'),
       '/assets': resolve('./src/assets'),
+      '~stylus': resolve('./src/stylus'),
       'stylus': resolve('./src/stylus'),
       '/stylus': resolve('./src/stylus')
     }
@@ -77,7 +78,7 @@ module.exports = {
         stylus: {
           preferPathResolver: 'webpack',
           use: [axis()],
-          import: ['~stylus/main']
+          import: ['~stylus/util']
         }
       }
     }),

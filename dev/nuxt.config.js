@@ -1,4 +1,6 @@
 const path = require('path')
+const webpack = require('webpack')
+const axis = require('axis')
 
 module.exports = {
   /*
@@ -37,6 +39,20 @@ module.exports = {
       }
 
       config.resolve.alias.kute = path.resolve(__dirname, '../src')
+      config.resolve.alias['~'] = path.resolve(__dirname, '../src')
+      config.resolve.alias['~components'] = path.resolve(__dirname, '../src/components')
+      config.resolve.alias['~stylus'] = path.resolve(__dirname, '../src/stylus')
+      config.resolve.alias['stylus'] = path.resolve(__dirname, '../src/stylus')
+      config.resolve.extensions.push('.styl')
+      config.plugins.push(new webpack.LoaderOptionsPlugin({
+        options: {
+          stylus: {
+            preferPathResolver: 'webpack',
+            use: [axis()],
+            import: ['~stylus/util']
+          }
+        }
+      }))
     }
   },
 

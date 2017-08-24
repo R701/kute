@@ -16,6 +16,7 @@
     "nuxt": "^1.0.0-rc3"
   },
   "devDependencies": {
+    "axis": "^1.0.0",
     "babel-eslint": "^7.2.3",
     "babel-preset-vue-app": "^1.2.1",
     "css-loader": "^0.28.5",

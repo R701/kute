@@ -74,8 +74,12 @@
   box-sizing border-box
   position relative
   user-select none
-  color $theme-primary
-  font-family $helvetica-neue
+  line-height 2.6
+  background-color $theme-primary
+  color $white
+  border-radius 4px
+  border 0
+  box-shadow $shadow-embossment
 
 @keyframes spinning
   0%

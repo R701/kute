@@ -1,6 +1,7 @@
+import '~stylus/main'
 import Button from './components/Button/Button.vue'
 
-module.exports = {
+export default {
   install (Vue, options = {}) {
     var prefix = options.prefix || 'k'
     Vue.component(`${prefix}-button`, Button)
@@ -8,3 +9,5 @@ module.exports = {
 
   Button
 }
+
+export { Button }
