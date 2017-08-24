@@ -12,14 +12,15 @@ module.exports = merge(webpackBaseConfig, {
   watch: true,
   devtool: 'eval-source-map',
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"development"'
-      }
-    }),
     new CleanWebpackPlugin('./dev/static/kute', {
       root: __dirname,
       verbose: false
-    })
+    }),
+    new webpack.WatchIgnorePlugin([
+      /\.config\.js$/,
+      /^\./,
+      /\.json$/,
+      /\.md$/
+    ])
   ]
 })

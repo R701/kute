@@ -4,6 +4,7 @@ const merge = require('webpack-merge')
 const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const version = require('./package.json').version
 
 var config1 = merge({}, webpackBaseConfig, {
   output: {
@@ -12,10 +13,14 @@ var config1 = merge({}, webpackBaseConfig, {
   devtool: 'source-map',
   stats: 'detailed',
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
+    new webpack.BannerPlugin({
+      banner: `\
+    kute v${version}
+    https://github.com/R701/kute
+
+    Copyright (c) 2017 zhanziyang & thisisandy
+    Released under the MIT license
+  `
     }),
     new CleanWebpackPlugin('./dist', {
       root: __dirname,
@@ -34,7 +39,7 @@ var config2 = merge({}, config1, {
       cssProcessorOptions: {
         reduceIdents: false,
         discardComments: {
-          removeAll: true
+          removeAllButFirst: true
         },
         discardUnused: false
       },

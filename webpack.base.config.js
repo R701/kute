@@ -1,5 +1,7 @@
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const OptimizeJsPlugin = require('optimize-js-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const axis = require('axis')
 const webpack = require('webpack')
 
@@ -80,7 +82,16 @@ module.exports = {
           import: ['~stylus/main.styl']
         }
       }
-    })
+    }),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
+      DEBUG: false
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new OptimizeJsPlugin({
+      sourceMap: false
+    }),
+    new FriendlyErrorsWebpackPlugin()
   ],
   performance: {
     hints: 'error'

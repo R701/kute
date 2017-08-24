@@ -23,7 +23,7 @@ And a bit of...
 - cssnano
 
 ## To Do
-- [ ] Optimize webpack build
+- [x] Optimize webpack build
 - [ ] Neaten webpack configs
 - [ ] Set up stylus environment
 - [ ] Set up nuxt
