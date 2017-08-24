@@ -15,7 +15,7 @@
 		exports["Kute"] = factory();
 	else
 		root["Kute"] = factory();
-})(this, (function() {
+})(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -83,7 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ ((function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
@@ -103,7 +103,7 @@ module.exports = {
 };
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)(module)))
 
-/***/ })),
+/***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
@@ -198,6 +198,7 @@ module.exports = function(originalModule) {
 //
 //
 
+// import props from './_props'
 
 
 
@@ -305,7 +306,7 @@ var Component = normalizeComponent(
 
 /***/ }),
 /* 4 */
-/***/ ((function(module, exports) {
+/***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
 
@@ -400,6 +401,7 @@ module.exports = function normalizeComponent (
 }
 
 
-/***/ }))
+/***/ })
 /******/ ]);
-}));
+});
+//# sourceMappingURL=kute.js.map

@@ -4,11 +4,13 @@ const merge = require('webpack-merge')
 const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+
+const resolve = path.resolve.bind(path, __dirname)
 const version = require('./package.json').version
 
 var config1 = merge({}, webpackBaseConfig, {
   output: {
-    path: path.resolve(__dirname, './dist')
+    path: resolve('./dist')
   },
   devtool: 'source-map',
   stats: 'detailed',
@@ -55,7 +57,7 @@ var config2 = merge({}, config1, {
 })
 
 config2.entry = {
-  'kute.min': path.resolve(__dirname, './src/index.js')
+  'kute.min': resolve('./src/index.js')
 }
 
 module.exports = [config1, config2]

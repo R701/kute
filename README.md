@@ -24,6 +24,6 @@ And a bit of...
 
 ## To Do
 - [x] Optimize webpack build
-- [ ] Neaten webpack configs
+- [x] Neaten webpack configs
 - [ ] Set up stylus environment
 - [ ] Set up nuxt

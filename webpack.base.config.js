@@ -1,26 +1,18 @@
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const OptimizeJsPlugin = require('optimize-js-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const axis = require('axis')
 const webpack = require('webpack')
+const resolve = path.resolve.bind(path, __dirname)
 
 const extractPlugin = ExtractTextPlugin.extract({
-  use: [
-    'css-loader?sourceMap',
-    {
-      loader: 'stylus-loader',
-      options: {
-        sourceMap: true
-      }
-    }
-  ],
+  use: 'css-loader?sourceMap!stylus-loader?sourceMap',
   fallback: 'vue-style-loader'
 })
 
 module.exports = {
   entry: {
-    kute: path.resolve(__dirname, './src/index.js')
+    kute: resolve('./src/index.js')
   },
   output: {
     filename: '[name].js',
@@ -29,10 +21,15 @@ module.exports = {
     // libraryExport: 'default'
   },
   resolve: {
-    extensions: ['.js', '.json', '.vue', '.ts'],
+    extensions: ['.js', '.json', '.vue', '.ts', '.styl'],
     alias: {
-      '~': path.resolve(__dirname, 'src'),
-      'stylus': path.resolve(__dirname, './src/stylus')
+      '~': resolve('./src'),
+      '~components': resolve('./src/components'),
+      '~directive': resolve('./src/directive'),
+      '~assets': resolve('./src/assets'),
+      '/assets': resolve('./src/assets'),
+      'stylus': resolve('./src/stylus'),
+      '/stylus': resolve('./src/stylus')
     }
   },
   module: {
@@ -78,22 +75,19 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({
       options: {
         stylus: {
+          preferPathResolver: 'webpack',
           use: [axis()],
-          import: ['~stylus/main.styl']
+          import: ['~stylus/main']
         }
       }
     }),
     new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
-      DEBUG: false
+      NODE_ENV: 'development' // use 'development' unless process.env.NODE_ENV is defined
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new OptimizeJsPlugin({
-      sourceMap: false
-    }),
     new FriendlyErrorsWebpackPlugin()
   ],
   performance: {
-    hints: 'error'
+    hints: false
   }
 }

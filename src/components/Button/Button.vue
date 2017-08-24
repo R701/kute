@@ -19,7 +19,8 @@
 </template>
 
 <script>
-  import props from './_props'
+  // import props from './_props'
+  import props from '~components/Button/_props'
   import events from './_events'
 
   export default {
@@ -63,7 +64,6 @@
 </script>
 
 <style lang="stylus" scoped>
-
 .button
   display inline-block
   display inline-flex
