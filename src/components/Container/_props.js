@@ -1,0 +1,22 @@
+export default {
+  inline: Boolean,
+  flex: Boolean,
+  column: Boolean,
+  wrap: Boolean,
+  w: [Number, String],
+  h: [Number, String],
+  pa: [Number, String],
+  pt: [Number, String],
+  pb: [Number, String],
+  pl: [Number, String],
+  pr: [Number, String],
+  ph: [Number, String],
+  pv: [Number, String],
+  ma: [Number, String],
+  mt: [Number, String],
+  mb: [Number, String],
+  ml: [Number, String],
+  mr: [Number, String],
+  mh: [Number, String],
+  mv: [Number, String]
+}

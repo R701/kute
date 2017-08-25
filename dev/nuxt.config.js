@@ -41,7 +41,10 @@ module.exports = {
       config.resolve.alias.kute = path.resolve(__dirname, '../src')
       config.resolve.alias['~'] = path.resolve(__dirname, '../src')
       config.resolve.alias['~components'] = path.resolve(__dirname, '../src/components')
+      config.resolve.alias['~utils'] = path.resolve(__dirname, '../src/utils')
       config.resolve.alias['~stylus'] = path.resolve(__dirname, '../src/stylus')
+      config.resolve.alias['~directives'] = path.resolve(__dirname, '../src/directives')
+      config.resolve.alias['~mixins'] = path.resolve(__dirname, '../src/mixins')
       config.resolve.alias['stylus'] = path.resolve(__dirname, '../src/stylus')
       config.resolve.extensions.push('.styl')
       config.plugins.push(new webpack.LoaderOptionsPlugin({

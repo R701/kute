@@ -25,8 +25,10 @@ module.exports = {
     alias: {
       '~': resolve('./src'),
       '~components': resolve('./src/components'),
-      '~directive': resolve('./src/directive'),
+      '~directives': resolve('./src/directives'),
+      '~utils': resolve('./src/utils'),
       '~assets': resolve('./src/assets'),
+      '~mixins': resolve('./src/mixins'),
       '/assets': resolve('./src/assets'),
       '~stylus': resolve('./src/stylus'),
       'stylus': resolve('./src/stylus'),
