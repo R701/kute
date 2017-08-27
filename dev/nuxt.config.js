@@ -46,6 +46,12 @@ module.exports = {
       config.resolve.alias['~directives'] = path.resolve(__dirname, '../src/directives')
       config.resolve.alias['~mixins'] = path.resolve(__dirname, '../src/mixins')
       config.resolve.alias['stylus'] = path.resolve(__dirname, '../src/stylus')
+      config.resolve.alias['settings'] = path.resolve(__dirname, '../src/stylus/0_settings')
+      config.resolve.alias['tools'] = path.resolve(__dirname, '../src/stylus/1_tools')
+      config.resolve.alias['generic'] = path.resolve(__dirname, '../src/stylus/2_generic')
+      config.resolve.alias['element'] = path.resolve(__dirname, '../src/stylus/3_element')
+      config.resolve.alias['object'] = path.resolve(__dirname, '../src/stylus/4_object')
+      config.resolve.alias['trumps'] = path.resolve(__dirname, '../src/stylus/5_trumps')
       config.resolve.extensions.push('.styl')
       config.plugins.push(new webpack.LoaderOptionsPlugin({
         options: {

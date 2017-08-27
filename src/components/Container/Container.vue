@@ -98,7 +98,7 @@
 </script>
 
 <style lang="stylus">
-@require '~stylus/4_object/layout'
+@require '~object/layout'
 
 .container
   @extend .kute-box

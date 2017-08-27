@@ -1,0 +1,15 @@
+ph($value)
+  padding-left: $value
+  padding-right: $value
+
+pv($value)
+  padding-top: $value
+  padding-bottom: $value
+
+aspectHeight($percentage=100%, $position='after') 
+  &:{$position}
+    content: ' '
+    display: block
+    height: 0
+    visibility: hidden
+    padding-bottom: $percentage

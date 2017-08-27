@@ -1,0 +1,26 @@
+absCenter($position = absolute, $w = null, $h = null)
+  position: $position
+  top: 50%
+  left: 50%
+  $offsetX = $w ? -($w/2) : -50%
+  $offsetY = $h ? -($w/2) : -50%
+  transform: translate($offsetX, $offsetY)
+
+absCenterX($position = absolute, $w = null)
+  position: $position
+  left: 50%
+  $offsetX = $w ? -($w/2) : -50%
+  transform: translateX($offsetX)
+
+absCenterY($position = absolute, $h = null)
+  position: $position
+  top: 50%
+  $offsetY = $h ? -($w/2) : -50%
+  transform: translateY($offsetY)
+
+absCover($position = absolute)
+  position: $position
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0

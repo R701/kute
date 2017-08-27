@@ -1,40 +1,68 @@
 <template>
-  <div class="panel">
+  <div :class="['panel', { '-plain': plain }]">
     <div class="panel-head"
-         v-if="$slots.header || header"
+         v-if="$slots.head || header"
          @click="onHeaderClick">
-      <slot name="header"
-            v-if="$slots.header"></slot>
-      <template v-else>
-        <i :class="`icon ${iconClassPrefix}${icon}`"
-           v-if="icon"></i>
-        <span class="title">{{header}}</span>
-      </template>
+      <slot name="head"
+            v-if="$slots.head"></slot>
+      <h2 class="title"
+          v-else>{{header}}</h2>
     </div>
-    <div :class="['panel__bd', {expanded}]">
-      <div class="content">
-        <slot></slot>
-      </div>
+    <div class="panel-body">
+      <slot></slot>
     </div>
-    <div class="panel__ft"
-         v-if="$slots.footer">
-      <slot name="footer"
-            v-if="$slots.footer"></slot>
+    <div class="panel-foot"
+         v-if="$slots.foot">
+      <slot name="foot"
+            v-if="$slots.foot"></slot>
     </div>
   </div>
 </template>
 
 <script>
+  import props from './_props'
   export default {
-    mixins: [require('~mixins/with-icon')]
+    props,
+    mixins: [require('~mixins/with-icon')],
+
+    methods: {
+      onHeaderClick () { }
+    }
   }
 </script>
 
 
 <style lang="stylus" scoped>
+@require '~object/layout'
+
+$panel-padding = 28px
+
 .panel
   box-shadow $shadow-material
   border-radius 4px
   background-color $black-lighter
+  absCenter(absolute, 800px)
+
+  &-head
+    pv 28px
+    border-bottom 1px solid $grey-darker
+    ~/.-plain &
+      border 0
+      padding-bottom 0
+
+  &-body
+    pv 28px
+  
+  &-foot
+    pv 18px
+    border-top 1px solid $grey-darker
+    ~/.-plain &
+      border 0
+      padding-top 0
+.panel
+  &-head, &-body, &-foot
+    ph $panel-padding
+  
+
 </style>
 

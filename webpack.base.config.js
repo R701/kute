@@ -32,7 +32,13 @@ module.exports = {
       '/assets': resolve('./src/assets'),
       '~stylus': resolve('./src/stylus'),
       'stylus': resolve('./src/stylus'),
-      '/stylus': resolve('./src/stylus')
+      '/stylus': resolve('./src/stylus'),
+      'settings': resolve('./src/stylus/0_settings'),
+      'tools': resolve('./src/stylus/1_tools'),
+      'generic': resolve('./src/stylus/2_generic'),
+      'element': resolve('./src/stylus/3_element'),
+      'object': resolve('./src/stylus/4_object'),
+      'trumps': resolve('./src/stylus/5_trumps')
     }
   },
   module: {
