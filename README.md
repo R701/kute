@@ -7,7 +7,7 @@
 Still under development...
 
 ## 参与开发
-### 开发所需知识
+### 开发所需知识
 - Vue 2.0
 - Webpack 2.0
 - ES6
