@@ -2,11 +2,13 @@ import '~stylus/main'
 import Button from './components/Button/Button'
 import Container from './components/Container/Container'
 import Panel from './components/Panel/Panel'
+import Navigator from './components/Navigator/Navigator'
 
 var components = {
   button: Button,
   container: Container,
-  panel: Panel
+  panel: Panel,
+  navigator: Navigator
 }
 
 export default {
@@ -15,7 +17,6 @@ export default {
 
     for (var key in components) {
       if (components.hasOwnProperty(key)) {
-        console.log(key)
         Vue.component(`${prefix}-${key}`, components[key])
       }
     }
@@ -33,4 +34,4 @@ export default {
   ...components
 }
 
-export { Button, Container, Panel }
+export { Button, Container, Panel, Navigator }

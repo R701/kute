@@ -23,7 +23,6 @@
   import props from './_props'
   export default {
     props,
-    mixins: [require('~mixins/with-icon')],
 
     methods: {
       onHeaderClick () { }
@@ -41,7 +40,6 @@ $panel-padding = 28px
   box-shadow $shadow-material
   border-radius 4px
   background-color $black-lighter
-  absCenter(absolute, 800px)
 
   &-head
     pv 28px
@@ -59,6 +57,7 @@ $panel-padding = 28px
     ~/.-plain &
       border 0
       padding-top 0
+      
 .panel
   &-head, &-body, &-foot
     ph $panel-padding

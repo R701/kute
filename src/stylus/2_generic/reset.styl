@@ -5,10 +5,8 @@ global-reset()
 
 border-box-html()
 
-fluid-media()
-// print-styles()
-
-// selection color
-// *::-moz-selection { color: red}
 *::selection
-  background-color: $theme-secondary-darker
+  background-color: alpha($theme-primary-lighter, 60%)
+
+*::-moz-selection
+  background-color: alpha($theme-primary-lighter, 60%)

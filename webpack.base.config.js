@@ -30,6 +30,7 @@ module.exports = {
       '~assets': resolve('./src/assets'),
       '~mixins': resolve('./src/mixins'),
       '/assets': resolve('./src/assets'),
+      'assets': resolve('./src/assets'),
       '~stylus': resolve('./src/stylus'),
       'stylus': resolve('./src/stylus'),
       '/stylus': resolve('./src/stylus'),

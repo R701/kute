@@ -1,22 +1,35 @@
-absCenter($position = absolute, $w = null, $h = null)
+absCenter($position = absolute)
+  $w = @width
+  $h = @height
   position: $position
   top: 50%
   left: 50%
-  $offsetX = $w ? -($w/2) : -50%
-  $offsetY = $h ? -($w/2) : -50%
-  transform: translate($offsetX, $offsetY)
+  if !$w and !$h
+    transform: translate(-50%, -50%)
+  if $w
+    margin-left: -($w/2)
+    transform: translateY(-50%) @transform
+  if $h
+    margin-top: -($h/2)
+    transform: translateX(-50%) @transform
 
-absCenterX($position = absolute, $w = null)
+absCenterX($position = absolute)
+  $w = @width
   position: $position
   left: 50%
-  $offsetX = $w ? -($w/2) : -50%
-  transform: translateX($offsetX)
+  if $w
+    margin-left: -($w/2)
+  else
+    transform: translateX(-50%) @transform
 
-absCenterY($position = absolute, $h = null)
+absCenterY($position = absolute)
+  $h = @height
   position: $position
   top: 50%
-  $offsetY = $h ? -($w/2) : -50%
-  transform: translateY($offsetY)
+  if $h
+    margin-top: -($h/2)
+  else
+    transform: translateY(-50%) @transform
 
 absCover($position = absolute)
   position: $position
