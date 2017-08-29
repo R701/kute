@@ -3,36 +3,44 @@
              :to="href"
              :href="href"
              :disabled="disabled"
-             :class="['button', `${state}-btn`, size, { 'link-btn': routerLink || link, 'no-outline': !outline,  'btn-block': block,  'no-text': emptySlot } ]"
+             :class="['button', `-${state}-bg`, `-${size}`, { '-link': href, '-no-outline': !outline,  '-block': block,  '-no-text': emptySlot, '-ghost': ghost } ]"
              @click="onClick"
              @focus="onFocus"
              @blur="onBlur">
-    <i class="btn-spinner"
+    <i class="button-spinner"
        v-if="loading">
     </i>
-    <i :class="[`${iconClassPrefix}${icon}`, { 'btn--faded': loading } ]"
+    <i :class="[`${iconClassPrefix}${icon}`, { '-faded': loading } ]"
        v-if="icon"></i>
-    <span :class="[ 'btn-text', size, { 'btn--faded': loading } ]">
+    <span :class="[ 'button-text', { '-faded': loading } ]">
       <slot></slot>
     </span>
   </component>
 </template>
 
 <script>
-  // import props from './_props'
-  import props from '~components/Button/_props'
+  import props from './_props'
   import events from './_events'
+  import withIcon from '~mixins/with-icon'
 
   export default {
     props: props,
-
+    mixins: [withIcon],
     inheritAttrs: false,
+
+    data () {
+      return {
+        active: false
+      }
+    },
 
     computed: {
       root () {
-        if (this.routerLink) {
+        if (this.nuxt) {
           return 'nuxt-link'
-        } else if (this.link) {
+        } else if (this.router) {
+          return 'router-link'
+        } else if (this.href) {
           return 'a'
         } else {
           return 'button'
@@ -64,6 +72,8 @@
 </script>
 
 <style lang="stylus" scoped>
+@require '~stylus/5_trumps/basic'
+@require '~stylus/5_trumps/form'
 .button
   display inline-block
   display inline-flex
@@ -71,15 +81,28 @@
   justify-content center
   text-transform uppercase
   line-height 1
-  box-sizing border-box
   position relative
-  user-select none
-  line-height 2.6
-  background-color $theme-primary
+  width 80px
+  height 34px
+  no-select()
+  unsmooth()
+  background-color $grey-darker
   color $white
-  border-radius 4px
-  border 0
-  box-shadow $shadow-embossment
+  border-radius 2px
+  transition background-color .2s
+  @extend .-no-border
+  &:active
+    background-color darken(@background-color, 12%)
+  &:disabled
+    background-color $grey-lighter !important
+    opacity .8 !important
+
+.-no-text
+  width auto !important
+.-ghost
+  background transparent !important
+  border none !important
+  box-shadow none !important
 
 @keyframes spinning
   0%

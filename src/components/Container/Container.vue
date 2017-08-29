@@ -75,7 +75,7 @@
           obj.marginRight = u.getCSSLength(this.mh)
         }
         if (this.mv) {
-          obj.marginTom = u.getCSSLength(this.mv)
+          obj.marginTop = u.getCSSLength(this.mv)
           obj.marginBottom = u.getCSSLength(this.mv)
         }
         if (this.ml) {
@@ -85,7 +85,7 @@
           obj.marginRight = u.getCSSLength(this.mr)
         }
         if (this.mt) {
-          obj.marginTom = u.getCSSLength(this.mt)
+          obj.marginTop = u.getCSSLength(this.mt)
         }
         if (this.mb) {
           obj.marginBottom = u.getCSSLength(this.mb)
