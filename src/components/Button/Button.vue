@@ -85,7 +85,8 @@
   width 80px
   height 34px
   no-select()
-  unsmooth()
+  // unsmooth()
+  click-down()
   background-color $grey-darker
   color $white
   border-radius 2px
@@ -103,6 +104,8 @@
   background transparent !important
   border none !important
   box-shadow none !important
+  &:active
+    color $white-darker
 
 @keyframes spinning
   0%

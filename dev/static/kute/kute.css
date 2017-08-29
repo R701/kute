@@ -545,17 +545,15 @@ article footer {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  -webkit-font-smoothing: subpixel-antialiased;
-  -moz-osx-font-smoothing: unset;
   background-color: #5c5f66;
   color: #dcdee0;
   border-radius: 2px;
   -webkit-transition: background-color 0.2s;
   transition: background-color 0.2s;
 }
-.button *[data-v-61c76d52] {
-  -webkit-font-smoothing: subpixel-antialiased;
-  -moz-osx-font-smoothing: unset;
+.button[data-v-61c76d52]:active {
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
 }
 .button[data-v-61c76d52]:active {
   background-color: #51545a;
@@ -572,6 +570,9 @@ article footer {
   border: none !important;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
+}
+.-ghost[data-v-61c76d52]:active {
+  color: #c8cacc;
 }
 @-webkit-keyframes spinning {
 0% {
