@@ -37,6 +37,11 @@
             ch: '排版'
           },
           {
+            text: 'Spinner',
+            href: 'spinner',
+            ch: '加载动画'
+          },
+          {
             text: 'Button',
             href: 'button',
             ch: '按钮'

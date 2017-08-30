@@ -7,9 +7,10 @@
              @click="onClick"
              @focus="onFocus"
              @blur="onBlur">
-    <i class="button-spinner"
-       v-if="loading">
-    </i>
+    <div class="button-spinner"
+         v-if="loading">
+      <spinner></spinner>
+    </div>
     <i :class="[`${iconClassPrefix}${icon}`, { '-faded': loading } ]"
        v-if="icon"></i>
     <span :class="[ 'button-text', { '-faded': loading } ]">
@@ -23,10 +24,16 @@
   import events from './_events'
   import withIcon from '~mixins/with-icon'
 
+  import Spinner from '~components/Spinner/Spinner'
+
   export default {
     props: props,
     mixins: [withIcon],
     inheritAttrs: false,
+
+    components: {
+      Spinner
+    },
 
     data () {
       return {
@@ -76,27 +83,33 @@
 @require '~stylus/5_trumps/form'
 .button
   display inline-block
-  display inline-flex
-  align-items center
-  justify-content center
   text-transform uppercase
   line-height 1
   position relative
-  width 80px
+  min-width 80px
   height 34px
   no-select()
-  // unsmooth()
   click-down()
   background-color $grey-darker
   color $white
   border-radius 2px
   transition background-color .2s
+  text-align center
   @extend .-no-border
   &:active
     background-color darken(@background-color, 12%)
   &:disabled
     background-color $grey-lighter !important
     opacity .8 !important
+  &.-small
+    height 24px
+    min-width 56px
+  &.-large
+    height 44px
+    min-width 104px
+.button-spinner
+  cover()
+  flexCenter()
 
 .-no-text
   width auto !important

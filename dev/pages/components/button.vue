@@ -25,8 +25,23 @@
       <named-block name="disabled">
         <k-button disabled>确认</k-button>
       </named-block>
+      <named-block name="loading">
+        <k-button loading>确认</k-button>
+      </named-block>
       <named-block name="ghost">
         <k-button ghost>确认</k-button>
+      </named-block>
+    </k-container>
+    <br>
+    <k-container flex>
+      <named-block name="small">
+        <k-button size="small">确认</k-button>
+      </named-block>
+      <named-block name="default size">
+        <k-button>确认</k-button>
+      </named-block>
+      <named-block name="large">
+        <k-button size="large">确认</k-button>
       </named-block>
     </k-container>
   </div>
