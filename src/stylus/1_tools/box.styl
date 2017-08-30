@@ -6,13 +6,32 @@ pv($value)
   padding-top: $value
   padding-bottom: $value
 
-aspectHeight($percentage=100%, $position='after') 
-  &:{$position}
+vPercent($length)
+  designH = 1336px
+  ($length / designH * 100)%
+
+ratioFixedHeight($ratio = 1, $pos = 'after')
+  &:{$pos}
     content: ' '
     display: block
     height: 0
     visibility: hidden
     padding-bottom: $percentage
+    padding-{$pos is 'before' ? top : bottom}: percentage($ratio)
+    {block}
+
+avatar($url, $w = null)
+  border-radius: 50%
+  background: url($url) center/cover no-repeat
+  if $w is defined and typeof($w) == 'unit'
+    $width = $w
+  else
+    $width = @width
+  $unit = unit($width)
+  if $unit == '%'
+    ratioFixedHeight(1)
+  else
+    height: $width
 
 cover()
   width: 100%
