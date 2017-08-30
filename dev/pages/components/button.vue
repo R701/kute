@@ -19,31 +19,49 @@
       <named-block name="error">
         <k-button state="error">确认</k-button>
       </named-block>
-    </k-container>\
+    </k-container>
     <br>
     <k-container flex>
       <named-block name="disabled">
-        <k-button disabled>确认</k-button>
+        <k-button disabled>无法使用</k-button>
       </named-block>
       <named-block name="loading">
-        <k-button loading>确认</k-button>
+        <k-button loading>等待</k-button>
+      </named-block>
+      <named-block name="link">
+        <k-button href="http://www.baidu.com"
+                  target="_blank">百度</k-button>
+      </named-block>
+      <named-block name="nuxt">
+        <k-button href="/components/color"
+                  nuxt>color</k-button>
       </named-block>
       <named-block name="ghost">
         <k-button ghost>确认</k-button>
+      </named-block>
+      <named-block name="icon share">
+        <k-button icon="share">分享</k-button>
       </named-block>
     </k-container>
     <br>
     <k-container flex>
       <named-block name="small">
-        <k-button size="small">确认</k-button>
+        <k-button state="primary"
+                  size="small">确认</k-button>
       </named-block>
       <named-block name="default size">
-        <k-button>确认</k-button>
+        <k-button state="primary">确认</k-button>
       </named-block>
       <named-block name="large">
-        <k-button size="large">确认</k-button>
+        <k-button state="primary"
+                  size="large">确认</k-button>
       </named-block>
     </k-container>
+    <br>
+    <named-block name="block">
+      <k-button state="primary"
+                block>确认</k-button>
+    </named-block>
   </div>
 </template>
 

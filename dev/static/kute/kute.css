@@ -287,6 +287,10 @@ html {
 *::-moz-selection {
   background-color: rgba(3,171,255,0.6);
 }
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 body {
   background-color: #272727;
   color: #dcdee0;
@@ -348,16 +352,26 @@ li {
   line-height: 2;
 }
 blockquote {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   border-left: 5px solid #e5b547;
   padding: 10px 16px;
   background-color: #272727;
   box-shadow: 0 2px 2px rgba(0,0,0,0.75);
 }
 article {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
 }
 article header {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: unset;
   margin-bottom: 20px;
+}
+article header * {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: unset;
 }
 article footer {
   margin-top: 10px;
@@ -372,6 +386,8 @@ article footer {
 .kute-article {
   line-height: 1.8;
   text-align: justify;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .-flex {
   display: flex !important;
@@ -393,6 +409,9 @@ article footer {
 }
 .-faded {
   opacity: 0 !important;
+}
+.-nowrap {
+  white-space: nowrap;
 }
 .-no-outline {
   outline: none !important;
@@ -497,6 +516,9 @@ article footer {
 .-faded[data-v-61c76d52] {
   opacity: 0 !important;
 }
+.-nowrap[data-v-61c76d52] {
+  white-space: nowrap;
+}
 .-no-outline[data-v-61c76d52] {
   outline: none !important;
 }
@@ -511,11 +533,14 @@ article footer {
 }
 .button[data-v-61c76d52] {
   display: inline-block;
+  vertical-align: middle;
   text-transform: uppercase;
   line-height: 1;
   position: relative;
   min-width: 80px;
   height: 34px;
+  padding-left: 1.2em;
+  padding-right: 1.2em;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -527,8 +552,9 @@ article footer {
   -webkit-transition: background-color 0.2s;
   transition: background-color 0.2s;
   text-align: center;
+  white-space: nowrap;
 }
-.button[data-v-61c76d52]:active {
+.button[data-v-61c76d52]:not(:disabled):active {
   -webkit-transform: translateY(1px);
           transform: translateY(1px);
 }
@@ -538,6 +564,7 @@ article footer {
 .button[data-v-61c76d52]:disabled {
   background-color: #8a8f99 !important;
   opacity: 0.8 !important;
+  cursor: not-allowed !important;
 }
 .button.-small[data-v-61c76d52] {
   height: 24px;
@@ -547,7 +574,8 @@ article footer {
   height: 44px;
   min-width: 104px;
 }
-.button-spinner[data-v-61c76d52] {
+.button-spinner[data-v-61c76d52],
+.button-text[data-v-61c76d52] {
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -559,6 +587,12 @@ article footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+.button-icon.prepend[data-v-61c76d52] {
+  margin-right: 3px;
+}
+.button-icon.append[data-v-61c76d52] {
+  margin-left: 3px;
 }
 .-no-text[data-v-61c76d52] {
   width: auto !important;
@@ -716,6 +750,8 @@ article footer {
 .kute-article {
   line-height: 1.8;
   text-align: justify;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 /*# sourceMappingURL=src/components/Container/Container.css.map */
 .kute-box[data-v-5a8254be] {
@@ -728,6 +764,8 @@ article footer {
 .kute-article[data-v-5a8254be] {
   line-height: 1.8;
   text-align: justify;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .panel[data-v-5a8254be] {
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, .5), 0 2px 2px rgba(0, 0, 0, .34), 0 3px 1px rgba(0, 0, 0, .32);

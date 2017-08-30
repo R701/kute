@@ -2,7 +2,7 @@
   <component :is="root"
              :to="href"
              :href="href"
-             :disabled="disabled"
+             :disabled="disabled || (disableWhileLoading && loading)"
              :class="['button', `-${state}-bg`, `-${size}`, { '-link': href, '-no-outline': !outline,  '-block': block,  '-no-text': emptySlot, '-ghost': ghost } ]"
              @click="onClick"
              @focus="onFocus"
@@ -11,10 +11,12 @@
          v-if="loading">
       <spinner></spinner>
     </div>
-    <i :class="[`${iconClassPrefix}${icon}`, { '-faded': loading } ]"
-       v-if="icon"></i>
     <span :class="[ 'button-text', { '-faded': loading } ]">
+      <i :class="['button-icon', 'prepend', `${iconClassPrefix}${icon}`]"
+         v-if="icon && iconPosition == 'prepend'"></i>
       <slot></slot>
+      <i :class="['button-icon', 'append', `${iconClassPrefix}${icon}`]"
+         v-if="icon && iconPosition == 'append'"></i>
     </span>
   </component>
 </template>
@@ -29,7 +31,6 @@
   export default {
     props: props,
     mixins: [withIcon],
-    inheritAttrs: false,
 
     components: {
       Spinner
@@ -83,34 +84,43 @@
 @require '~stylus/5_trumps/form'
 .button
   display inline-block
+  vertical-align middle
   text-transform uppercase
   line-height 1
   position relative
   min-width 80px
   height 34px
+  ph(1.2em)
   no-select()
-  click-down()
   background-color $grey-darker
   color $white
   border-radius 2px
   transition background-color .2s
   text-align center
+  white-space nowrap
   @extend .-no-border
+  &:not(:disabled)
+    click-down()
   &:active
     background-color darken(@background-color, 12%)
   &:disabled
     background-color $grey-lighter !important
     opacity .8 !important
+    cursor not-allowed !important
   &.-small
     height 24px
     min-width 56px
   &.-large
     height 44px
     min-width 104px
-.button-spinner
+.button-spinner, .button-text
   cover()
   flexCenter()
-
+.button-icon
+  &.prepend
+    margin-right 3px
+  &.append
+    margin-left 3px
 .-no-text
   width auto !important
 .-ghost

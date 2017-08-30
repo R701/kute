@@ -1,6 +1,13 @@
 export default {
   props: {
-    icon: String,
-    default: ''
+    icon: {
+      default: ''
+    },
+    iconPosition: {
+      default: 'prepend',
+      validator (val) {
+        return val == 'prepend' || val == 'append'
+      }
+    }
   }
 }
