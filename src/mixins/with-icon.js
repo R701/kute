@@ -1,5 +1,6 @@
 export default {
   props: {
-    icon: String
+    icon: String,
+    default: ''
   }
 }

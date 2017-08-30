@@ -1,6 +1,5 @@
 export default {
-  link: Boolean,
-  routerLink: Boolean,
+  router: Boolean,
   nuxt: Boolean,
   href: {
     type: String,
@@ -14,11 +13,7 @@ export default {
     type: Boolean,
     default: true
   },
-  icon: String,
-  iconClassPrefix: {
-    type: String,
-    default: 'iconfont icon-'
-  },
+  ghost: Boolean,
   state: {
     type: String,
     default: 'default'
