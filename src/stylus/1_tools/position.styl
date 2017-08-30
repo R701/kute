@@ -6,10 +6,13 @@ absCenter($position = absolute)
   left: 50%
   if !$w and !$h
     transform: translate(-50%, -50%)
-  if $w
+  if $w and $h
+    margin-left: -($w/2)
+    margin-top: -($h/2)
+  else if $w
     margin-left: -($w/2)
     transform: translateY(-50%) @transform
-  if $h
+  else if $h
     margin-top: -($h/2)
     transform: translateX(-50%) @transform
 
@@ -37,3 +40,4 @@ absCover($position = absolute)
   bottom: 0
   left: 0
   right: 0
+
