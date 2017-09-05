@@ -4,13 +4,17 @@ import Container from './components/Container/Container'
 import Panel from './components/Panel/Panel'
 import Navigator from './components/Navigator/Navigator'
 import Spinner from './components/Spinner/Spinner'
+import Group from './components/Group/Group'
+import Input from './components/Input/Input'
 
 var components = {
   button: Button,
   container: Container,
   panel: Panel,
   navigator: Navigator,
-  spinner: Spinner
+  spinner: Spinner,
+  group: Group,
+  input: Input
 }
 
 export default {
@@ -36,4 +40,4 @@ export default {
   ...components
 }
 
-export { Button, Container, Panel, Navigator, Spinner }
+export { Button, Container, Panel, Navigator, Spinner, Group, Input }

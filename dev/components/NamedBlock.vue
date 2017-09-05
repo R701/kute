@@ -26,13 +26,14 @@
 <style lang="stylus">
 .named-block
   display flex
+  align-items center
   &.top
     flex-direction column-reverse
   &.bottom
     flex-direction column
-  &.left
-    flex-direction row
   &.right
+    flex-direction row
+  &.left
     flex-direction row-reverse
   &-name
     font-size $font-size-h6

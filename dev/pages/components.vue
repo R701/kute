@@ -45,6 +45,16 @@
             text: 'Button',
             href: 'button',
             ch: '按钮'
+          },
+          {
+            text: 'Input',
+            href: 'input',
+            ch: '输入框'
+          },
+          {
+            text: 'Group',
+            href: 'group',
+            ch: '组合'
           }
         ]
       }
