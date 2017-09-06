@@ -435,7 +435,7 @@ article footer {
   font-size: 12px !important;
 }
 .-large {
-  font-size: 24px !important;
+  font-size: 18px !important;
 }
 .-primary-bg {
   background-color: #0287c8 !important;
@@ -553,7 +553,7 @@ article footer {
   font-size: 12px !important;
 }
 .-large[data-v-61c76d52] {
-  font-size: 24px !important;
+  font-size: 18px !important;
 }
 .button[data-v-61c76d52] {
   display: inline-block;
@@ -880,13 +880,10 @@ article footer {
 }
 /*# sourceMappingURL=src/components/Group/Group.css.map */
 .input-field[data-v-d939c2a6] {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   font-size: 14px;
+}
+.input-field label[data-v-d939c2a6] {
+  display: block;
 }
 .input-field .input-wrapper[data-v-d939c2a6] {
   position: relative;
@@ -903,6 +900,7 @@ article footer {
   padding: 0 0.714285714285714em;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
+  position: relative;
 }
 .input-field .input-wrapper input[data-v-d939c2a6] ::-webkit-input-placeholder {
   color: #8a8f99;
@@ -919,7 +917,6 @@ article footer {
   left: 0;
   bottom: -1.6em;
   color: #f24236;
-  z-index: 1;
 }
 .input-field .input-wrapper .icon-clear[data-v-d939c2a6] {
   position: absolute;
@@ -970,6 +967,7 @@ article footer {
   position: absolute;
   min-width: 100%;
   top: 36px;
+  z-index: 10;
 }
 .input-field .input-wrapper .suggestions .suggestion-item[data-v-d939c2a6] {
   height: 34px;
@@ -1016,6 +1014,17 @@ article footer {
 }
 .-pl input[data-v-d939c2a6] {
   padding-left: 2em !important;
+}
+.-block input[data-v-d939c2a6] {
+  width: 100% !important;
+}
+.-small input[data-v-d939c2a6] {
+  height: 28px !important;
+  min-width: 180px !important;
+}
+.-large input[data-v-d939c2a6] {
+  height: 42px !important;
+  min-width: 260px !important;
 }
 .errmsg-enter-active[data-v-d939c2a6],
 .errmsg-leave-active[data-v-d939c2a6] {

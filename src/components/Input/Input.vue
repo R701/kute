@@ -1,20 +1,22 @@
 <template>
-  <div :class="['input-field', `-${state}`, `-${size}`, { '-focused': focused, '-disabled': disabled, '-error': errmsg, '-pr': clearable || loading, '-pl': icon, '-block': block }]"
+  <div :class="['input-field', `-${state}`, `-${size}`, { '-focused': focused, '-disabled': disabled, '-error': errmsg, '-pr': clearable || loading || select, '-pl': icon, '-block': block, 'select': select }]"
        v-click-outside="onClickOutside">
     <label :for="$attrs.id"
            v-if="label">{{label}}</label>
     <div class="input-wrapper">
+      <component :is="tag"
+                 ref="input"
+                 :value="value"
+                 v-bind="$attrs"
+                 v-on="$listeners"
+                 :disabled="disabled"
+                 :readonly="readonly || select"
+                 @input="onInput"
+                 @focus="onFocus"
+                 @blur="onBlur"></component>
       <i :class="['input-icon', `${iconClassPrefix}${icon}`]"
          v-if="icon"></i>
-      <input ref="input"
-             :value="value"
-             v-bind="$attrs"
-             v-on="$listeners"
-             :disabled="disabled"
-             @input="onInput"
-             @focus="onFocus"
-             @blur="onBlur">
-      <svg v-if="clearable && value && !loading"
+      <svg v-if="clearable && value && !loading && !select"
            @click="onClearClick"
            t="1504678682093"
            class="icon icon-clear"
@@ -26,8 +28,22 @@
         <path d="M512 423.1257264239249L165.48581064762436 76.61154001734309C160.06906888753866 71.19479678436056 152.5421902526894 71.5893652373976 147.65639099467006 76.475164495417L76.475164495417 147.65639099467006C71.44745898769497 152.68409650239215 71.65042270457474 160.52469333485612 76.61154001734309 165.48581064762436L423.1257264239249 512 76.61154001734309 858.5141878794789C71.65042270457474 863.4753066651442 71.44745898769497 871.3159005518139 76.475164495417 876.3436090053299L147.65639099467006 947.5248325587894C152.5421902526894 952.4106332897054 160.06906888753866 952.8052032156394 165.48581064762436 947.3884614555537L512 600.874273576075 858.5141878794789 947.3884614555537C863.9309296395645 952.8052032156394 871.4578068015169 952.4106332897054 876.3436090053299 947.5248325587894L947.5248325587894 876.3436090053299C952.5525395394081 871.3159005518139 952.3495802412192 863.4753066651442 947.3884614555537 858.5141878794789L600.874273576075 512 947.3884614555537 165.48581064762436C952.3495802412192 160.52469333485612 952.5525395394081 152.68409650239215 947.5248325587894 147.65639099467006L876.3436090053299 76.475164495417C871.4578068015169 71.5893652373976 863.9309296395645 71.19479678436056 858.5141878794789 76.61154001734309L512 423.1257264239249Z"
               p-id="2316"></path>
       </svg>
+      <svg v-if="select"
+           t="1504710944573"
+           :class="['icon', 'icon-down', { '-reverse': showOptions }]"
+           style=""
+           viewBox="0 0 1024 1024"
+           version="1.1"
+           xmlns="http://www.w3.org/2000/svg"
+           p-id="3844"
+           xmlns:xlink="http://www.w3.org/1999/xlink"
+           width="200"
+           height="200">
+        <path d="M749.991674 379.789628c-7.961956-7.954731-20.836915-7.954731-28.769971 0L512.859776 607.90472 304.505073 379.789628c-7.933056-7.954731-20.822465-7.954731-28.748296 0-7.954731 7.976406-7.954731 20.894715 0 28.849446l221.699287 242.745728c4.255528 4.241078 9.876582 6.061779 15.418161 5.765554 5.541579 0.296225 11.155408-1.524476 15.410936-5.765554l221.720962-242.745728C757.917505 400.684343 757.917505 387.766034 749.991674 379.789628z"
+              p-id="3845"></path>
+      </svg>
       <div class="input-spinner"
-           v-if="loading">
+           v-if="loading && !select">
         <spinner color="#8a8f99"
                  d="1.4em"></spinner>
       </div>
@@ -35,13 +51,22 @@
         <span class="input-errmsg"
               v-if="errmsg">{{errmsg}}</span>
       </transition>
-      <transition name="errmsg">
+      <transition name="suggestions">
         <div class="suggestions"
-             v-if="suggestions && showSuggestions">
+             v-if="!select && suggestions && showSuggestions">
           <div class="suggestion-item"
                v-for="item in suggestions"
                :key="item"
                @click="onSuggestionItemClick(item)">{{item}}</div>
+        </div>
+      </transition>
+      <transition name="options">
+        <div class="options"
+             v-if="select && options && showOptions">
+          <div class="option-item"
+               v-for="item in options"
+               :key="item[optionValueKey]"
+               @click="onOptionItemClick(item)">{{item[optionTextKey]}}</div>
         </div>
       </transition>
     </div>
@@ -72,7 +97,22 @@
       return {
         focused: false,
         errmsg: '',
-        showSuggestions: false
+        showSuggestions: false,
+        showOptions: false
+      }
+    },
+
+    computed: {
+      tag () {
+        return this.textarea ? 'textarea' : 'input'
+      }
+    },
+
+    watch: {
+      value (newVal) {
+        if (this.select) {
+          this.validate()
+        }
       }
     },
 
@@ -89,6 +129,7 @@
       onFocus () {
         this.focused = true
         this.showSuggestions = true
+        this.showOptions = true
       },
 
       onBlur () {
@@ -109,7 +150,6 @@
       },
 
       async validate () {
-        console.log(this.value)
         if (typeof this.validator === 'function') {
           var returnValue = this.validator(this.value)
           if (returnValue instanceof Promise) {
@@ -126,11 +166,17 @@
 
       onClickOutside () {
         this.showSuggestions = false
+        this.showOptions = false
       },
 
       onSuggestionItemClick (item) {
         this.$emit('sync', item)
         this.showSuggestions = false
+      },
+
+      onOptionItemClick (item) {
+        this.$emit('sync', item[this.optionTextKey])
+        this.showOptions = false
       }
     }
   }
@@ -138,9 +184,12 @@
 
 <style lang="stylus" scoped>
 .input-field
+  display inline-block
   font-size 14px
+  line-height 34px
   label
     display block
+    line-height 1.5
   .input-wrapper
     position relative
     input
@@ -155,16 +204,15 @@
       padding 0 (10px/14px)em
       transition all .2s
       position relative
-      z-index 1
       ::placeholder
         color $grey-lighter
     .input-errmsg
       font-size $font-size-h6
       position absolute
       left 0
-      bottom  -1.6em
+      bottom  -1.3em
+      line-height 1
       color $state-error
-      z-index 1
     .icon-clear
       position absolute
       width 1em
@@ -182,12 +230,13 @@
       right (8px/14px)em
     .input-icon
       position absolute
-      absCenterY()
       left (6px/14px)em
+      top 0
       color $grey-darker
       display block
       width 1em
-      height 1.3em
+      height 100%
+      font-size percentage(16px/14px)
     .suggestions
       background-color $white
       display flex
@@ -198,8 +247,6 @@
       top 2px + 34px
       z-index 10
       .suggestion-item
-        height 34px
-        line-height 34px
         background-color transparent
         padding 0 (10px/14px)em
         color $grey-darker
@@ -207,6 +254,40 @@
         &:hover
           color $white-lighter
           background-color $grey-lighter
+    .options
+      background-color $white
+      display flex
+      flex-direction column
+      box-shadow psShadow(#000, 43%, 120, 2px, 0, 8px)
+      absCenterY()
+      right 2.3em
+      min-width 100%
+      top 2px + 34px
+      z-index 10
+      border-radius 2px
+      overflow hidden
+      .option-item
+        background-color transparent
+        padding 0 (10px/14px)em
+        color $grey-darker
+        cursor pointer
+        &:hover
+          color $white-lighter
+          background-color $grey-lighter
+.select
+  input
+    cursor pointer
+  .icon-down
+    position absolute
+    width 2em
+    height 2em
+    fill $grey-darker
+    absCenterY()
+    right (6px/14px)em
+    cursor pointer
+    transition all .2s
+    &.-reverse
+      transform rotate(-180deg)
 
 .-focused
   input
@@ -238,13 +319,19 @@
   input
     width 100% !important
 .-small
+  line-height 26px !important
   input
-    height 28px !important
+    height 26px !important
     min-width 180px !important
+  .suggestions
+    top 2px + 26px !important
 .-large
+  line-height 44px !important
   input
-    height 42px !important
+    height 44px !important
     min-width 260px !important
+  .suggestions
+    top 2px + 44px !important
 
 .errmsg-enter-active, .errmsg-leave-active
   transition: all .2s
@@ -252,4 +339,17 @@
   transform: translateY(-50%)
   opacity: 0
   filter: saturate(0%)
+
+.suggestions-enter-active, .suggestions-leave-active
+  transition: all .1s
+.suggestions-enter, .suggestions-leave-to
+  transform: translateY(-10px)
+  opacity: 0
+  filter: saturate(0%)
+
+.options-enter-active, .options-leave-active
+  transition: all .1s
+.options-enter, .options-leave-to
+  margin-right -10px
+  opacity: 0
 </style>

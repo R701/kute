@@ -77,6 +77,8 @@
 <style lang="stylus">
 .named-block
   margin-right 16px
+.c-button .named-block._block .named-block-main
+  width 100%
 </style>
 
 

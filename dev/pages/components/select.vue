@@ -1,108 +1,108 @@
 <template>
-  <div class="c-input">
+  <div class="c-select">
     <named-block name="initial"
                  position="right">
       <k-input v-model="value"
-               placeholder="姓名"></k-input>
+               :options="options"
+               select
+               placeholder="选择城市"></k-input>
     </named-block>
     <br>
     <named-block name="disabled"
                  position="right">
       <k-input v-model="value"
-               placeholder="姓名"
+               select
+               placeholder="选择城市"
+               :options="options"
                disabled></k-input>
     </named-block>
     <br>
     <named-block name="success"
                  position="right">
       <k-input v-model="value"
-               placeholder="姓名"
+               select
+               placeholder="选择城市"
+               :options="options"
                state="success"></k-input>
     </named-block>
     <br>
     <named-block name="warn"
                  position="right">
       <k-input v-model="value"
-               placeholder="姓名"
+               select
+               placeholder="选择城市"
+               :options="options"
                state="warn"></k-input>
     </named-block>
     <br>
     <named-block name="error"
                  position="right">
       <k-input v-model="value"
-               placeholder="姓名"
+               select
+               placeholder="选择城市"
+               :options="options"
                state="error"></k-input>
     </named-block>
     <br>
     <named-block name="error message"
                  position="right">
       <k-input v-model="value"
-               placeholder="姓名"
-               validator="请输入真实姓名"></k-input>
+               select
+               placeholder="选择城市"
+               :options="options"
+               validator="未选择城市"></k-input>
     </named-block>
     <br>
     <named-block name="validator"
                  position="right">
       <k-input v-model="value"
-               placeholder="请输入密码"
-               type="password"
-               validatorEvent="input change"
-               :validator="passwordChecker"></k-input>
-    </named-block>
-    <br>
-    <named-block name="clearable"
-                 position="right">
-      <k-input v-model="value"
-               placeholder="姓名"
-               clearable></k-input>
-    </named-block>
-    <br>
-    <named-block name="loading"
-                 position="right">
-      <k-input v-model="value"
-               placeholder="姓名"
-               loading></k-input>
+               select
+               placeholder="选择城市"
+               :options="options"
+               :validator="cityChecker"></k-input>
     </named-block>
     <br>
     <named-block name="icon search"
                  position="right">
       <k-input v-model="value"
-               placeholder="姓名"
+               select
+               placeholder="选择城市"
+               :options="options"
                icon="search"></k-input>
     </named-block>
     <br>
     <named-block name="icon attention"
                  position="right">
       <k-input v-model="value"
-               placeholder="姓名"
+               select
+               placeholder="选择城市"
+               :options="options"
                icon="attention"></k-input>
     </named-block>
     <br>
     <named-block name="icon view"
                  position="right">
       <k-input v-model="value"
-               placeholder="姓名"
+               select
+               placeholder="选择城市"
+               :options="options"
                icon="view"></k-input>
-    </named-block>
-    <br>
-    <named-block name="suggestions"
-                 position="right">
-      <k-input v-model="value"
-               placeholder="姓名"
-               :suggestions="['Chris', 'Christian', 'Christina', 'Christ', 'Christmas']"></k-input>
     </named-block>
     <br>
     <named-block name="with label"
                  position="right">
       <k-input v-model="value"
-               placeholder="姓名"
-               label="真实姓名："></k-input>
+               select
+               :options="options"
+               label="城市："></k-input>
     </named-block>
     <br>
     <named-block name="block"
                  position="bottom">
       <k-input v-model="value"
-               placeholder="姓名"
+               select
+               placeholder="选择城市"
+               :options="options"
                block></k-input>
     </named-block>
     <br>
@@ -110,30 +110,33 @@
       <named-block name="small"
                    position="bottom">
         <k-input v-model="value"
-                 placeholder="姓名"
+                 select
+                 placeholder="选择城市"
                  icon="search"
                  clearable
-                 :suggestions="['Chris', 'Christian', 'Christina']"
+                 :options="options"
                  size="small"></k-input>
       </named-block>
       <br>
       <named-block name="default"
                    position="bottom">
         <k-input v-model="value"
-                 placeholder="姓名"
+                 select
+                 placeholder="选择城市"
                  icon="search"
                  clearable
-                 :suggestions="['Chris', 'Christian', 'Christina']"
+                 :options="options"
                  size="default"></k-input>
       </named-block>
       <br>
       <named-block name="large"
                    position="bottom">
         <k-input v-model="value"
-                 placeholder="姓名"
+                 select
+                 placeholder="选择城市"
                  icon="search"
                  clearable
-                 :suggestions="['Chris', 'Christian', 'Christina']"
+                 :options="options"
                  size="large"></k-input>
       </named-block>
     </k-container>
@@ -149,7 +152,13 @@
 
     data () {
       return {
-        value: ''
+        value: '',
+        options: [
+          { text: '龙岩', value: 'ly' },
+          { text: '厦门', value: 'xm' },
+          { text: '深圳', value: 'sz' },
+          { text: '上海', value: 'sh' }
+        ]
       }
     },
 
@@ -160,6 +169,12 @@
         }
 
         return ''
+      },
+
+      cityChecker (value) {
+        if (value && value === '龙岩') {
+          return '不能选龙岩'
+        }
       },
 
       async usernameChecker (value) {
@@ -182,11 +197,11 @@
 <style lang="stylus">
 .named-block
   margin-right 16px
-.c-input .right .named-block-name
+.c-select .right .named-block-name
   margin-left 32px
-.c-input .named-block._block .named-block-main
+.c-select .named-block._block .named-block-main
   width 100%
-.c-input .named-block._suggestions
+.c-select .named-block._suggestions
   z-index 2
   position relative
 </style>

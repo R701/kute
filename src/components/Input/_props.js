@@ -1,10 +1,13 @@
 export default {
+  select: Boolean,
+  textarea: Boolean,
   value: [String, Number],
   block: Boolean,
   outline: Boolean,
   disabled: Boolean,
   clearable: Boolean,
   loading: Boolean,
+  readonly: Boolean,
   validator: [Function, String],
   validatorEvent: {
     type: String,
@@ -21,21 +24,16 @@ export default {
     type: Number,
     default: 0
   },
-  listMaxHeight: {
-    type: [String, Number],
-    default: 'auto'
-  },
-  listMaxWidth: {
-    type: [String, Number],
-    default: '100%'
-  },
-  listMinWidth: {
-    type: [String, Number],
-    default: '60%'
-  },
   listFilter: Function,
   size: {
     type: String,
     default: 'default'
+  },
+  options: Array,
+  optionValueKey: {
+    default: 'value'
+  },
+  optionTextKey: {
+    default: 'text'
   }
 }

@@ -4,12 +4,16 @@
       <k-spinner></k-spinner>
     </named-block>
     <br>
-    <named-block name="colored">
-      <k-spinner colored></k-spinner>
+    <named-block name="#E5B547">
+      <k-spinner color="#E5B547"></k-spinner>
     </named-block>
     <br>
-    <named-block name="colored, d: 50px">
-      <k-spinner colored
+    <named-block name="grad">
+      <k-spinner grad></k-spinner>
+    </named-block>
+    <br>
+    <named-block name="grad, d: 50px">
+      <k-spinner grad
                  d="50px"></k-spinner>
     </named-block>
   </div>

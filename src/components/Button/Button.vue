@@ -90,6 +90,8 @@
   position relative
   min-width 80px
   height 34px
+  line-height 34px
+  pv(0)
   ph(1.2em)
   no-select()
   background-color $grey-darker
@@ -108,15 +110,19 @@
     opacity .8 !important
     cursor not-allowed !important
   &.-small
-    height 24px
+    height 26px
     min-width 56px
+    line-height 26px
   &.-large
     height 44px
     min-width 104px
+    line-height 44px
 .button-spinner, .button-text
   cover()
   flexCenter()
 .button-icon
+  height 100%
+  font-size percentage(16px/14px)
   &.prepend
     margin-right 3px
   &.append

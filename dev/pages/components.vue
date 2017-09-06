@@ -52,6 +52,11 @@
             ch: '输入框'
           },
           {
+            text: 'Select',
+            href: 'select',
+            ch: '选择框'
+          },
+          {
             text: 'Group',
             href: 'group',
             ch: '组合'
