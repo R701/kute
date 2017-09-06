@@ -4,5 +4,9 @@ export default {
     type: [String, Number]
   },
 
-  colored: Boolean
+  color: {
+    default: '#eee'
+  },
+
+  grad: Boolean
 }

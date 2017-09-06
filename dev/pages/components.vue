@@ -63,7 +63,8 @@
     computed: {
 
       activeNavIndex () {
-        var key = /\/components\/(.+)/.exec(this.$route.path)[1] || 'color'
+        var matches = /\/components\/(.+)/.exec(this.$route.path)
+        var key = matches && matches[1] ? matches[1] : 'color'
         return _findIndex(this.navigator, item => item.href === key)
       },
 

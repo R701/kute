@@ -1,5 +1,5 @@
 <template>
-  <div :class="['spinner', { '-colored': colored }]"
+  <div :class="['spinner', { '-grad': grad }]"
        :style="{width}">
     <svg class="circular"
          viewBox="25 25 50 50">
@@ -8,6 +8,7 @@
               cy="50"
               r="20"
               fill="none"
+              :stroke="color"
               stroke-width="2"
               stroke-miterlimit="10" />
     </svg>
@@ -35,7 +36,6 @@ $green = #008744
 $blue = #0057e7
 $red = #d62d20
 $yellow = #ffa700
-$white = #eee
 
 // scaling... any units
 
@@ -62,11 +62,10 @@ $white = #eee
 .path
   stroke-dasharray: 1, 200
   stroke-dashoffset: 0
-  stroke: $white
   animation: dash 1.5s ease-in-out infinite
   stroke-linecap: round
 
-.spinner.-colored
+.spinner.-grad
   .path
     animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite
 

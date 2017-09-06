@@ -2,6 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const axis = require('axis')
 
+const resolve = path.resolve.bind(path, __dirname)
+
 module.exports = {
   /*
   ** Headers of the page
@@ -15,7 +17,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', type: 'text/css', href: '//at.alicdn.com/t/font_elm8kvjjjusug14i.css' }
+      { rel: 'stylesheet', type: 'text/css', href: '//at.alicdn.com/t/font_233123_1lprflk01i3sor.css' }
     ]
   },
   /*
@@ -39,22 +41,24 @@ module.exports = {
         })
       }
 
-      config.resolve.alias.kute = path.resolve(__dirname, '../src')
-      config.resolve.alias['~'] = path.resolve(__dirname, '../src')
-      config.resolve.alias['~components'] = path.resolve(__dirname, '../src/components')
-      config.resolve.alias['~utils'] = path.resolve(__dirname, '../src/utils')
-      config.resolve.alias['~stylus'] = path.resolve(__dirname, '../src/stylus')
-      config.resolve.alias['~directives'] = path.resolve(__dirname, '../src/directives')
-      config.resolve.alias['~mixins'] = path.resolve(__dirname, '../src/mixins')
-      config.resolve.alias['~assets'] = path.resolve(__dirname, '../src/assets')
-      config.resolve.alias['assets'] = path.resolve(__dirname, '../src/assets')
-      config.resolve.alias['stylus'] = path.resolve(__dirname, '../src/stylus')
-      config.resolve.alias['settings'] = path.resolve(__dirname, '../src/stylus/0_settings')
-      config.resolve.alias['tools'] = path.resolve(__dirname, '../src/stylus/1_tools')
-      config.resolve.alias['generic'] = path.resolve(__dirname, '../src/stylus/2_generic')
-      config.resolve.alias['element'] = path.resolve(__dirname, '../src/stylus/3_element')
-      config.resolve.alias['object'] = path.resolve(__dirname, '../src/stylus/4_object')
-      config.resolve.alias['trumps'] = path.resolve(__dirname, '../src/stylus/5_trumps')
+      config.resolve.modules = [resolve('./node_modules'), resolve('./../node_modules')]
+
+      config.resolve.alias.kute = resolve('../src')
+      config.resolve.alias['~'] = resolve('../src')
+      config.resolve.alias['~components'] = resolve('../src/components')
+      config.resolve.alias['~utils'] = resolve('../src/utils')
+      config.resolve.alias['~stylus'] = resolve('../src/stylus')
+      config.resolve.alias['~directives'] = resolve('../src/directives')
+      config.resolve.alias['~mixins'] = resolve('../src/mixins')
+      config.resolve.alias['~assets'] = resolve('../src/assets')
+      config.resolve.alias['assets'] = resolve('../src/assets')
+      config.resolve.alias['stylus'] = resolve('../src/stylus')
+      config.resolve.alias['settings'] = resolve('../src/stylus/0_settings')
+      config.resolve.alias['tools'] = resolve('../src/stylus/1_tools')
+      config.resolve.alias['generic'] = resolve('../src/stylus/2_generic')
+      config.resolve.alias['element'] = resolve('../src/stylus/3_element')
+      config.resolve.alias['object'] = resolve('../src/stylus/4_object')
+      config.resolve.alias['trumps'] = resolve('../src/stylus/5_trumps')
       config.resolve.extensions.push('.styl')
       config.plugins.push(new webpack.LoaderOptionsPlugin({
         options: {

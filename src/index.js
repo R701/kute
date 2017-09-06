@@ -1,3 +1,5 @@
+import vOutsideEvents from 'vue-outside-events'
+
 import '~stylus/main'
 import Button from './components/Button/Button'
 import Container from './components/Container/Container'
@@ -19,6 +21,8 @@ var components = {
 
 export default {
   install (Vue, options = {}) {
+    Vue.use(vOutsideEvents)
+
     var prefix = options.prefix || 'k'
 
     for (var key in components) {

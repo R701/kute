@@ -1,5 +1,5 @@
 <template>
-  <div :class="['named-block', position]">
+  <div :class="['named-block', position, `_${name}`]">
     <div class="named-block-main">
       <slot></slot>
     </div>
