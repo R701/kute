@@ -57,6 +57,11 @@
             ch: '选择框'
           },
           {
+            text: 'Textarea',
+            href: 'textarea',
+            ch: '长文本输入框'
+          },
+          {
             text: 'Group',
             href: 'group',
             ch: '组合'

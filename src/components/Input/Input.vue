@@ -1,5 +1,5 @@
 <template>
-  <div :class="['input-field', `-${state}`, `-${size}`, { '-focused': focused, '-disabled': disabled, '-error': errmsg, '-pr': clearable || loading || select, '-pl': icon, '-block': block, 'select': select }]"
+  <div :class="['input-field', `-${state}`, `-${size}`, { '-focused': focused, '-disabled': disabled, '-error': errmsg, '-pr': clearable || loading || select, '-pl': icon, '-block': block, 'select': select, 'textarea': textarea, '-resizable': resize != 'none' }]"
        v-click-outside="onClickOutside">
     <label :for="$attrs.id"
            v-if="label">{{label}}</label>
@@ -11,9 +11,10 @@
                  v-on="$listeners"
                  :disabled="disabled"
                  :readonly="readonly || select"
+                 :spellcheck="spellcheck"
                  @input="onInput"
                  @focus="onFocus"
-                 @blur="onBlur"></component>
+                 @blur="onBlur">{{textarea && value ? value: ''}}</component>
       <i :class="['input-icon', `${iconClassPrefix}${icon}`]"
          v-if="icon"></i>
       <svg v-if="clearable && value && !loading && !select"
@@ -118,6 +119,19 @@
 
     mounted () {
       this.bindValidationEvents()
+
+      var elem = this.$refs.input
+      if (this.textarea) {
+        elem.style.resize = this.resize
+        if (this.autoHeight) {
+          this.autoResize()
+        }
+      }
+
+      if (this.autoSelect && this.value) {
+        elem.focus()
+        elem.select()
+      }
     },
 
     methods: {
@@ -134,6 +148,28 @@
 
       onBlur () {
         this.focused = false
+      },
+
+      autoResize () {
+        var observe = function (element, event, handler) {
+          element.addEventListener(event, handler, false)
+        }
+
+        var text = this.$refs.input
+        function resize () {
+          text.style.height = 'auto'
+          text.style.height = text.scrollHeight + 'px'
+        }
+        /* 0-timeout to get the already changed text */
+        function delayedResize () {
+          window.setTimeout(resize, 0)
+        }
+        observe(text, 'change', resize)
+        observe(text, 'cut', delayedResize)
+        observe(text, 'paste', delayedResize)
+        observe(text, 'drop', delayedResize)
+        observe(text, 'keydown', delayedResize)
+        resize()
       },
 
       bindValidationEvents () {
@@ -192,11 +228,9 @@
     line-height 1.5
   .input-wrapper
     position relative
-    input
+    input, textarea
       color $grey-darker
       background-color $white-darker
-      height 34px
-      width 220px
       border-radius 2px
       border 0
       font-size inherit
@@ -206,6 +240,14 @@
       position relative
       ::placeholder
         color $grey-lighter
+    input
+      height 34px
+      width 220px
+    textarea
+      line-height 1.5
+      min-height 76px
+      width 220px
+      pv(5px)
     .input-errmsg
       font-size $font-size-h6
       position absolute
@@ -213,6 +255,7 @@
       bottom  -1.3em
       line-height 1
       color $state-error
+
     .icon-clear
       position absolute
       width 1em
@@ -289,25 +332,34 @@
     &.-reverse
       transform rotate(-180deg)
 
+.textarea
+  .input-errmsg
+    bottom  -.4em !important
+  .input-spinner
+    position absolute
+    top auto !important
+    transform: none
+    bottom .5em !important
+
 .-focused
-  input
+  input, textarea
     color $black !important
     background-color $white-lighter !important
     box-shadow psShadow(#000, 40%, 90, 1px, 0, 2px, true), psShadow(#000, 40%, 180, 1px, 0, 2px, true), psShadow(#000, 30%, -87, 1px, 0, 2px, true) !important
 .-disabled
-  input
+  input, textarea
     cursor not-allowed !important
     background-color alpha($white-darker, 50%) !important
     &::placeholder
       color $grey-lighter !important
 .-success
-  input
+  input, textarea
     border 1px solid $state-success !important
 .-warn
-  input
+  input, textarea
     border 1px solid $state-warn !important
 .-error
-  input
+  input, textarea
     border 1px solid $state-error !important
 .-pr
   input
@@ -316,13 +368,16 @@
   input
     padding-left 2em !important
 .-block
-  input
+  input, textarea
     width 100% !important
 .-small
   line-height 26px !important
   input
     height 26px !important
     min-width 180px !important
+  textarea
+    min-height 48px !important
+    width 180px
   .suggestions
     top 2px + 26px !important
 .-large
@@ -330,6 +385,9 @@
   input
     height 44px !important
     min-width 260px !important
+  textarea
+    min-height 98px !important
+    width 264px
   .suggestions
     top 2px + 44px !important
 

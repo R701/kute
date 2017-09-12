@@ -35,5 +35,17 @@ export default {
   },
   optionTextKey: {
     default: 'text'
-  }
+  },
+  resize: {
+    // textarea only
+    default: 'none',
+    validator (val) {
+      const valid = ['none', 'both', 'vertical', 'horizontal']
+      return valid.indexOf(val) >= 0
+    }
+  },
+
+  autoHeight: Boolean,
+  autoSelect: Boolean,
+  spellcheck: Boolean
 }
