@@ -650,6 +650,9 @@ article footer {
 .-ghost[data-v-61c76d52]:active {
   color: #c8cacc;
 }
+.button + .button[data-v-61c76d52] {
+  margin-left: 16px;
+}
 @-webkit-keyframes spinning {
 0% {
     -webkit-transform: rotate(0);
@@ -851,6 +854,7 @@ article footer {
   position: relative;
   padding-left: 1em;
   line-height: 2;
+  cursor: pointer;
 }
 .navigator-item a[data-v-0648e507] {
   color: inherit;
@@ -902,6 +906,9 @@ article footer {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+.group .button[data-v-66eadb57] {
+  margin-left: 0 !important;
 }
 /*# sourceMappingURL=src/components/Group/Group.css.map */
 .input-field[data-v-d939c2a6] {
@@ -1195,3 +1202,33 @@ article footer {
   opacity: 0;
 }
 /*# sourceMappingURL=src/components/Input/Input.css.map */
+label[data-v-5fa8c137] {
+  cursor: pointer;
+}
+input[data-v-5fa8c137] {
+  vertical-align: middle;
+}
+span[data-v-5fa8c137] {
+  vertical-align: middle;
+  padding-left: 0.3em;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+/*# sourceMappingURL=src/components/Checkbox/Checkbox.css.map */
+label[data-v-31544d4f] {
+  cursor: pointer;
+}
+input[data-v-31544d4f] {
+  vertical-align: middle;
+}
+span[data-v-31544d4f] {
+  vertical-align: middle;
+  padding-left: 0.3em;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+/*# sourceMappingURL=src/components/Radio/Radio.css.map */

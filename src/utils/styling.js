@@ -8,6 +8,15 @@ export default {
       return val
     }
 
+    if (typeof val === 'string' && /([1-9]\d*)\/([1-9]\d*)/.test(val)) {
+      var result = /([1-9]\d*)\/([1-9]\d*)/.exec(val)
+      var numerator, denominator
+      numerator = result[1]
+      denominator = result[2]
+      console.log(numerator, denominator)
+      return numerator / denominator * 100 + '%'
+    }
+
     return 'auto'
   }
 }

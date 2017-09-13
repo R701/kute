@@ -69,4 +69,6 @@
   align-items stretch
   &.vertical
     flex-direction column
+  .button
+    margin-left 0 !important
 </style>

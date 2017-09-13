@@ -136,6 +136,8 @@
   &:active
     color $white-darker
 
+.button + .button
+  margin-left 16px
 @keyframes spinning
   0%
     transform rotate(0)

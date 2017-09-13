@@ -8,6 +8,8 @@ import Navigator from './components/Navigator/Navigator'
 import Spinner from './components/Spinner/Spinner'
 import Group from './components/Group/Group'
 import Input from './components/Input/Input'
+import Checkbox from './components/Checkbox/Checkbox'
+import Radio from './components/Radio/Radio'
 
 var components = {
   button: Button,
@@ -16,7 +18,9 @@ var components = {
   navigator: Navigator,
   spinner: Spinner,
   group: Group,
-  input: Input
+  input: Input,
+  checkbox: Checkbox,
+  radio: Radio
 }
 
 export default {
@@ -44,4 +48,14 @@ export default {
   ...components
 }
 
-export { Button, Container, Panel, Navigator, Spinner, Group, Input }
+export {
+  Button,
+  Container,
+  Panel,
+  Navigator,
+  Spinner,
+  Group,
+  Input,
+  Checkbox,
+  Radio
+}

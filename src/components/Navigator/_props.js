@@ -16,5 +16,7 @@ export default {
   nuxt: Boolean,
   basePath: {
     default: ''
-  }
+  },
+  blank: Boolean,
+  preventDefault: Boolean
 }

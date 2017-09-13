@@ -57,14 +57,29 @@
             ch: '选择框'
           },
           {
+            text: 'Group',
+            href: 'group',
+            ch: '组合'
+          },
+          {
             text: 'Textarea',
             href: 'textarea',
             ch: '长文本输入框'
           },
           {
-            text: 'Group',
-            href: 'group',
-            ch: '组合'
+            text: 'Checkbox/Radio',
+            href: 'checkboxradio',
+            ch: '复选/单选'
+          },
+          {
+            text: 'Panel',
+            href: 'panel',
+            ch: '板块'
+          },
+          {
+            text: 'Navigator',
+            href: 'navigator',
+            ch: '导航条'
           }
         ]
       }

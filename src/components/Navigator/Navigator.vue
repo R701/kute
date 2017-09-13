@@ -5,7 +5,9 @@
          :key="index">
       <component :is="tag"
                  :to="basePath + item.href"
-                 :href="basePath + item.href">
+                 :href="basePath + item.href"
+                 :target="blank ? '_blank' : '_self'"
+                 @click="onItemClick($event, item, index)">
         {{item.text}}
       </component>
     </div>
@@ -22,6 +24,16 @@
       tag () {
         return this.nuxt ? 'nuxt-link' : this.router ? 'router-link' : 'a'
       }
+    },
+
+    methods: {
+      onItemClick (evt, item, index) {
+        if (this.preventDefault) {
+          evt.preventDefault()
+        }
+
+        this.$emit('item-click', item, index)
+      }
     }
   }
 </script>
@@ -33,6 +45,7 @@
     position relative
     padding-left 1em
     line-height 2
+    cursor pointer
     a
       color inherit
       vertical-align middle
