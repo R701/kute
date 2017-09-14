@@ -10,6 +10,7 @@ import Group from './components/Group/Group'
 import Input from './components/Input/Input'
 import Checkbox from './components/Checkbox/Checkbox'
 import Radio from './components/Radio/Radio'
+import Toast from './components/Toast/Toast'
 
 var components = {
   button: Button,
@@ -20,7 +21,8 @@ var components = {
   group: Group,
   input: Input,
   checkbox: Checkbox,
-  radio: Radio
+  radio: Radio,
+  toast: Toast
 }
 
 export default {
@@ -43,6 +45,10 @@ export default {
         }
       }
     })
+
+    Vue.prototype.$showToast = function ({ state }) {
+      new Toast().$mount()
+    }
   },
 
   ...components
@@ -57,5 +63,6 @@ export {
   Group,
   Input,
   Checkbox,
-  Radio
+  Radio,
+  Toast
 }

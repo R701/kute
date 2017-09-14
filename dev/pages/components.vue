@@ -80,6 +80,11 @@
             text: 'Navigator',
             href: 'navigator',
             ch: '导航条'
+          },
+          {
+            text: 'Toast',
+            href: 'toast',
+            ch: '吐司提示'
           }
         ]
       }

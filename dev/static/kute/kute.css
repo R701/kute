@@ -1232,3 +1232,12 @@ span[data-v-31544d4f] {
           user-select: none;
 }
 /*# sourceMappingURL=src/components/Radio/Radio.css.map */
+.toast[data-v-1aeed6b2] {
+  width: 100px;
+  height: 100px;
+  background-color: #0287c8;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+/*# sourceMappingURL=src/components/Toast/Toast.css.map */
