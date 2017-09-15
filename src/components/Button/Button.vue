@@ -12,10 +12,10 @@
       <spinner></spinner>
     </div>
     <span :class="[ 'button-text', { '-faded': loading } ]">
-      <i :class="['button-icon', 'prepend', `${iconClassPrefix}${icon}`]"
+      <i :class="['button-icon', 'prepend', `${config$.iconClassPrefix}${icon}`]"
          v-if="icon && iconPosition == 'prepend'"></i>
       <slot></slot>
-      <i :class="['button-icon', 'append', `${iconClassPrefix}${icon}`]"
+      <i :class="['button-icon', 'append', `${config$.iconClassPrefix}${icon}`]"
          v-if="icon && iconPosition == 'append'"></i>
     </span>
   </component>

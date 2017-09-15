@@ -158,6 +158,16 @@
       return {
         value: 'fskdjfkakjf'
       }
+    },
+
+    methods: {
+      passwordChecker (value) {
+        if (value && value.length < 8) {
+          return '密码长度过短，不安全'
+        }
+
+        return ''
+      }
     }
   }
 </script>

@@ -15,34 +15,13 @@
                  @input="onInput"
                  @focus="onFocus"
                  @blur="onBlur">{{textarea && value ? value: ''}}</component>
-      <i :class="['input-icon', `${iconClassPrefix}${icon}`]"
+      <i :class="['input-icon', `${config$.iconClassPrefix}${icon}`]"
          v-if="icon"></i>
-      <svg v-if="clearable && value && !loading && !select"
-           @click="onClearClick"
-           t="1504678682093"
-           class="icon icon-clear"
-           viewBox="0 0 1024 1024"
-           version="1.1"
-           xmlns="http://www.w3.org/2000/svg"
-           p-id="2501"
-           xmlns:xlink="http://www.w3.org/1999/xlink">
-        <path d="M512 423.1257264239249L165.48581064762436 76.61154001734309C160.06906888753866 71.19479678436056 152.5421902526894 71.5893652373976 147.65639099467006 76.475164495417L76.475164495417 147.65639099467006C71.44745898769497 152.68409650239215 71.65042270457474 160.52469333485612 76.61154001734309 165.48581064762436L423.1257264239249 512 76.61154001734309 858.5141878794789C71.65042270457474 863.4753066651442 71.44745898769497 871.3159005518139 76.475164495417 876.3436090053299L147.65639099467006 947.5248325587894C152.5421902526894 952.4106332897054 160.06906888753866 952.8052032156394 165.48581064762436 947.3884614555537L512 600.874273576075 858.5141878794789 947.3884614555537C863.9309296395645 952.8052032156394 871.4578068015169 952.4106332897054 876.3436090053299 947.5248325587894L947.5248325587894 876.3436090053299C952.5525395394081 871.3159005518139 952.3495802412192 863.4753066651442 947.3884614555537 858.5141878794789L600.874273576075 512 947.3884614555537 165.48581064762436C952.3495802412192 160.52469333485612 952.5525395394081 152.68409650239215 947.5248325587894 147.65639099467006L876.3436090053299 76.475164495417C871.4578068015169 71.5893652373976 863.9309296395645 71.19479678436056 858.5141878794789 76.61154001734309L512 423.1257264239249Z"
-              p-id="2316"></path>
-      </svg>
-      <svg v-if="select"
-           t="1504710944573"
-           :class="['icon', 'icon-down', { '-reverse': showOptions }]"
-           style=""
-           viewBox="0 0 1024 1024"
-           version="1.1"
-           xmlns="http://www.w3.org/2000/svg"
-           p-id="3844"
-           xmlns:xlink="http://www.w3.org/1999/xlink"
-           width="200"
-           height="200">
-        <path d="M749.991674 379.789628c-7.961956-7.954731-20.836915-7.954731-28.769971 0L512.859776 607.90472 304.505073 379.789628c-7.933056-7.954731-20.822465-7.954731-28.748296 0-7.954731 7.976406-7.954731 20.894715 0 28.849446l221.699287 242.745728c4.255528 4.241078 9.876582 6.061779 15.418161 5.765554 5.541579 0.296225 11.155408-1.524476 15.410936-5.765554l221.720962-242.745728C757.917505 400.684343 757.917505 387.766034 749.991674 379.789628z"
-              p-id="3845"></path>
-      </svg>
+      <icon-close v-if="clearable && value && !loading && !select"
+                  @click.native="onClearClick"
+                  class="icon icon-clear"></icon-close>
+      <icon-arrow-down v-if="select"
+                       :class="['icon', 'icon-down', { '-reverse': showOptions }]"></icon-arrow-down>
       <div class="input-spinner"
            v-if="loading && !select">
         <spinner color="#8a8f99"
@@ -79,6 +58,8 @@
   import withIcon from '~mixins/with-icon'
 
   import Spinner from '~components/Spinner/Spinner'
+  import IconClose from '~components/_Icons/Close'
+  import IconArrowDown from '~components/_Icons/ArrowDown'
 
   export default {
     inheritAttrs: false,
@@ -91,7 +72,9 @@
     mixins: [withIcon],
 
     components: {
-      Spinner
+      Spinner,
+      IconClose,
+      IconArrowDown
     },
 
     data () {

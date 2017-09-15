@@ -392,6 +392,22 @@ article footer {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0 !important;
+}
+.bounce-drop-enter-active,
+.bounce-drop-leave-active {
+  transition: top 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.bounce-drop-enter,
+.bounce-drop-leave-to {
+  top: -50px !important;
+}
 .-flex {
   display: flex !important;
 }
@@ -1202,6 +1218,11 @@ article footer {
   opacity: 0;
 }
 /*# sourceMappingURL=src/components/Input/Input.css.map */
+svg[data-v-09322c68] {
+  width: 1em;
+  height: 1em;
+}
+/*# sourceMappingURL=src/components/_Icons/Close.css.map */
 label[data-v-5fa8c137] {
   cursor: pointer;
 }
@@ -1233,11 +1254,64 @@ span[data-v-31544d4f] {
 }
 /*# sourceMappingURL=src/components/Radio/Radio.css.map */
 .toast[data-v-1aeed6b2] {
-  width: 100px;
-  height: 100px;
+  min-width: 36px;
+  padding: 0 18px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  border-radius: 18px;
   background-color: #0287c8;
   position: fixed;
-  left: 0;
-  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: 100px;
+  font-size: 16px;
+  -webkit-box-shadow: 0px 8px 35px 0px rgba(0, 0, 0, .76), inset 0px -1px 2px 0px rgba(0, 0, 0, .5), inset 0px 1px 2px 0px rgba(255, 255, 255, .5);
+          box-shadow: 0px 8px 35px 0px rgba(0, 0, 0, .76), inset 0px -1px 2px 0px rgba(0, 0, 0, .5), inset 0px 1px 2px 0px rgba(255, 255, 255, .5);
+  color: #dcdee0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.toast-close[data-v-1aeed6b2] {
+  fill: #dcdee0;
+  display: inline-block;
+  cursor: pointer;
+  height: 22px;
+  width: 22px;
+  position: absolute;
+  top: 50%;
+  margin-top: -11px;
+  right: 10px;
+  padding: 5px;
+  -webkit-transition: fill 0.2s;
+  transition: fill 0.2s;
+}
+.toast-close[data-v-1aeed6b2]:hover {
+  fill: #c8cacc;
+}
+.toast-spinner[data-v-1aeed6b2] {
+  height: 1.5em;
+  position: absolute;
+  top: 50%;
+  margin-top: -0.75em;
+  position: absolute !important;
+  margin-top: -0.75em !important;
+  left: 7px;
+}
+.-loading-only .toast-spinner[data-v-1aeed6b2] {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  position: absolute !important;
+}
+.-closable[data-v-1aeed6b2] {
+  padding-right: 40px;
 }
 /*# sourceMappingURL=src/components/Toast/Toast.css.map */

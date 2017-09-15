@@ -42,6 +42,14 @@ module.exports = {
       'trumps': resolve('./src/stylus/5_trumps')
     }
   },
+  externals: {
+    vue: {
+      commonjs: 'vue',
+      commonjs2: 'vue',
+      amd: 'vue',
+      root: 'Vue'
+    }
+  },
   module: {
     rules: [
       {

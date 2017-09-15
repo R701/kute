@@ -10,7 +10,7 @@ import Group from './components/Group/Group'
 import Input from './components/Input/Input'
 import Checkbox from './components/Checkbox/Checkbox'
 import Radio from './components/Radio/Radio'
-import Toast from './components/Toast/Toast'
+import { showToast, Toast } from './components/Toast'
 
 var components = {
   button: Button,
@@ -38,17 +38,17 @@ export default {
     }
 
     Vue.mixin({
-      props: {
-        iconClassPrefix: {
-          type: String,
-          default: 'iconfont icon-'
+      data () {
+        return {
+          config$: {
+            defaultToastTop: options.defaultToastTop || 100,
+            iconClassPrefix: options.iconClassPrefix || 'iconfont icon-'
+          }
         }
       }
     })
 
-    Vue.prototype.$showToast = function ({ state }) {
-      new Toast().$mount()
-    }
+    Vue.prototype.$showToast = showToast
   },
 
   ...components
