@@ -45,8 +45,8 @@ export default {
       data () {
         return {
           config$: {
-            defaultToastTop: options.defaultToastTop || 100,
-            defaultDialogTop: options.defaultDialogTop || 100,
+            defaultToastTop: options.defaultToastTop,
+            defaultDialogTop: options.defaultDialogTop,
             iconClassPrefix: options.iconClassPrefix || 'iconfont icon-',
             namespace: namespace
           }

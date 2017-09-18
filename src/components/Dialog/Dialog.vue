@@ -2,7 +2,7 @@
   <overlay transition="fade"
            transition-duration="300"
            ref="overlay"
-           @after-enter="afterMaskEnter">
+           @enter="maskEnter">
     <div class="mask"
          ref="mask">
       <transition name="bounce-zoom-in"
@@ -84,7 +84,7 @@
         this.$refs.overlay.unmount()
       },
 
-      afterMaskEnter () {
+      maskEnter () {
         this.entered = true
         if (this.freezeScreen) {
           document.documentElement.style.overflow = 'hidden'
