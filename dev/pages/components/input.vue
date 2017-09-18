@@ -85,11 +85,14 @@
                icon="attention"></k-input>
     </named-block>
     <br>
-    <named-block name="icon view"
+    <named-block name="icon view clickable"
                  position="right">
       <k-input v-model="value"
-               placeholder="姓名"
-               icon="view"></k-input>
+               placeholder="密码"
+               :icon="viewIconName"
+               :type="viewType"
+               icon-clickable
+               @icon-click="onViewIconClick"></k-input>
     </named-block>
     <br>
     <named-block name="suggestions"
@@ -156,7 +159,9 @@
 
     data () {
       return {
-        value: 'fskdjfkakjf'
+        value: 'fskdjfkakjf',
+        viewIconName: 'view',
+        viewType: 'text'
       }
     },
 
@@ -167,6 +172,16 @@
         }
 
         return ''
+      },
+
+      onViewIconClick () {
+        if (this.viewIconName === 'view') {
+          this.viewIconName = 'unview'
+          this.viewType = 'password'
+        } else {
+          this.viewIconName = 'view'
+          this.viewType = 'text'
+        }
       }
     }
   }

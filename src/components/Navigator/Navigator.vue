@@ -49,6 +49,9 @@
     a
       color inherit
       vertical-align middle
+      display inline-block
+      width 100%
+      height 100%
     &:before
       content ' '
       display block

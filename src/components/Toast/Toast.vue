@@ -1,32 +1,36 @@
 <template>
-  <floater transition="bounce-drop"
+  <overlay transition="bounce-drop"
            transition-duration="300"
-           ref="floater"
+           ref="overlay"
            @enter="onEnter">
     <div :class="['toast', `-${state}`, { '-closable': closable, '-loading': loading && message, '-loading-only': loading && !message }]"
          ref="main">
       <spinner class="toast-spinner"
                v-if="loading"></spinner>
+      <i :class="['toast-icon', `${config$.iconClassPrefix}${icon}`]"
+         v-if="icon"
+         :style="{ fontSize: iconSize }"></i>
       <div class="toast-message"
            v-if="message">{{message}}</div>
       <icon-close class="toast-close"
                   v-if="closable"
                   @click.native="close"></icon-close>
     </div>
-  </floater>
+  </overlay>
 </template>
 
 <script>
   import Spinner from '~components/Spinner/Spinner'
   import IconClose from '~components/_Icons/Close'
 
-  import floatable from '~mixins/floatable'
+  import overlaying from '~mixins/overlaying'
+  import withIcon from '~mixins/with-icon'
   import props from './_props'
 
   import u from '~utils'
   export default {
     props,
-    mixins: [floatable],
+    mixins: [overlaying, withIcon],
 
     components: {
       Spinner,
@@ -66,7 +70,7 @@
 
       close () {
         clearTimeout(this.timeout)
-        this.$refs.floater.unmount()
+        this.$refs.overlay.unmount()
       },
 
       onEnter () {
@@ -88,7 +92,7 @@
   absCenterX(fixed)
   top 100px
   font-size 16px
-  box-shadow psShadow(#000, .76, 90, 8px, 0, 35px), psShadow(#000, .5, -90, 1px, 0, 2px, true), psShadow(#fff, .5, 90, 1px, 0, 2px, true)
+  box-shadow psShadow(#000, .56, 90, 8px, 0, 35px), psShadow(#000, .8, -90, .5px, 0, 1px, true), psShadow(#fff, .5, 90, .5px, 0, 1px, true)
   color $white
   display flex
   align-items center
@@ -106,6 +110,8 @@
       fill $white-darker
   &-spinner
     height 1.5em
+  &-icon
+    margin-right 3px
 
 .-loading
   padding-left 36px

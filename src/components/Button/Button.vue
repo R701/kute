@@ -85,7 +85,7 @@
 .button
   display inline-block
   vertical-align middle
-  text-transform uppercase
+  // text-transform uppercase
   line-height 1
   position relative
   min-width 80px

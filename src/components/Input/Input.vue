@@ -6,7 +6,7 @@
     <div class="input-wrapper">
       <component :is="tag"
                  ref="input"
-                 :value="value"
+                 :value="realValue"
                  v-bind="$attrs"
                  v-on="$listeners"
                  :disabled="disabled"
@@ -14,9 +14,12 @@
                  :spellcheck="spellcheck"
                  @input="onInput"
                  @focus="onFocus"
-                 @blur="onBlur">{{textarea && value ? value: ''}}</component>
-      <i :class="['input-icon', `${config$.iconClassPrefix}${icon}`]"
-         v-if="icon"></i>
+                 @blur="onBlur"
+                 @change="onChange"
+                 @keydown="onKeydown">{{textarea && value ? value: ''}}</component>
+      <i :class="['input-icon', `${config$.iconClassPrefix}${icon}`, { '-icon-clickable': iconClickable }]"
+         v-if="icon"
+         @click="onIconClick"></i>
       <icon-close v-if="clearable && value && !loading && !select"
                   @click.native="onClearClick"
                   class="icon icon-clear"></icon-close>
@@ -34,19 +37,19 @@
       <transition name="suggestions">
         <div class="suggestions"
              v-if="!select && suggestions && showSuggestions">
-          <div class="suggestion-item"
-               v-for="item in suggestions"
+          <div :class="['suggestion-item', { '-active': index == activeIndex }]"
+               v-for="(item, index) in suggestions"
                :key="item"
-               @click="onSuggestionItemClick(item)">{{item}}</div>
+               @click="onSuggestionItemClick(item, index)">{{item}}</div>
         </div>
       </transition>
       <transition name="options">
         <div class="options"
              v-if="select && options && showOptions">
-          <div class="option-item"
-               v-for="item in options"
+          <div :class="['option-item', { '-active': index == activeIndex }]"
+               v-for="(item, index) in options"
                :key="item[optionValueKey]"
-               @click="onOptionItemClick(item)">{{item[optionTextKey]}}</div>
+               @click="onOptionItemClick(item, index)">{{item[optionTextKey]}}</div>
         </div>
       </transition>
     </div>
@@ -81,14 +84,28 @@
       return {
         focused: false,
         errmsg: '',
+        activeIndex: 0,
         showSuggestions: false,
-        showOptions: false
+        showOptions: false,
+        innerValue: ''
       }
     },
 
     computed: {
       tag () {
         return this.textarea ? 'textarea' : 'input'
+      },
+
+      realValue () {
+        return this.value || this.innerValue
+      },
+
+      listShown () {
+        return this.showOptions || this.showSuggestions
+      },
+
+      realList () {
+        return this.select ? this.options : this.suggestions
       }
     },
 
@@ -96,6 +113,8 @@
       value (newVal) {
         if (this.select) {
           this.validate()
+        } else {
+          this.$refs.input.value = newVal
         }
       }
     },
@@ -120,17 +139,91 @@
     methods: {
       onInput (evt) {
         this.$emit('sync', evt.target.value)
+        this.innerValue = evt.target.value
         this.$emit('input', evt)
+        this.showList()
       },
 
-      onFocus () {
+      onFocus (evt) {
         this.focused = true
-        this.showSuggestions = true
-        this.showOptions = true
+        this.showList()
+        this.$emit('focus', evt)
       },
 
-      onBlur () {
+      showList () {
+        if (this.select) {
+          this.showOptions = true
+        } else if (this.suggestions && this.suggestions.length) {
+          this.showSuggestions = true
+        }
+      },
+
+      onBlur (evt) {
         this.focused = false
+        if (this.showSuggestions) {
+          setTimeout(() => {
+            this.showSuggestions = false
+            this.showOptions = false
+          }, 500)
+        }
+        this.$emit('blur', evt)
+      },
+
+      onChange (evt) {
+        this.$emit('change', evt)
+        if (!this.select) {
+          this.activeIndex = 0
+        }
+      },
+
+      onKeydown (evt) {
+        if (event.defaultPrevented) {
+          return // Do nothing if the event was already processed
+        }
+        var length = this.realList ? this.realList.length : 0
+        switch (evt.key) {
+          case 'ArrowDown':
+            if (this.listShown && this.activeIndex < length - 1) {
+              evt.preventDefault()
+
+              this.activeIndex++
+            }
+            break
+          case 'ArrowUp':
+            if (this.listShown && this.activeIndex > 0) {
+              evt.preventDefault()
+
+              this.activeIndex--
+            }
+            break
+          case 'Enter':
+            this.$emit('enter')
+            if (this.listShown) {
+              evt.preventDefault()
+              var item = this.realList[this.activeIndex]
+              var synced = this.showOptions ? item[this.optionTextKey] : item
+              this.$emit('sync', synced)
+              this.innerValue = synced
+              this.showSuggestions = false
+              this.showOptions = false
+              this.$refs.input.select()
+              if (!this.select) {
+                this.$emit('suggestion-select', item)
+              }
+            } else {
+              this.showOptions = true
+              this.$emit('enter')
+            }
+            break
+          case 'Escape':
+            if (this.listShown) {
+              evt.preventDefault()
+              this.showOptions = false
+              this.showSuggestions = false
+            }
+            break
+        }
+        this.$emit('keydown', evt)
       },
 
       autoResize () {
@@ -181,6 +274,7 @@
 
       onClearClick () {
         this.$emit('sync', '')
+        this.innerValue = ''
       },
 
       onClickOutside () {
@@ -189,13 +283,24 @@
       },
 
       onSuggestionItemClick (item) {
-        this.$emit('sync', item)
+        this.innerValue = item
+        this.$emit('sync', this.innerValue)
         this.showSuggestions = false
+        this.$refs.input.select()
+        this.$emit('suggestion-select', item)
       },
 
-      onOptionItemClick (item) {
-        this.$emit('sync', item[this.optionTextKey])
+      onOptionItemClick (item, index) {
+        this.innerValue = item[this.optionTextKey]
+        this.$emit('sync', this.innerValue)
         this.showOptions = false
+        this.activeIndex = index
+      },
+
+      onIconClick () {
+        if (this.iconClickable) {
+          this.$emit('icon-click')
+        }
       }
     }
   }
@@ -277,6 +382,9 @@
         padding 0 (10px/14px)em
         color $grey-darker
         cursor pointer
+        &.-active
+          color $white-lighter
+          background-color alpha($grey-lighter, .8)
         &:hover
           color $white-lighter
           background-color $grey-lighter
@@ -297,6 +405,9 @@
         padding 0 (10px/14px)em
         color $grey-darker
         cursor pointer
+        &.-active
+          color $white-lighter
+          background-color alpha($grey-lighter, .8)
         &:hover
           color $white-lighter
           background-color $grey-lighter
@@ -373,6 +484,11 @@
     width 264px
   .suggestions
     top 2px + 44px !important
+
+.-icon-clickable
+  cursor pointer !important
+  &:hover
+    color $black-lighter !important
 
 .errmsg-enter-active, .errmsg-leave-active
   transition: all .2s

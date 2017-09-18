@@ -1,12 +1,13 @@
-import Floater from '~components/_Helpers/Floater'
+import Overlay from '~components/_Helpers/Overlay'
 
 export default {
-  components: { Floater },
+  components: { Overlay },
   methods: {
     insert () {
       if (this.$isServer) return
       var vm = this.$mount()
-      document.body.appendChild(vm.$el)
+      var parent = this.parent || document.body
+      parent.appendChild(vm.$el)
     },
 
     remove () {

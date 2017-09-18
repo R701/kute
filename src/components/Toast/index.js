@@ -10,12 +10,13 @@ const showToast = function ({ onClose, ...rest } = {}) {
     },
 
     destroyed () {
-      console.log('hi')
       onClose && onClose()
     }
   })
 
   instance.insert()
+
+  return instance
 }
 
 export { showToast, Toast }

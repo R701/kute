@@ -14,7 +14,6 @@ export default {
     default: 'change'
   },
   label: String,
-  icon: String,
   state: {
     type: String,
     default: 'default'

@@ -11,6 +11,8 @@ import Input from './components/Input/Input'
 import Checkbox from './components/Checkbox/Checkbox'
 import Radio from './components/Radio/Radio'
 import { showToast, Toast } from './components/Toast'
+import { notify, Notification } from './components/Notification'
+import { showDialog, Dialog } from './components/Dialog'
 
 var components = {
   button: Button,
@@ -22,18 +24,20 @@ var components = {
   input: Input,
   checkbox: Checkbox,
   radio: Radio,
-  toast: Toast
+  toast: Toast,
+  notification: Notification,
+  dialog: Dialog
 }
 
 export default {
   install (Vue, options = {}) {
     Vue.use(vOutsideEvents)
 
-    var prefix = options.prefix || 'k'
+    var namespace = options.prefix || 'k'
 
     for (var key in components) {
       if (components.hasOwnProperty(key)) {
-        Vue.component(`${prefix}-${key}`, components[key])
+        Vue.component(`${namespace}-${key}`, components[key])
       }
     }
 
@@ -42,13 +46,17 @@ export default {
         return {
           config$: {
             defaultToastTop: options.defaultToastTop || 100,
-            iconClassPrefix: options.iconClassPrefix || 'iconfont icon-'
+            defaultDialogTop: options.defaultDialogTop || 100,
+            iconClassPrefix: options.iconClassPrefix || 'iconfont icon-',
+            namespace: namespace
           }
         }
       }
     })
 
     Vue.prototype.$showToast = showToast
+    Vue.prototype.$notify = notify
+    Vue.prototype.$showDialog = showDialog
   },
 
   ...components
@@ -64,5 +72,7 @@ export {
   Input,
   Checkbox,
   Radio,
-  Toast
+  Toast,
+  Notification,
+  Dialog
 }

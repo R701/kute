@@ -8,6 +8,13 @@ export default {
       validator (val) {
         return val == 'prepend' || val == 'append'
       }
+    },
+    iconClickable: Boolean,
+    iconColor: {
+      default: 'inherit'
+    },
+    iconSize: {
+      default: 'inherit'
     }
   }
 }

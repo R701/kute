@@ -5,9 +5,31 @@
   opacity: 0 !important
 }
 
-.bounce-drop-enter-active, .bounce-drop-leave-active {
-  transition: top .5s $ease-in-out-back
+.bounce-drop-enter-active {
+  transition: top .5s $ease-out-back
+}
+.bounce-drop-leave-active {
+  transition: top .5s $ease-in-back
 }
 .bounce-drop-enter, .bounce-drop-leave-to {
   top: -50px !important
+}
+
+.bottom-in-enter-active, .bottom-in-leave-active {
+  transition: transform,opacity .5s $ease-out-quint
+}
+.bottom-in-enter, .bottom-in-leave-to {
+  transform: translateY(100%)
+  opacity: 0
+}
+
+.bounce-zoom-in-enter-active, .bounce-zoom-in-leave-active {
+  transition: all .5s $ease-out-back
+}
+.bounce-zoom-in-leave-active {
+  transition: all .5s $ease-in-back
+}
+.bounce-zoom-in-enter, .bounce-zoom-in-leave-to {
+  transform: scale(.7) !important
+  opacity: 0 !important
 }

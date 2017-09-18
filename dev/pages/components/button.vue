@@ -34,7 +34,7 @@
       </named-block>
       <named-block name="nuxt">
         <k-button href="/components/color"
-                  nuxt>color</k-button>
+                  nuxt>Color</k-button>
       </named-block>
       <named-block name="ghost">
         <k-button ghost>确认</k-button>

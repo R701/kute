@@ -85,6 +85,16 @@
             text: 'Toast',
             href: 'toast',
             ch: '吐司提示'
+          },
+          {
+            text: 'Notification',
+            href: 'notification',
+            ch: '通知'
+          },
+          {
+            text: 'Dialog',
+            href: 'dialog',
+            ch: '对话框'
           }
         ]
       }
