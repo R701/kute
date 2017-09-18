@@ -8,7 +8,7 @@
       <transition name="bounce-zoom-in"
                   @enter="onDialogEnter"
                   @after-leave="afterDialogLeave">
-        <div :class="['dialog', `-${state}`]"
+        <div :class="['dialog', `-${state}`, {'-freezing': freezeScreen}]"
              ref="dialog"
              v-if="entered">
           <icon-close class="dialog-close"
@@ -78,6 +78,9 @@
       },
 
       afterDialogLeave () {
+        if (this.freezeScreen && !document.querySelector('.dialog.-freezing')) {
+          document.documentElement.style.overflow = 'initial'
+        }
         this.$refs.overlay.unmount()
       },
 
@@ -155,7 +158,7 @@
     padding 12px 26px
     font-size $font-size-h5
     padding-bottom: 72px
-    overflow auto
+    overflow hidden
   &-btns
     display flex
     flex-direction row-reverse
