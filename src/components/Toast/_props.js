@@ -1,5 +1,8 @@
 export default {
-  message: String,
+  message: {
+    type: String,
+    required: true
+  },
   state: {
     type: String,
     default: 'default'

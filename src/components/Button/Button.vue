@@ -1,7 +1,7 @@
 <template>
   <component :is="root"
-             :to="href"
-             :href="href"
+             :to="fullHref"
+             :href="fullHref"
              :disabled="disabled || (disableWhileLoading && loading)"
              :class="['button', `-${state}-bg`, `-${size}`, { '-link': href, '-no-outline': !outline,  '-block': block,  '-no-text': emptySlot, '-ghost': ghost } ]"
              @click="onClick"
@@ -23,14 +23,14 @@
 
 <script>
   import props from './_props'
-  import events from './_events'
   import withIcon from '~mixins/with-icon'
+  import linkable from '~mixins/linkable'
 
   import Spinner from '~components/Spinner/Spinner'
 
   export default {
     props: props,
-    mixins: [withIcon],
+    mixins: [withIcon, linkable],
 
     components: {
       Spinner
@@ -44,7 +44,9 @@
 
     computed: {
       root () {
-        if (this.nuxt) {
+        if (this.blank) {
+          return 'a'
+        } else if (this.nuxt) {
           return 'nuxt-link'
         } else if (this.router) {
           return 'router-link'
@@ -65,15 +67,15 @@
         if (this.disabled || (this.loading && this.disableWhileLoading)) {
           return
         }
-        this.$emit(events.CLICK, evt)
+        this.$emit('click', evt)
       },
 
       onFocus (evt) {
-        this.$emit(events.FOCUS, evt)
+        this.$emit('focus', evt)
       },
 
       onBlur (evt) {
-        this.$emit(events.BLUR, evt)
+        this.$emit('blur', evt)
       }
     }
   }

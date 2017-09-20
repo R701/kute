@@ -1,10 +1,4 @@
 export default {
-  router: Boolean,
-  nuxt: Boolean,
-  href: {
-    type: String,
-    default: ''
-  },
   outline: Boolean,
   block: Boolean,
   disabled: Boolean,

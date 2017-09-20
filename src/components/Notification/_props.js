@@ -1,6 +1,7 @@
 export default {
   message: {
-    default: ''
+    default: '',
+    required: true
   },
   state: {
     type: String,
@@ -26,5 +27,6 @@ export default {
 
       return p
     }
-  }
+  },
+  routerObj: Object
 }

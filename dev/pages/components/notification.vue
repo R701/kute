@@ -3,11 +3,15 @@
     <k-button @click="onDefaultClick">default</k-button>
     <k-button @click="onClosableClick">closable</k-button>
     <k-button @click="onIconClick">icon</k-button>
+    <br>
     <k-button @click="onInfoClick">info</k-button>
     <k-button @click="onSuccessClick">success</k-button>
     <k-button @click="onWarnClick">warn</k-button>
     <k-button @click="onErrorClick">error</k-button>
     <k-button @click="onCallbackClick">callback</k-button>
+    <br>
+    <k-button @click="onLinkClick">link</k-button>
+    <k-button @click="onRouterLinkClick">router link</k-button>
   </div>
 </template>
 
@@ -73,16 +77,28 @@
             this.onSuccessClick()
           }
         })
+      },
+
+      onLinkClick () {
+        this.$notify({
+          message: '点击跳转到百度',
+          blank: true,
+          href: 'http://www.baidu.com/'
+        })
+      },
+
+      onRouterLinkClick () {
+        this.$notify({
+          message: '点击跳转到配色页',
+          nuxt: true,
+          href: 'color'
+        })
       }
     }
   }
 </script>
 
 <style lang="stylus" scoped>
-.c-toast
-  display flex
-  flex-flow row wrap
-  align-content flex-start
 
 .button
   margin-bottom 1.5em

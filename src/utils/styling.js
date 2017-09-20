@@ -13,7 +13,6 @@ export default {
       var numerator, denominator
       numerator = result[1]
       denominator = result[2]
-      console.log(numerator, denominator)
       return numerator / denominator * 100 + '%'
     }
 

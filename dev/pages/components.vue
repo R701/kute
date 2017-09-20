@@ -5,7 +5,7 @@
                  w="20em"
                  ph="2em">
       <k-navigator :items="navigator"
-                   :activeIndex="activeNavIndex"
+                   :value="activeNav"
                    base-path="/components/"
                    router></k-navigator>
     </k-container>
@@ -97,19 +97,24 @@
             ch: '对话框'
           }
         ]
+
       }
     },
 
     computed: {
 
-      activeNavIndex () {
+      path () {
         var matches = /\/components\/(.+)/.exec(this.$route.path)
         var key = matches && matches[1] ? matches[1] : 'color'
-        return _findIndex(this.navigator, item => item.href === key)
+        return key
+      },
+
+      activeNav () {
+        return _findIndex(this.navigator, item => item.href === this.path)
       },
 
       currentTitle () {
-        var activeObj = this.navigator[this.activeNavIndex]
+        var activeObj = this.navigator[this.activeNav]
         return `${activeObj.ch} ${activeObj.text}`
       }
 

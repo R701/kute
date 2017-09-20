@@ -1,22 +1,16 @@
 export default {
   items: {
-    type: Array,
+    type: Array, // text, href, bagde, icon
     required: true,
-    default: () => ([]),
-    validator (values) {
-      return values.every(val => {
-        return 'href' in val && 'text' in val
-      })
-    }
+    default: () => ([])
   },
-  activeIndex: {
+  value: {
+    required: true
+  },
+  level: {
+    type: Number,
     default: 0
   },
-  router: Boolean,
-  nuxt: Boolean,
-  basePath: {
-    default: ''
-  },
-  blank: Boolean,
-  preventDefault: Boolean
+  parent: Object,
+  parentIndex: Number
 }

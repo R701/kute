@@ -1,9 +1,9 @@
 <template>
   <overlay transition="bottom-in"
-           ref="overlay"
-           @enter="onEnter">
-    <div :class="['notification', `-${state}`]"
-         ref="main">
+           ref="overlay">
+    <div :class="['notification', `-${state}`, {'-link': href}]"
+         ref="main"
+         @click="onClick">
       <i :class="['notification-icon', `${config$.iconClassPrefix}${icon}`]"
          v-if="icon"></i>
       <span class="notification-message">{{message}}</span>
@@ -20,10 +20,11 @@
 
   import withIcon from '~mixins/with-icon'
   import overlaying from '~mixins/overlaying'
+  import linkable from '~mixins/linkable'
 
   export default {
     props,
-    mixins: [withIcon, overlaying],
+    mixins: [withIcon, overlaying, linkable],
 
     components: {
       IconClose
@@ -49,6 +50,22 @@
       close () {
         clearTimeout(this.timeout)
         this.$refs.overlay.unmount()
+      },
+
+      onClick (evt) {
+        if (this.preventDefault) {
+          evt.preventDefault()
+        } else if (this.href) {
+          if (this.blank) {
+            window.open(this.fullHref)
+          } else if (this.routerObj && (this.router || this.nuxt)) {
+            this.routerObj.push(this.fullHref)
+          } else {
+            window.location.href = this.fullHref
+          }
+        }
+
+        this.clickHandler(evt)
       }
     }
   }
@@ -89,6 +106,8 @@
 
 .-closable
   padding-right 18px + 22px
+.-link
+  cursor: pointer
 .-info
   background-color: alpha($state-info, .6)
   &:hover

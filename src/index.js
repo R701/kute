@@ -55,7 +55,9 @@ export default {
     })
 
     Vue.prototype.$showToast = showToast
-    Vue.prototype.$notify = notify
+    Vue.prototype.$notify = function (payload) {
+      notify(this.$router, payload)
+    }
     Vue.prototype.$showDialog = showDialog
   },
 

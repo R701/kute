@@ -3,14 +3,21 @@ import Notification from './Notification'
 
 const NotificationConstructor = Vue.extend(Notification)
 
-const notify = function ({ onClose, ...rest } = {}) {
+const notify = function ($router, { onClose, onClick, ...rest } = {}) {
   var instance = new NotificationConstructor({
     propsData: {
-      ...rest
+      ...rest,
+      routerObj: $router
     },
 
     destroyed () {
       onClose && onClose()
+    },
+
+    methods: {
+      clickHandler (evt) {
+        return onClick && onClick(evt)
+      }
     }
   })
 
