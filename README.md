@@ -64,3 +64,9 @@ npm run build
 npm run build
 ```
 构建完成的文件在`kute/dev/.nuxt`目录中。
+
+
+## TO DO
+
+- [ ] **Select** option max height and scrolling.
+- [ ] **Divider** dashed, icons etc. 
