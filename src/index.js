@@ -4,6 +4,7 @@ import '~stylus/main'
 import Button from './components/Button/Button'
 import Container from './components/Container/Container'
 import Panel from './components/Panel/Panel'
+import Divider from './components/Divider/Divider'
 import Navigator from './components/Navigator/Navigator'
 import Spinner from './components/Spinner/Spinner'
 import Group from './components/Group/Group'
@@ -18,6 +19,7 @@ var components = {
   button: Button,
   container: Container,
   panel: Panel,
+  divider: Divider,
   navigator: Navigator,
   spinner: Spinner,
   group: Group,
@@ -40,8 +42,12 @@ export default {
         Vue.component(`${namespace}-${key}`, components[key])
       }
     }
-
+    console.log(process.env.NODE_ENV)
     Vue.mixin({
+      props: process.env.NODE_ENV === 'development' ? {
+        debug: Boolean
+      } : {},
+
       data () {
         return {
           config$: {
@@ -68,6 +74,7 @@ export {
   Button,
   Container,
   Panel,
+  Divider,
   Navigator,
   Spinner,
   Group,

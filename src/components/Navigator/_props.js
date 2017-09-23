@@ -1,16 +1,23 @@
 export default {
   items: {
-    type: Array, // text, href, bagde, icon
+    type: Array, // { text, href, bagde, icon, disabled }
     required: true,
     default: () => ([])
-  },
-  value: {
-    required: true
   },
   level: {
     type: Number,
     default: 0
   },
-  parent: Object,
-  parentIndex: Number
+  parentIndex: Number,
+  value: Array,
+  horizontal: Boolean,
+  horizontalGap: {
+    default: 10,
+    type: Number
+  },
+  horizontalItemWidth: [Number, String],
+  united: {
+    type: Boolean,
+    default: true
+  }
 }

@@ -1,45 +1,44 @@
 <template>
-  <div class="navigator">
-    <div :class="['navigator-item', { '-active': isActive(index), '-parent': isParent(item) }]"
-         v-for="(item, index) in items"
-         :key="index">
-      <component :is="tag"
-                 :to="basePath + item.href"
-                 :href="basePath + item.href"
-                 :target="blank ? '_blank' : '_self'"
-                 @click="onItemClick($event, item, index)">
-        <i :class="['navigation-item-icon', `${config$.iconClassPrefix}${item.icon}`]"
-           v-if="item.icon"></i>
-        <span>{{item.text}}</span>
-      </component>
-      <transition name="children"
-                  v-if="item.children">
-        <k-navigator v-show="isActive(index)"
-                     :parent="item"
-                     :parent-index="index"
+  <div :class="['navigator', `-${size}`, {'-horizontal': horizontal, '-united': horizontal && united }]"
+       ref="container"
+       v-click-outside="onClickOutside">
+    <template v-for="(item, index) in items">
+      <k-divider v-if="item.divider && !horizontal"
+                 :key="index"
+                 v-bind="item"></k-divider>
+      <navigator-item v-else
+                      :key="index"
+                      v-bind="itemProps(item)"
+                      :index="index"
+                      :level="level"
+                      :active="activeIndex === index"
+                      :show-children="showChildrenIndex === index"
+                      @item-click="onItemClick"
+                      ref="item">
+        <k-navigator v-show="showChildrenIndex === index"
                      :items="item.children"
-                     v-model="childrenValue"
-                     :router="router"
-                     :nuxt="nuxt"
-                     :base-path="basePath"
-                     :blank="blank"
-                     :prevent-default="preventDefault"
-                     @item-click="onChildClick"
-                     :level="level + 1">
+                     :level="level + 1"
+                     :parent-index="index"
+                     v-bind="inheritableProps"
+                     v-on="$listeners"
+                     ref="nested"
+                     @select:inside="onNestedSelect">
         </k-navigator>
-      </transition>
-    </div>
+      </navigator-item>
+
+    </template>
   </div>
 </template>
 
 <script>
   import props from './_props'
-  import linkable from '~mixins/linkable'
+  import size from '~mixins/size'
+  import u from '~utils'
+
+  import NavigatorItem from './NavigatorItem'
 
   export default {
     props,
-
-    mixins: [linkable],
 
     model: {
       prop: 'value',
@@ -48,96 +47,177 @@
 
     name: 'k-navigator',
 
+    mixins: [size],
+
+    inheritAttrs: false,
+
+    components: { NavigatorItem },
+
     data () {
       return {
-        childrenValue: null
+        innerValue: [],
+        activeIndex: null,
+        showChildrenIndex: null
       }
     },
 
     computed: {
-      tag () {
-        return this.nuxt ? 'nuxt-link' : this.router ? 'router-link' : 'a'
+      inheritableProps () {
+        var omittedProps = u.omit(this.$props, 'items', 'level', 'horizontal', 'parentIndex')
+        return u.assign({}, this.$attrs, omittedProps)
+      },
+
+      isNested () {
+        return this.isNumber(this.parentIndex)
       }
     },
 
     watch: {
-      value: function (val, oldVal) {
-        if ([val, oldVal].every(v => !v && v !== 0)) return
-        var copy
-        // this level is removed
-        var condition1 = Array.isArray(val) && typeof val[this.level] !== 'number' && typeof val[this.level + 1] === 'number'
-        // this level is changed
-        var condition2 = Array.isArray(val) && Array.isArray(oldVal) && this.isNumber(val[this.level]) && this.isNumber(oldVal[this.level]) && val[this.level] !== oldVal[this.level]
-
-        if (condition1 || condition2) {
-          copy = val.slice(0)
-          if (copy) {
-            delete copy[this.level + 1]
-            val = copy
-          }
-        }
-
-        this.childrenValue = val
+      horizontal: function () {
+        this.initLayout()
       },
 
-      childrenValue: function (val, oldVal) {
-        if ([val, oldVal].every(v => !v && v !== 0)) return
-        this.$emit('update:value', this.processBeforeSync(val))
+      horizontalItemWidth: function () {
+        this.initLayout()
+      },
+
+      horizontalGap: function () {
+        this.initLayout()
+      },
+
+      value (value) {
+        if (Array.isArray(value)) {
+          if (this.parentIndex !== value[this.level - 1] || !this.isNumber(value[this.level])) {
+            this.deactivate()
+            this.hideChildren()
+          }
+        }
+        this.setValue(value)
       }
     },
 
     mounted () {
-      this.childrenValue = this.value
+      this.initLayout()
+      this.setValue(this.value)
     },
 
     methods: {
-      isActive (index) {
-        return (Array.isArray(this.value) && this.value[this.level] === index) || (this.level === 0 && this.value === index)
-      },
-
-      isParent (item) {
-        return Array.isArray(item.children)
+      itemProps (item) {
+        return u.assign({}, this.$attrs, item)
       },
 
       isNumber (n) {
         return typeof n === 'number' && !isNaN(n)
       },
 
-      onItemClick (evt, item, index) {
-        if (this.preventDefault) {
-          evt.preventDefault()
+      itemIsParent (index) {
+        return this.$refs.item[index] && this.$refs.item[index].$children[0] && u.isWhichVM(this.$refs.item[index].$children[0], 'k-navigator')
+      },
+
+      deactivate () {
+        this.activeIndex = null
+      },
+
+      hideChildren () {
+        this.showChildrenIndex = null
+      },
+
+      setValue (value) {
+        if (this.isNested || !Array.isArray(value)) return
+        var nav = this
+        for (var level = 0, len = value.length; level < len; level++) {
+          var activeIndex = value[level]
+          nav.activeIndex = activeIndex
+          if (nav.itemIsParent(activeIndex)) {
+            nav.showChildrenIndex = activeIndex
+            nav = nav.$refs.item[activeIndex].$children[0]
+          } else if (level !== len - 1) {
+            throw new Error(`Invalid value [${value}]. Item ${activeIndex} on level ${level} does not have a nested nav.`)
+          } else {
+            nav.hideChildren()
+          }
         }
+      },
 
-        evt.stopPropagation()
+      getValue () {
+        if (this.isNested) return
+        var value = []
+        var nav = this
+        while (this.isNumber(nav.showChildrenIndex)) {
+          value.push(nav.showChildrenIndex)
+          nav = nav.$refs.item[nav.showChildrenIndex].$children[0]
+        }
+        value.push(nav.activeIndex)
 
-        var value = Array.isArray(this.value) ? this.value.slice(0) : typeof this.value === 'number' ? [this.value] : []
-        if (this.isParent(item) && this.isActive(index)) {
-          delete value[this.level]
+        return value
+      },
+
+      initLayout () {
+        if (this.horizontal) {
+          var items = this.$refs.item
+          var itemLen = items.length
+
+          var w = this.horizontalItemWidth ? u.getCSSLength(this.horizontalItemWidth) : null
+
+          items.forEach((item, i) => {
+            if (i < itemLen - 1) {
+              item.$el.style.marginRight = (this.horizontalGap || 10) + 'px'
+            }
+            item.$el.style.width = w
+          })
+        }
+      },
+
+      onClickOutside () {
+        if (this.horizontal) {
+          this.showChildrenIndex = null
+        }
+      },
+
+      onItemClick (index, isParent) {
+        if (isParent) {
+          if (this.itemIsParent(this.activeIndex)) {
+            this.activeIndex = index
+          }
+          if (this.showChildrenIndex === index) {
+            this.hideChildren()
+          } else {
+            this.showChildrenIndex = index
+          }
         } else {
-          value[this.level] = index
-        }
-        this.$emit('update:value', this.processBeforeSync(value))
+          this.activeIndex = index
+          this.hideChildren()
 
-        this.$emit('item-click', item, index, this.level, this.parent, this.parentIndex)
+          this.innerValue = this.getValue()
+          this.$emit('select:inside', {
+            level: this.level,
+            index
+          })
+          if (this.innerValue) {
+            this.$emit('select', {
+              level: this.level,
+              index
+            }, this.innerValue)
+          }
+          if (!this.isNested) {
+            this.$emit('update:value', this.innerValue)
+          }
+        }
       },
 
-      onChildClick (item, index, level, parent, parentIndex) {
-        this.$emit('item-click', item, index, level, parent, parentIndex)
-      },
-
-      processBeforeSync (value) {
-        var v = value && value.length && value.length === 1 ? value[0] : value
-        if (Array.isArray(v) && v.every(item => (item !== 0 && !item))) {
-          return null
+      onNestedSelect ({ level, index }) {
+        if (!this.isNested) {
+          this.innerValue = this.getValue()
+          this.$emit('select:inside', {
+            level: this.level,
+            index
+          })
+          this.$emit('select', {
+            level: this.level,
+            index
+          }, this.innerValue)
+          this.$emit('update:value', this.innerValue)
         }
-        /* eslint-disable no-unmodified-loop-condition */
-        while (v && v.length) {
-          var last = v[v.length - 1]
-          if (!last && last !== 0) {
-            v.pop()
-          } else break
-        }
-        return v
       }
     }
   }
@@ -146,24 +226,38 @@
 <style lang="stylus" scoped>
 .navigator
   position relative
-  .navigator-item
+ .navigator-item
     color white
-    margin-bottom 4px
     position relative
-    padding-left 1em
+    // padding-left 1em
     line-height 2
     cursor pointer
-    i, span
-      vertical-align middle
-      display inline-block
-    i
-      margin-right 5px
-    a
+    >>> a
+      padding-left 1em
       color inherit
       vertical-align middle
       display inline-block
       width 100%
       height 100%
+      transition all .2s
+      i, span
+        vertical-align middle
+        display inline-block
+      .navigator-item-icon
+        margin-right 5px
+        vertical-align middle
+      .navigator-item-badge
+        position relative
+        display inline-block
+        left .6em
+        color white
+        padding 2px 5px
+        border-radius 15px
+        background-color $theme-primary
+        line-height 1
+        font-size 12px
+        transform scale(.9)
+        vertical-align middle
     &:before
       content ' '
       display block
@@ -187,22 +281,104 @@
         height .7em
         background-color transparent
         left -.3em
-        top: .7em
-        transform: rotate(-45deg)
-        border-top: 0
-        border-left: 0
+        top .7em
+        transform rotate(-45deg)
+        border-top 0
+        border-left 0
       &.-parent
-        &:before
-          transform: rotate(45deg)
-          top: .6em
-
-.children-enter-active, .children-leave-active {
-  transition: all .2s $ease-out-quint
-}
-.children-enter, .children-leave-to {
-  transform-origin 0 0
-  transform: translateY(-1.5em)
-  opacity: 0
-}
+          &:before
+            top .9em
+            transform rotate(-135deg)
+        &.-toggled
+          &:before
+            top .6em
+            transform rotate(45deg)
+    &.-disabled
+      cursor not-allowed !important
+      color $grey-lighter !important
+      >>> *
+        cursor not-allowed !important
+.-horizontal
+  display flex
+  > .navigator-item
+    padding 0
+    line-height 2
+    margin-right 10px
+    transition all .2s
+    border-radius 4px
+    text-align center
+    flex 1
+    white-space nowrap
+    &:last-child
+      margin-right 0
+    &:before
+      width 100%
+      height 2px
+      bottom 0px
+      top auto
+      cursor default
+      font-size inherit
+      margin-bottom -.44em
+      z-index 2
+    >>> a
+      padding 0 .4em
+      display inline-block
+      ellipsis()
+      width 100%
+    >>> .navigator-item-badge
+      left .2em
+    &:hover
+      background-color alpha($black-darker, .6)
+      &:before
+        background-color $grey
+    &.-active
+      background-color alpha($black-darker, .75)
+      &:before
+        background-color $theme-secondary
+        width 100%
+        height 2px
+        border none
+        left 0
+        top auto
+        transform none
+    &.-parent
+      &:before
+        transform rotate(0) !important
+        top auto !important
+    > .navigator
+      position absolute
+      z-index 4
+      margin-top 10px
+      box-shadow psShadow(#000, .5, 90, 8px, 0, 35px)
+      border-radius 4px
+      background-color $black-darker
+      padding-top .3em
+      padding-bottom .3em
+      &:before
+        content ''
+        display block
+        position absolute
+        width 100%
+        height 10px
+        top -10px
+    >>> .navigator
+      padding-left 1em
+      padding-right .5em
+      min-width 100%
+      text-align left
+      white-space nowrap
+      .navigator-item
+        a
+          padding-left 1em
+.-united
+  &:after
+    content ''
+    display block
+    position absolute
+    bottom 0
+    left 0
+    border-bottom 2px solid $grey
+    width 100%
+    margin-bottom -.44em
 </style>
 

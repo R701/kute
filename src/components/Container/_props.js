@@ -3,6 +3,7 @@ export default {
   flex: Boolean,
   column: Boolean,
   wrap: Boolean,
+  relative: Boolean,
   w: [Number, String],
   h: [Number, String],
   pa: [Number, String],

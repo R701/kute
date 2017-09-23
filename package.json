@@ -66,6 +66,9 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "is-css-color": "^1.0.0",
+    "object-assign": "^4.1.1",
+    "object.omit": "^3.0.0",
     "vue-outside-events": "^1.1.0"
   }
 }

@@ -5,13 +5,14 @@
                  w="20em"
                  ph="2em">
       <k-navigator :items="navigator"
-                   :value="activeNav"
+                   :value="[activeNav]"
                    base-path="/components/"
                    router></k-navigator>
     </k-container>
     <k-container class="right"
                  pr="60">
-      <k-panel :header="currentTitle">
+      <k-panel :header="currentTitle"
+               style="position: relative">
         <k-container>
           <nuxt-child></nuxt-child>
         </k-container>
@@ -36,6 +37,7 @@
             href: 'typography',
             ch: '排版'
           },
+          { divider: true, margin: '1em', color: '$grey' },
           {
             text: 'Spinner',
             href: 'spinner',
@@ -72,15 +74,43 @@
             ch: '复选/单选'
           },
           {
+            text: 'Slider',
+            href: 'slider',
+            ch: '滑块',
+            badge: 'TODO',
+            disabled: true
+          },
+          { divider: true, margin: '1em', color: '$grey' },
+          {
+            text: 'Popover',
+            href: 'popover',
+            ch: '气泡弹出框',
+            badge: 'TODO',
+            disabled: true
+          },
+          {
             text: 'Panel',
             href: 'panel',
             ch: '板块'
           },
           {
+            text: 'Divider',
+            href: 'divider',
+            ch: '分割线'
+          },
+          {
             text: 'Navigator',
             href: 'navigator',
-            ch: '导航条'
+            ch: '导航栏'
           },
+          {
+            text: 'Breadcrumbs',
+            href: 'breadcrumbs',
+            ch: '面包屑导航',
+            badge: 'TODO',
+            disabled: true
+          },
+          { divider: true, margin: '1em', color: '$grey' },
           {
             text: 'Toast',
             href: 'toast',
@@ -95,6 +125,13 @@
             text: 'Dialog',
             href: 'dialog',
             ch: '对话框'
+          },
+          {
+            text: 'Modal',
+            href: 'modal',
+            ch: '弹窗',
+            badge: 'TODO',
+            disabled: true
           }
         ]
 

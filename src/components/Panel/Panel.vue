@@ -1,5 +1,6 @@
 <template>
-  <div :class="['panel', { '-plain': plain }]">
+  <div :class="['panel', { '-plain': plain }]"
+       :style="{backgroundColor: bgValue}">
     <div class="panel-head"
          v-if="$slots.head || header"
          @click="onHeaderClick">
@@ -21,8 +22,19 @@
 
 <script>
   import props from './_props'
+  import u from '~utils'
   export default {
     props,
+
+    computed: {
+      bgValue () {
+        if (this.backgroundColor) {
+          return u.getCSSColor(this.backgroundColor)
+        } else {
+          return u.getCSSColor('$black-lighter')
+        }
+      }
+    },
 
     methods: {
       onHeaderClick () { }

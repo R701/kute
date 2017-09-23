@@ -59,6 +59,7 @@
 <script>
   import props from './_props'
   import withIcon from '~mixins/with-icon'
+  import size from '~mixins/size'
 
   import Spinner from '~components/Spinner/Spinner'
   import IconClose from '~components/_Icons/Close'
@@ -72,7 +73,7 @@
       event: 'sync'
     },
 
-    mixins: [withIcon],
+    mixins: [withIcon, size],
 
     components: {
       Spinner,
@@ -177,6 +178,8 @@
       },
 
       onKeydown (evt) {
+        this.$emit('keydown', evt)
+        if (this.textarea) return
         if (event.defaultPrevented) {
           return // Do nothing if the event was already processed
         }
@@ -223,7 +226,6 @@
             }
             break
         }
-        this.$emit('keydown', evt)
       },
 
       autoResize () {
@@ -331,6 +333,7 @@
     input
       height 34px
       width 220px
+      line-height 1
     textarea
       line-height 1.5
       min-height 76px

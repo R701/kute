@@ -25,12 +25,13 @@
   import props from './_props'
   import withIcon from '~mixins/with-icon'
   import linkable from '~mixins/linkable'
+  import size from '~mixins/size'
 
   import Spinner from '~components/Spinner/Spinner'
 
   export default {
     props: props,
-    mixins: [withIcon, linkable],
+    mixins: [withIcon, linkable, size],
 
     components: {
       Spinner

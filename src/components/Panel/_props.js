@@ -1,4 +1,5 @@
 export default {
   header: String,
-  plain: Boolean
+  plain: Boolean,
+  backgroundColor: String
 }

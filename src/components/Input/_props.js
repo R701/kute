@@ -24,10 +24,6 @@ export default {
     default: 0
   },
   listFilter: Function,
-  size: {
-    type: String,
-    default: 'default'
-  },
   options: Array,
   optionValueKey: {
     default: 'value'

@@ -18,7 +18,8 @@
           '-inline-flex': this.flex && this.inline,
           '-inline': !this.flex && this.inline,
           '-flex-wrap': this.flex && this.wrap,
-          '-flex-column': this.column
+          '-flex-column': this.column,
+          '-relative': this.relative
         }
       },
 
