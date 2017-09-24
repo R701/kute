@@ -124,6 +124,30 @@
         </k-panel>
       </named-block>
     </k-container>
+    <br>
+    <k-container flex>
+      <named-block name="default: solid">
+        <k-panel style="margin-right: 15px">
+          场停线世顾乱诉烧迷境口席德？懂尔灵性声顿排些教缺？遗年味秋险莱复蜖莱遇汽次万被专充笔琴！请奥险一者？黑福妹制案登太站集如说假今友六府角众饭！
+          <k-divider></k-divider>
+          场停线世顾乱诉烧迷境口席德？懂尔灵性声顿排些教缺？遗年味秋险莱复蜖莱遇汽次万被专充笔琴！请奥险一者？黑福妹制案登太站集如说假今友六府角众饭！
+        </k-panel>
+      </named-block>
+      <named-block name='line-style="dashed"'>
+        <k-panel style="margin: 0 15px">
+          场停线世顾乱诉烧迷境口席德？懂尔灵性声顿排些教缺？遗年味秋险莱复蜖莱遇汽次万被专充笔琴！请奥险一者？黑福妹制案登太站集如说假今友六府角众饭！
+          <k-divider line-style="dashed"></k-divider>
+          场停线世顾乱诉烧迷境口席德？懂尔灵性声顿排些教缺？遗年味秋险莱复蜖莱遇汽次万被专充笔琴！请奥险一者？黑福妹制案登太站集如说假今友六府角众饭！
+        </k-panel>
+      </named-block>
+      <named-block name='line-style="dotted"'>
+        <k-panel style="margin-left: 15px">
+          场停线世顾乱诉烧迷境口席德？懂尔灵性声顿排些教缺？遗年味秋险莱复蜖莱遇汽次万被专充笔琴！请奥险一者？黑福妹制案登太站集如说假今友六府角众饭！
+          <k-divider line-style="dotted"></k-divider>
+          场停线世顾乱诉烧迷境口席德？懂尔灵性声顿排些教缺？遗年味秋险莱复蜖莱遇汽次万被专充笔琴！请奥险一者？黑福妹制案登太站集如说假今友六府角众饭！
+        </k-panel>
+      </named-block>
+    </k-container>
   </div>
 </template>
 

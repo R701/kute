@@ -26,6 +26,7 @@
   import withIcon from '~mixins/with-icon'
 
   import Navigator from './Navigator'
+  import { itemProps } from './_props'
 
   import u from '~utils'
 
@@ -34,16 +35,7 @@
 
     components: { Navigator },
 
-    props: {
-      index: Number,
-      text: String,
-      badge: [Number, String],
-      badgeColor: String,
-      disabled: Boolean,
-      children: Array,
-      active: Boolean,
-      showChildren: Boolean
-    },
+    props: itemProps,
 
     computed: {
       tag () {

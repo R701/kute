@@ -31,14 +31,14 @@
 </template>
 
 <script>
-  import props from './_props'
+  import { containerProps } from './_props'
   import size from '~mixins/size'
   import u from '~utils'
 
   import NavigatorItem from './NavigatorItem'
 
   export default {
-    props,
+    props: containerProps,
 
     model: {
       prop: 'value',
@@ -298,6 +298,9 @@
       color $grey-lighter !important
       >>> *
         cursor not-allowed !important
+    >>> .navigator
+      padding-left 1em
+
 .-horizontal
   display flex
   > .navigator-item
@@ -362,7 +365,6 @@
         height 10px
         top -10px
     >>> .navigator
-      padding-left 1em
       padding-right .5em
       min-width 100%
       text-align left

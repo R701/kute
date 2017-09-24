@@ -52,7 +52,8 @@
 
         var offset = u.getCSSLength(this.margin)
         var indicator = this.$refs.indicator
-        indicator.style[this.vertical ? 'width' : 'height'] = this.lineWidth + 'px'
+        indicator.style[this.vertical ? 'border-left-width' : 'border-top-width'] = this.lineWidth + 'px'
+        indicator.style[this.vertical ? 'border-left-style' : 'border-top-style'] = this.lineStyle
         if (this.full) {
           if (this.vertical) {
             indicator.style.marginLeft = `-${this.lineWidth / 2}px`
@@ -70,7 +71,7 @@
           indicator.style.height = parentHeight + 'px'
         }
         if (this.color) {
-          indicator.style.background = u.getCSSColor(this.color)
+          indicator.style.borderColor = u.getCSSColor(this.color)
         }
 
         this.show = true
@@ -91,7 +92,6 @@
     border-radius 0
     position relative
     border 0
-    background $grey-darker
     transition opacity .2s
     opacity 0
     &.-full
@@ -101,8 +101,8 @@
 .-vertical
   width auto
   .divider-line
+    width auto
     left auto
     top 0
-    // height 100%
 </style>
 

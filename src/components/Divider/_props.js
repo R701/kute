@@ -17,5 +17,10 @@ export default {
   directParent: {
     type: Boolean,
     default: true
+  },
+
+  lineStyle: {
+    default: 'solid',
+    type: String
   }
 }

@@ -37,12 +37,27 @@
             href: 'typography',
             ch: '排版'
           },
-          { divider: true, margin: '1em', color: '$grey' },
           {
             text: 'Spinner',
             href: 'spinner',
             ch: '加载动画'
           },
+          {
+            text: 'Container',
+            href: 'container',
+            ch: '容器',
+            badge: 'READY',
+            badgeColor: '$state-warn',
+            disabled: true
+          },
+          {
+            text: 'Carousel',
+            href: 'carousel',
+            ch: '轮播',
+            badge: 'TODO',
+            disabled: true
+          },
+          { divider: true, lineStyle: 'dashed', margin: '1em', color: '$grey' },
           {
             text: 'Button',
             href: 'button',
@@ -74,13 +89,41 @@
             ch: '复选/单选'
           },
           {
+            text: 'Switch',
+            href: 'switch',
+            ch: '开关',
+            badge: 'TODO',
+            disabled: true
+          },
+          {
+            text: 'Picker',
+            href: 'picker',
+            ch: '时间/日期 选择器',
+            badge: 'TODO',
+            disabled: true
+          },
+          {
+            text: 'Cropper',
+            href: 'cropper',
+            ch: '图像裁剪器',
+            badge: 'TODO',
+            disabled: true
+          },
+          {
             text: 'Slider',
             href: 'slider',
             ch: '滑块',
             badge: 'TODO',
             disabled: true
           },
-          { divider: true, margin: '1em', color: '$grey' },
+          {
+            text: 'Editor',
+            href: 'editor',
+            ch: '富文本编辑器',
+            badge: 'TODO',
+            disabled: true
+          },
+          { divider: true, lineStyle: 'dashed', margin: '1em', color: '$grey' },
           {
             text: 'Popover',
             href: 'popover',
@@ -110,7 +153,14 @@
             badge: 'TODO',
             disabled: true
           },
-          { divider: true, margin: '1em', color: '$grey' },
+          {
+            text: 'Tabs',
+            href: 'tabs',
+            ch: '标签页',
+            badge: 'TODO',
+            disabled: true
+          },
+          { divider: true, lineStyle: 'dashed', margin: '1em', color: '$grey' },
           {
             text: 'Toast',
             href: 'toast',
@@ -130,6 +180,35 @@
             text: 'Modal',
             href: 'modal',
             ch: '弹窗',
+            badge: 'TODO',
+            disabled: true
+          },
+          { divider: true, lineStyle: 'dashed', margin: '1em', color: '$grey' },
+          {
+            text: 'List',
+            href: 'list',
+            ch: '列表',
+            badge: 'TODO',
+            disabled: true
+          },
+          {
+            text: 'Table',
+            href: 'table',
+            ch: '表格',
+            badge: 'TODO',
+            disabled: true
+          },
+          {
+            text: 'Progress',
+            href: 'progress',
+            ch: '进度条',
+            badge: 'TODO',
+            disabled: true
+          },
+          {
+            text: 'Pagination',
+            href: 'pagination',
+            ch: '分页',
             badge: 'TODO',
             disabled: true
           }

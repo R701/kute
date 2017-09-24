@@ -68,5 +68,5 @@ npm run build
 
 ## TO DO
 
-- [ ] **Select** option max height and scrolling.
-- [ ] **Divider** dashed, icons etc. 
+- [ ] **Container** add to showcase page.
+- [ ] **Container** add scrolling.

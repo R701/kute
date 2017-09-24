@@ -36,7 +36,7 @@
       </transition>
       <transition name="suggestions">
         <div class="suggestions"
-             v-if="!select && suggestions && showSuggestions">
+             v-if="suggestions && suggestions.length && showSuggestions">
           <div :class="['suggestion-item', { '-active': index == activeIndex }]"
                v-for="(item, index) in suggestions"
                :key="item"
@@ -45,7 +45,11 @@
       </transition>
       <transition name="options">
         <div class="options"
-             v-if="select && options && showOptions">
+             v-if="showOptions"
+             ref="options"
+             @DOMMouseScroll.stop="handleWheel"
+             @wheel.stop="handleWheel"
+             @mousewheel.stop="handleWheel">
           <div :class="['option-item', { '-active': index == activeIndex }]"
                v-for="(item, index) in options"
                :key="item[optionValueKey]"
@@ -88,7 +92,10 @@
         activeIndex: 0,
         showSuggestions: false,
         showOptions: false,
-        innerValue: ''
+        innerValue: '',
+        scrollableList: false,
+        scrollMax: 0,
+        scrollMin: 0
       }
     },
 
@@ -116,6 +123,23 @@
           this.validate()
         } else {
           this.$refs.input.value = newVal
+        }
+      },
+
+      showOptions (newVal) {
+        if (newVal) {
+          this.$nextTick(() => {
+            var options = this.$refs.options
+            if (window) {
+              var windowHeight = window.innerHeight
+              var optionHeight = options.clientHeight
+              this.scrollableList = optionHeight > windowHeight
+              if (this.scrollableList) {
+                this.scrollMax = -options.getBoundingClientRect().top
+                this.scrollMin = -(optionHeight - this.scrollMax - windowHeight)
+              }
+            }
+          })
         }
       }
     },
@@ -303,6 +327,23 @@
         if (this.iconClickable) {
           this.$emit('icon-click')
         }
+      },
+
+      handleWheel (evt) {
+        if (!this.scrollableList) return
+        evt.preventDefault()
+        var options = this.$refs.options
+        var marginTop = +window.getComputedStyle(options).marginTop.match(/-?\d+/)[0] || 0
+        console.log(this.scrollMin, this.scrollMax)
+        console.log(marginTop)
+        console.log('------------------------------------')
+        if (marginTop <= this.scrollMin) {
+          marginTop = this.scrollMin + 1
+        }
+        if (marginTop >= this.scrollMax) {
+          marginTop = this.scrollMax - 1
+        }
+        options.style.marginTop = `${marginTop - evt.deltaY}px`
       }
     }
   }
@@ -380,6 +421,8 @@
       min-width 100%
       top 2px + 34px
       z-index 10
+      max-height 34px * 5
+      overflow-y auto
       .suggestion-item
         background-color transparent
         padding 0 (10px/14px)em
@@ -477,6 +520,7 @@
     width 180px
   .suggestions
     top 2px + 26px !important
+    max-height 26px * 5 !important
 .-large
   line-height 44px !important
   input
@@ -487,6 +531,7 @@
     width 264px
   .suggestions
     top 2px + 44px !important
+    max-height 44px * 5 !important
 
 .-icon-clickable
   cursor pointer !important

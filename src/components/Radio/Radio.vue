@@ -2,7 +2,7 @@
   <label>
     <input type="radio"
            ref="elem"
-           :checked="result == realValue"
+           :checked="checked"
            :value="realValue"
            :disabled="disabled"
            @change="onChange($event)"

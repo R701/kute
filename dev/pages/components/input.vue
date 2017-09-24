@@ -99,7 +99,7 @@
                  position="right">
       <k-input v-model="value"
                placeholder="姓名"
-               :suggestions="['Chris', 'Christian', 'Christina', 'Christ', 'Christmas']"></k-input>
+               :suggestions="['Chris', 'Christian', 'Christina', 'Christ', 'Christmas', 'Chris', 'Christian', 'Christina']"></k-input>
     </named-block>
     <br>
     <named-block name="with label"
@@ -123,7 +123,7 @@
                  placeholder="姓名"
                  icon="search"
                  clearable
-                 :suggestions="['Chris', 'Christian', 'Christina']"
+                 :suggestions="['Chris', 'Christian', 'Christina', 'Christ', 'Christmas', 'Chris', 'Christian', 'Christina']"
                  size="small"></k-input>
       </named-block>
       <br>
@@ -133,7 +133,7 @@
                  placeholder="姓名"
                  icon="search"
                  clearable
-                 :suggestions="['Chris', 'Christian', 'Christina']"
+                 :suggestions="['Chris', 'Christian', 'Christina', 'Christ', 'Christmas', 'Chris', 'Christian', 'Christina']"
                  size="default"></k-input>
       </named-block>
       <br>
@@ -143,7 +143,7 @@
                  placeholder="姓名"
                  icon="search"
                  clearable
-                 :suggestions="['Chris', 'Christian', 'Christina']"
+                 :suggestions="['Chris', 'Christian', 'Christina', 'Christ', 'Christmas', 'Chris', 'Christian', 'Christina']"
                  size="large"></k-input>
       </named-block>
     </k-container>

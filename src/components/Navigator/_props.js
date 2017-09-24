@@ -1,6 +1,6 @@
-export default {
+const containerProps = {
   items: {
-    type: Array, // { text, href, bagde, icon, disabled }
+    type: Array, // [itemProps+]
     required: true,
     default: () => ([])
   },
@@ -21,3 +21,17 @@ export default {
     default: true
   }
 }
+
+// Item props passed to container will be passed to all items :)
+const itemProps = {
+  index: Number,
+  text: String,
+  badge: [Number, String],
+  badgeColor: String,
+  disabled: Boolean,
+  children: Array,
+  active: Boolean,
+  showChildren: Boolean
+}
+
+export { containerProps, itemProps }
