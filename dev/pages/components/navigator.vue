@@ -6,7 +6,9 @@
         <k-navigator :items="data"
                      v-model="value"
                      @select="onSelect"
+                     debug
                      :blank="blank"
+                     :auto-toggle="autoToggle"
                      :prevent-default="prevent"></k-navigator>
       </k-container>
       <k-container>
@@ -18,6 +20,9 @@
         <br>
         <k-checkbox label="blank"
                     :checked.sync="blank"></k-checkbox>
+        <br>
+        <k-checkbox label="autoToggle"
+                    :checked.sync="autoToggle"></k-checkbox>
         <br>
         <p>value: {{value}}</p>
       </k-container>
@@ -32,15 +37,17 @@
                      :horizontal-item-width="setWidth ? '1/4' : null"
                      :horizontal-gap="setGap ? 5 : null"
                      prevent-default
+                     :auto-toggle="autoToggle"
                      :united="united"
                      v-model="value2"
                      @select="onSelect2"></k-navigator>
-        <br><br>
+        <br><br><br><br>
         <k-navigator :items="horizontalData2"
                      :horizontal="horizontal"
                      :horizontal-item-width="setWidth ? '1/4' : null"
                      :horizontal-gap="setGap ? 5 : null"
                      prevent-default
+                     :auto-toggle="autoToggle"
                      :united="united"
                      v-model="value3"
                      @select="onSelect2"></k-navigator>
@@ -58,7 +65,11 @@
         <k-checkbox label="united"
                     :checked.sync="united"></k-checkbox>
         <br>
+        <k-checkbox label="autoToggle"
+                    :checked.sync="autoToggle"></k-checkbox>
+        <br>
         <p>
+          <br>
           <span style="display: inline-block; min-width: 10em">value2: {{value2}}</span>
           <span style="display: inline-block; min-width: 10em">value3: {{value3}}</span>
         </p>
@@ -74,6 +85,7 @@
                    :horizontal-item-width="setWidth ? '1/4' : null"
                    :horizontal-gap="setGap ? 5 : null"
                    prevent-default
+                   :auto-toggle="autoToggle"
                    :united="united"
                    size="small"
                    v-model="value4"></k-navigator>
@@ -88,6 +100,7 @@
                    :horizontal-item-width="setWidth ? '1/4' : null"
                    :horizontal-gap="setGap ? 5 : null"
                    prevent-default
+                   :auto-toggle="autoToggle"
                    :united="united"
                    size="default"
                    v-model="value5"></k-navigator>
@@ -102,6 +115,7 @@
                    :horizontal-item-width="setWidth ? '1/4' : null"
                    :horizontal-gap="setGap ? 5 : null"
                    prevent-default
+                   :auto-toggle="autoToggle"
                    :united="united"
                    size="large"
                    v-model="value6"></k-navigator>
@@ -156,13 +170,22 @@
           }
         ],
 
-        oneLevelData: [{ text: 'Straight' }, { text: 'Gay' }],
+        oneLevelData: [
+          { text: 'Straight' },
+          { text: 'Gay' },
+          {
+            text: 'Bi',
+            badge: 'new',
+            badgeColor: '$state-error'
+          }
+        ],
 
         value: [0, 0, 2],
 
         oneLevel: false,
         prevent: true,
         blank: true,
+        autoToggle: true,
 
         horizontalData: [
           {
@@ -244,7 +267,7 @@
 
     methods: {
       onSelect ({ level, index }, value) {
-        console.log({ level, index }, value)
+        // console.log({ level, index }, value)
 
         if (level === 0 && index === 2) {
           this.$set(this.multiLevelData, '2', {
@@ -253,7 +276,7 @@
         }
       },
       onSelect2 ({ level, index }, value) {
-        console.log({ level, index }, value)
+        // console.log({ level, index }, value)
       }
     }
   }

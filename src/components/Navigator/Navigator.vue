@@ -12,10 +12,10 @@
                       :index="index"
                       :level="level"
                       :active="activeIndex === index"
-                      :show-children="showChildrenIndex === index"
+                      :show-children="isToggled(index)"
                       @item-click="onItemClick"
                       ref="item">
-        <k-navigator v-show="showChildrenIndex === index"
+        <k-navigator v-show="isToggled(index)"
                      :items="item.children"
                      :level="level + 1"
                      :parent-index="index"
@@ -57,7 +57,8 @@
       return {
         innerValue: [],
         activeIndex: null,
-        showChildrenIndex: null
+        showChildrenIndex: null,
+        toggledIndexes: []
       }
     },
 
@@ -89,10 +90,19 @@
         if (Array.isArray(value)) {
           if (this.parentIndex !== value[this.level - 1] || !this.isNumber(value[this.level])) {
             this.deactivate()
-            this.hideChildren()
+            if (this.autoToggle) {
+              this.toggledIndexes = []
+              this.noChildrenShow()
+            }
           }
         }
         this.setValue(value)
+      },
+
+      showChildrenIndex (newVal, oldVal) {
+        if (this.isNumber(newVal)) {
+          this.toggleDown(newVal)
+        }
       }
     },
 
@@ -118,8 +128,30 @@
         this.activeIndex = null
       },
 
-      hideChildren () {
+      noChildrenShow () {
         this.showChildrenIndex = null
+      },
+
+      isToggled (index) {
+        return Array.isArray(this.toggledIndexes) && this.toggledIndexes.indexOf(index) >= 0
+      },
+
+      toggleDown (index) {
+        if (this.isToggled(index)) return
+        this.toggledIndexes.push(index)
+      },
+
+      toggleUp (index) {
+        if (!this.isToggled(index)) return
+        this.toggledIndexes.splice(this.toggledIndexes.indexOf(index), 1)
+      },
+
+      toggle (index) {
+        if (this.isToggled(index)) {
+          this.toggleUp(index)
+        } else {
+          this.toggleDown(index)
+        }
       },
 
       setValue (value) {
@@ -132,9 +164,7 @@
             nav.showChildrenIndex = activeIndex
             nav = nav.$refs.item[activeIndex].$children[0]
           } else if (level !== len - 1) {
-            throw new Error(`Invalid value [${value}]. Item ${activeIndex} on level ${level} does not have a nested nav.`)
-          } else {
-            nav.hideChildren()
+            console.error(`Invalid value [${value}]. Item ${activeIndex} on level ${level} does not have a nested nav.`)
           }
         }
       },
@@ -171,52 +201,75 @@
       onClickOutside () {
         if (this.horizontal) {
           this.showChildrenIndex = null
+          this.toggledIndexes = []
         }
       },
 
       onItemClick (index, isParent) {
         if (isParent) {
-          if (this.itemIsParent(this.activeIndex)) {
-            this.activeIndex = index
+          if (this.autoToggle) {
+            this.toggledIndexes = []
           }
+          // if (this.itemIsParent(this.activeIndex)) {
+          //   this.activeIndex = index
+          // }
           if (this.showChildrenIndex === index) {
-            this.hideChildren()
+            // if (this.activeIndex === index) {
+            //   this.deactivate()
+            // }
+            this.noChildrenShow()
+            this.toggleUp(index)
+          } else if (this.isToggled(index)) {
+            this.toggleUp(index)
           } else {
             this.showChildrenIndex = index
           }
         } else {
           this.activeIndex = index
-          this.hideChildren()
-
-          this.innerValue = this.getValue()
-          this.$emit('select:inside', {
-            level: this.level,
-            index
-          })
-          if (this.innerValue) {
+          if (this.autoToggle) {
+            this.toggledIndexes = []
+            this.noChildrenShow()
+          }
+          if (this.isNested) {
+            this.$emit('select:inside', {
+              level: this.level,
+              index
+            }, [this.parentIndex, index])
+          } else {
+            if (this.horizontal) {
+              this.toggledIndexes = []
+              this.noChildrenShow()
+            }
+            this.innerValue = [index]
             this.$emit('select', {
               level: this.level,
               index
             }, this.innerValue)
-          }
-          if (!this.isNested) {
             this.$emit('update:value', this.innerValue)
           }
         }
       },
 
-      onNestedSelect ({ level, index }) {
-        if (!this.isNested) {
-          this.innerValue = this.getValue()
+      onNestedSelect ({ level, index }, arr) {
+        if (this.level !== level - 1) return
+        console.log(level, arr)
+
+        if (this.isNested) {
+          arr.unshift(this.parentIndex)
           this.$emit('select:inside', {
             level: this.level,
             index
-          })
+          }, arr)
+
+          console.log(this.level, arr)
+        } else {
+          this.innerValue = arr
           this.$emit('select', {
             level: this.level,
             index
           }, this.innerValue)
           this.$emit('update:value', this.innerValue)
+          console.log(this.level, this.innerValue)
         }
       }
     }
@@ -229,9 +282,7 @@
  .navigator-item
     color white
     position relative
-    // padding-left 1em
     line-height 2
-    cursor pointer
     >>> a
       padding-left 1em
       color inherit
@@ -240,6 +291,7 @@
       width 100%
       height 100%
       transition all .2s
+      cursor pointer
       i, span
         vertical-align middle
         display inline-block
@@ -272,6 +324,19 @@
     &:hover
       &:before
         background-color $theme-secondary
+    &.-toggled
+      color white
+      &:before
+        content ' '
+        top .6em
+        transform rotate(45deg)
+        border 3px solid $grey
+        width .7em
+        height .7em
+        background-color transparent
+        left -.3em
+        border-top 0
+        border-left 0
     &.-active
       color $theme-primary-lighter
       &:before
@@ -319,6 +384,7 @@
       height 2px
       bottom 0px
       top auto
+      border 0
       cursor default
       font-size inherit
       margin-bottom -.44em
@@ -334,6 +400,8 @@
       background-color alpha($black-darker, .6)
       &:before
         background-color $grey
+    &.-toggled
+      background-color alpha($black-darker, .75)
     &.-active
       background-color alpha($black-darker, .75)
       &:before

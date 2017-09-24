@@ -19,7 +19,8 @@ const containerProps = {
   united: {
     type: Boolean,
     default: true
-  }
+  },
+  autoToggle: Boolean
 }
 
 // Item props passed to container will be passed to all items :)

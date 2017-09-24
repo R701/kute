@@ -1,5 +1,5 @@
 <template>
-  <div :class="['navigator-item', { '-active': active || showChildren, '-parent': isParent, '-toggled': showChildren, '-disabled': disabled }]">
+  <div :class="['navigator-item', { '-active': active, '-parent': isParent, '-toggled': showChildren, '-disabled': disabled }]">
     <component :is="tag"
                :to="fullHref"
                :href="fullHref"
@@ -62,6 +62,7 @@
         if (this.preventDefault) {
           evt.preventDefault()
         }
+        evt.stopPropagation()
         if (this.disabled) return
 
         this.$emit('item-click', this.index, this.isParent)
