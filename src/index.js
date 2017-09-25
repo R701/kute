@@ -42,7 +42,7 @@ export default {
         Vue.component(`${namespace}-${key}`, components[key])
       }
     }
-    console.log(process.env.NODE_ENV)
+    console.log('env:', process.env.NODE_ENV)
     Vue.mixin({
       props: process.env.NODE_ENV === 'development' ? {
         debug: Boolean

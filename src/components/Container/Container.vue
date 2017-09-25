@@ -19,7 +19,8 @@
           '-inline': !this.flex && this.inline,
           '-flex-wrap': this.flex && this.wrap,
           '-flex-column': this.column,
-          '-relative': this.relative
+          '-relative': this.relative,
+          '-scroll': this.scroll
         }
       },
 
@@ -90,6 +91,9 @@
         }
         if (this.mb) {
           obj.marginBottom = u.getCSSLength(this.mb)
+        }
+        if (this.bg) {
+          obj.backgroundColor = u.getCSSColor(this.bg)
         }
 
         return obj

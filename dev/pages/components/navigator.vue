@@ -6,8 +6,8 @@
         <k-navigator :items="data"
                      v-model="value"
                      @select="onSelect"
-                     debug
                      :blank="blank"
+                     :initial-toggle-indexes="[0, 1]"
                      :auto-toggle="autoToggle"
                      :prevent-default="prevent"></k-navigator>
       </k-container>
@@ -267,7 +267,7 @@
 
     methods: {
       onSelect ({ level, index }, value) {
-        // console.log({ level, index }, value)
+        console.log({ level, index }, value)
 
         if (level === 0 && index === 2) {
           this.$set(this.multiLevelData, '2', {
@@ -276,7 +276,7 @@
         }
       },
       onSelect2 ({ level, index }, value) {
-        // console.log({ level, index }, value)
+        console.log({ level, index }, value)
       }
     }
   }

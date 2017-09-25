@@ -4,8 +4,9 @@
                :to="fullHref"
                :href="fullHref"
                :target="blank ? '_blank' : '_self'"
-               :event="preventDefault || disabled ? '' : 'click'"
-               @click.stop="onClick">
+               :event="preventDefault || disabled || isParent ? '' : 'click'"
+               @click.stop="onClick"
+               @click.native.stop="onClick">
       <i :class="['navigator-item-icon', `${config$.iconClassPrefix}${icon}`]"
          v-if="icon"></i>
       <span v-if="icon || badge">{{text}}</span>
@@ -59,7 +60,7 @@
 
     methods: {
       onClick (evt) {
-        if (this.preventDefault) {
+        if (this.preventDefault || this.isParent) {
           evt.preventDefault()
         }
         evt.stopPropagation()

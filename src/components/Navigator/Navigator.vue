@@ -11,7 +11,7 @@
                       v-bind="itemProps(item)"
                       :index="index"
                       :level="level"
-                      :active="activeIndex === index"
+                      :active="activeIndex === index || item.active"
                       :show-children="isToggled(index)"
                       @item-click="onItemClick"
                       ref="item">
@@ -19,6 +19,8 @@
                      :items="item.children"
                      :level="level + 1"
                      :parent-index="index"
+                     :value="innerValue"
+                     :initial-toggle-indexes="getNestedInitialToggleIndexes(index)"
                      v-bind="inheritableProps"
                      v-on="$listeners"
                      ref="nested"
@@ -64,7 +66,7 @@
 
     computed: {
       inheritableProps () {
-        var omittedProps = u.omit(this.$props, 'items', 'level', 'horizontal', 'parentIndex')
+        var omittedProps = u.omit(this.$props, 'items', 'level', 'horizontal', 'parentIndex', 'initialToggleIndexes', 'value')
         return u.assign({}, this.$attrs, omittedProps)
       },
 
@@ -86,7 +88,7 @@
         this.initLayout()
       },
 
-      value (value) {
+      innerValue (value) {
         if (Array.isArray(value)) {
           if (this.parentIndex !== value[this.level - 1] || !this.isNumber(value[this.level])) {
             this.deactivate()
@@ -99,6 +101,22 @@
         this.setValue(value)
       },
 
+      value (value) {
+        this.innerValue = value
+      },
+
+      initialToggleIndexes (arr) {
+        if (Array.isArray(arr)) {
+          this.toggledIndexes = arr.map(item => {
+            if (this.isNumber(item)) {
+              return item
+            } else if (typeof item === 'object' && this.isNumber(+Object.keys(item)[0])) {
+              return +Object.keys(item)[0]
+            }
+          })
+        }
+      },
+
       showChildrenIndex (newVal, oldVal) {
         if (this.isNumber(newVal)) {
           this.toggleDown(newVal)
@@ -107,8 +125,7 @@
     },
 
     mounted () {
-      this.initLayout()
-      this.setValue(this.value)
+      this.init()
     },
 
     methods: {
@@ -120,8 +137,41 @@
         return typeof n === 'number' && !isNaN(n)
       },
 
-      itemIsParent (index) {
-        return this.$refs.item[index] && this.$refs.item[index].$children[0] && u.isWhichVM(this.$refs.item[index].$children[0], 'k-navigator')
+      init () {
+        this.initLayout()
+        if (this.value) {
+          this.innerValue = this.value
+        }
+        if (Array.isArray(this.initialToggleIndexes)) {
+          this.toggledIndexes = this.initialToggleIndexes.map(item => {
+            if (this.isNumber(item)) {
+              return item
+            } else if (typeof item === 'object' && this.isNumber(+Object.keys(item)[0])) {
+              return +Object.keys(item)[0]
+            }
+          })
+        }
+      },
+
+      getNested (index) {
+        if (this.$refs.item[index] && this.$refs.item[index].$children) {
+          for (var i = 0, len = this.$refs.item[index].$children.length; i < len; i++) {
+            if (u.isWhichVM(this.$refs.item[index].$children[i], 'k-navigator')) {
+              return this.$refs.item[index].$children[i]
+            }
+          }
+        }
+
+        return false
+      },
+
+      getNestedInitialToggleIndexes (index) {
+        if (Array.isArray(this.toggledIndexes) && this.toggledIndexes.indexOf(index) >= 0) {
+          var objIndex = this.toggledIndexes.indexOf(index)
+          if (typeof this.initialToggleIndexes[objIndex] === 'object' && Array.isArray(this.initialToggleIndexes[objIndex][index])) {
+            return this.initialToggleIndexes[objIndex][index]
+          }
+        }
       },
 
       deactivate () {
@@ -160,26 +210,24 @@
         for (var level = 0, len = value.length; level < len; level++) {
           var activeIndex = value[level]
           nav.activeIndex = activeIndex
-          if (nav.itemIsParent(activeIndex)) {
+          var nested = nav.getNested(activeIndex)
+          if (nested) {
             nav.showChildrenIndex = activeIndex
-            nav = nav.$refs.item[activeIndex].$children[0]
+            nav = nested
           } else if (level !== len - 1) {
             console.error(`Invalid value [${value}]. Item ${activeIndex} on level ${level} does not have a nested nav.`)
           }
         }
       },
 
-      getValue () {
+      getSelectedItem () {
         if (this.isNested) return
-        var value = []
         var nav = this
         while (this.isNumber(nav.showChildrenIndex)) {
-          value.push(nav.showChildrenIndex)
-          nav = nav.$refs.item[nav.showChildrenIndex].$children[0]
+          // value.push(nav.showChildrenIndex)
+          nav = this.getNested(nav.showChildrenIndex)
         }
-        value.push(nav.activeIndex)
-
-        return value
+        return nav.items[nav.activeIndex]
       },
 
       initLayout () {
@@ -207,21 +255,15 @@
 
       onItemClick (index, isParent) {
         if (isParent) {
-          if (this.autoToggle) {
-            this.toggledIndexes = []
-          }
-          // if (this.itemIsParent(this.activeIndex)) {
-          //   this.activeIndex = index
-          // }
           if (this.showChildrenIndex === index) {
-            // if (this.activeIndex === index) {
-            //   this.deactivate()
-            // }
             this.noChildrenShow()
             this.toggleUp(index)
           } else if (this.isToggled(index)) {
             this.toggleUp(index)
           } else {
+            if (this.autoToggle) {
+              this.toggledIndexes = []
+            }
             this.showChildrenIndex = index
           }
         } else {
@@ -234,42 +276,32 @@
             this.$emit('select:inside', {
               level: this.level,
               index
-            }, [this.parentIndex, index])
+            }, [this.parentIndex, index], this.items[index])
           } else {
             if (this.horizontal) {
               this.toggledIndexes = []
               this.noChildrenShow()
             }
+            this.$emit('select', this.items[index], [index])
             this.innerValue = [index]
-            this.$emit('select', {
-              level: this.level,
-              index
-            }, this.innerValue)
-            this.$emit('update:value', this.innerValue)
+            this.$emit('update:value', [index])
           }
         }
       },
 
-      onNestedSelect ({ level, index }, arr) {
+      onNestedSelect ({ level, index }, arr, data) {
         if (this.level !== level - 1) return
-        console.log(level, arr)
 
         if (this.isNested) {
           arr.unshift(this.parentIndex)
           this.$emit('select:inside', {
             level: this.level,
             index
-          }, arr)
-
-          console.log(this.level, arr)
+          }, arr, data)
         } else {
+          this.$emit('select', data, arr)
           this.innerValue = arr
-          this.$emit('select', {
-            level: this.level,
-            index
-          }, this.innerValue)
-          this.$emit('update:value', this.innerValue)
-          console.log(this.level, this.innerValue)
+          this.$emit('update:value', arr)
         }
       }
     }
@@ -337,6 +369,9 @@
         left -.3em
         border-top 0
         border-left 0
+      &:hover
+        &:before
+          border-color $theme-secondary
     &.-active
       color $theme-primary-lighter
       &:before

@@ -369,7 +369,7 @@
       padding 0 (10px/14px)em
       transition all .2s
       position relative
-      ::placeholder
+      &::placeholder
         color $grey-lighter
     input
       height 34px

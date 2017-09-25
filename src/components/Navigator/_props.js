@@ -20,7 +20,8 @@ const containerProps = {
     type: Boolean,
     default: true
   },
-  autoToggle: Boolean
+  autoToggle: Boolean,
+  initialToggleIndexes: Array
 }
 
 // Item props passed to container will be passed to all items :)
