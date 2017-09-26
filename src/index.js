@@ -14,6 +14,7 @@ import Radio from './components/Radio/Radio'
 import { showToast, Toast } from './components/Toast'
 import { notify, Notification } from './components/Notification'
 import { showDialog, Dialog } from './components/Dialog'
+import Popover from './components/Popover/Popover'
 
 var components = {
   button: Button,
@@ -28,7 +29,8 @@ var components = {
   radio: Radio,
   toast: Toast,
   notification: Notification,
-  dialog: Dialog
+  dialog: Dialog,
+  popover: Popover
 }
 
 export default {
@@ -44,9 +46,12 @@ export default {
     }
     console.log('env:', process.env.NODE_ENV)
     Vue.mixin({
-      props: process.env.NODE_ENV === 'development' ? {
-        debug: Boolean
-      } : {},
+      props:
+        process.env.NODE_ENV === 'development'
+          ? {
+            debug: Boolean
+          }
+          : {},
 
       data () {
         return {
@@ -83,5 +88,6 @@ export {
   Radio,
   Toast,
   Notification,
-  Dialog
+  Dialog,
+  Popover
 }
