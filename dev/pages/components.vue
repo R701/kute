@@ -273,11 +273,19 @@
       }
     },
 
-    updated () {
-      var selected = this.$refs.nav.getSelectedItem()
-      if (!selected) return
-      this.currentTitle = selected.text + ' ' + selected.ch
+    watch: {
+      path () {
+        var selected = this.$refs.nav.getSelectedItem()
+        if (!selected) return
+        this.currentTitle = selected.text + ' ' + selected.ch
+      }
     },
+
+    // updated () {
+    //   var selected = this.$refs.nav.getSelectedItem()
+    //   if (!selected) return
+    //   this.currentTitle = selected.text + ' ' + selected.ch
+    // },
 
     mounted () {
       /* eslint-disable no-labels */
