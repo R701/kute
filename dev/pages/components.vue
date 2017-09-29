@@ -6,8 +6,9 @@
                  ph="2em">
       <keep-alive>
         <k-navigator :items="navigator"
-                     :initial-toggle-indexes="[0, 1, {2: [0]}, 3, 4, 5]"
+                     style="margin-top: -1em"
                      base-path="/components/"
+                     badge-color="$grey-darker"
                      router
                      ref="nav"></k-navigator>
       </keep-alive>
@@ -243,9 +244,7 @@ export default {
             {
               text: 'Progress',
               href: 'progress',
-              ch: '进度条',
-              badge: 'TODO',
-              disabled: true
+              ch: '进度条'
             },
             {
               text: 'Pagination',

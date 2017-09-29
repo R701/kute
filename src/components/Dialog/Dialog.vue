@@ -8,7 +8,7 @@
       <transition name="bounce-zoom-in"
                   @enter="onDialogEnter"
                   @after-leave="afterDialogLeave">
-        <div :class="['dialog', `-${state}`, {'-freezing': freezeScreen}]"
+        <div :class="['dialog', state ? `-${state}` : '', {'-freezing': freezeScreen}]"
              ref="dialog"
              v-if="entered">
           <icon-close class="dialog-close"

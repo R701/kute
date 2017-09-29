@@ -84,25 +84,25 @@
         h: '300'
       })
       var p1c1 = _merge({}, options, {
-        bg: '$state-info',
+        bg: '$grey-lighter',
         mr: '10',
         pa: '1.5em',
         scroll: true
       })
       var p1c2 = _merge({}, options, {
-        bg: '$state-success',
+        bg: '$grey',
         mh: '10',
         pa: '1.5em',
         scroll: true
       })
       var p1c3 = _merge({}, options, {
-        bg: '$state-warn',
+        bg: '$black-lighter',
         mh: '10',
         pa: '1.5em',
         scroll: true
       })
       var p1c4 = _merge({}, options, {
-        bg: '$state-error',
+        bg: '$black-darker',
         ml: '10',
         pa: '1.5em',
         scroll: true

@@ -22,5 +22,10 @@ export default {
   lineStyle: {
     default: 'solid',
     type: String
-  }
+  },
+
+  hideLine: Boolean,
+
+  text: String,
+  textBg: String
 }

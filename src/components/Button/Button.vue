@@ -3,7 +3,7 @@
              :to="fullHref"
              :href="fullHref"
              :disabled="disabled || (disableWhileLoading && loading)"
-             :class="['button', `-${state}-bg`, `-${size}`, { '-link': href, '-no-outline': !outline,  '-block': block,  '-no-text': emptySlot, '-ghost': ghost } ]"
+             :class="['button', size ? `-${size}` : '', state ? `-${state}-bg` : '', { '-link': href, '-no-outline': !outline,  '-block': block,  '-no-text': emptySlot, '-ghost': ghost } ]"
              @click="onClick"
              @focus="onFocus"
              @blur="onBlur">

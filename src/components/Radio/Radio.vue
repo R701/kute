@@ -1,5 +1,5 @@
 <template>
-  <label>
+  <label :class="['radio', size ? `-${size}` : '', state ? `-${state}` : '', { '-checked': checked, '-disabled': disabled, '-light': light }]">
     <input type="radio"
            ref="elem"
            :checked="checked"
@@ -8,8 +8,10 @@
            @change="onChange($event)"
            v-bind="$attrs"
            v-on="$listeners">
-    <span v-if="label">{{label}}</span>
-    <span v-else>
+    <span class="radio-label"
+          v-if="label">{{label}}</span>
+    <span class="radio-content"
+          v-else>
       <slot></slot>
     </span>
   </label>
@@ -49,6 +51,40 @@
 <style scoped lang="stylus">
 label
   cursor pointer
+  &:before
+    content ''
+    display inline-block
+    border-radius 50%
+    background $black-darker
+    box-shadow psShadow(#000, 40%, 90, 1px, 0, 1px, true), psShadow(#000, 40%, 180, 1px, 0, 1px, true), psShadow(#000, 30%, -87, 1px, 0, 1px, true)
+    width 1em
+    height 1em
+    vertical-align middle
+    position relative
+    transition all .1s $ease-in-cubic
+    border 0 solid $theme-primary
+  &.-light
+    &:before
+      background $white-lighter
+      box-shadow none
+  &.-checked
+    &:before
+      border-width .25em
+  &.-info
+    &:before
+      border-color $state-info !important
+  &.-success
+    &:before
+      border-color $state-success !important
+  &.-warn
+    &:before
+      border-color $state-warn !important
+  &.-error
+    &:before
+      border-color $state-error !important
+  &.-disabled
+    cursor not-allowed !important
+    opacity .6 !important
 input
   vertical-align middle
   border: 0;
@@ -59,8 +95,8 @@ input
   padding: 0;
   position: absolute;
   width: 1px;
-span
+span.radio-label, span.radio-content
   vertical-align middle
-  padding-left .3em
+  padding-left .4em
   user-select none
 </style>
