@@ -67,7 +67,11 @@ $yellow = #ffa700
 
 .spinner.-grad
   .path
-    animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite
+    // animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite
+    animation-name: dash, color
+    animation-duration: 1.5s, 6s
+    animation-timing-function ease-in-out
+    animation-iteration-count infinite
 
 @keyframes rotate
   100%

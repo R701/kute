@@ -3,7 +3,7 @@
            transition-duration="300"
            ref="overlay"
            @enter="onEnter">
-    <div :class="['toast', `-${state}`, { '-closable': closable, '-loading': loading && message, '-loading-only': loading && !message }]"
+    <div :class="['toast', state ? `-${state}` : '', { '-closable': closable, '-loading': loading && message, '-loading-only': loading && !message }]"
          ref="main">
       <spinner class="toast-spinner"
                v-if="loading"></spinner>

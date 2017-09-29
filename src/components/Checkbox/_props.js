@@ -7,5 +7,10 @@ export default {
   outline: Boolean,
   value: String,
   disabled: Boolean,
-  label: String
+  label: String,
+  state: {
+    default: 'primary'
+  },
+  size: String,
+  light: Boolean
 }

@@ -11,6 +11,7 @@ import Group from './components/Group/Group'
 import Input from './components/Input/Input'
 import Checkbox from './components/Checkbox/Checkbox'
 import Radio from './components/Radio/Radio'
+import Switch from './components/Switch/Switch'
 import { showToast, Toast } from './components/Toast'
 import { notify, Notification } from './components/Notification'
 import { showDialog, Dialog } from './components/Dialog'
@@ -26,6 +27,7 @@ var components = {
   input: Input,
   checkbox: Checkbox,
   radio: Radio,
+  switch: Switch,
   toast: Toast,
   notification: Notification,
   dialog: Dialog
@@ -81,6 +83,7 @@ export {
   Input,
   Checkbox,
   Radio,
+  Switch,
   Toast,
   Notification,
   Dialog

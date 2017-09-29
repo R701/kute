@@ -1,8 +1,12 @@
 <template>
   <div :class="['divider-container', {'-vertical': vertical}]"
        :style="{margin: marginValue}">
-    <div :class="['divider-line', {'-full': full}, {'-show': show}]"
-         ref="indicator"></div>
+    <div :class="['divider-line', {'-full': full}, {'-show': show}, {'-faded': hideLine}]"
+         ref="indicator">
+      <span class="divider-text"
+            v-if="text && !vertical"
+            ref="text">{{text}}</span>
+    </div>
   </div>
 </template>
 
@@ -61,6 +65,15 @@
             indicator.style.marginTop = `calc(${'-' + offset} - ${this.lineWidth / 2}px)`
           }
         }
+        var text = this.$refs.text
+        if (text) {
+          if (this.lineWidth > 1) {
+            text.style.marginTop = `calc(-.5em - ${this.lineWidth / 2}px)`
+          }
+          if (this.textBg) {
+            text.style.backgroundColor = u.getCSSColor(this.textBg)
+          }
+        }
         if (this.vertical) {
           var parentHeight
           if (this.full) {
@@ -86,6 +99,7 @@
   display block
   width 100%
   .divider-line
+    position relative
     display block
     width 100%
     left 0
@@ -98,6 +112,14 @@
       position absolute
     &.-show
       opacity 1
+  .divider-text
+    position absolute
+    left 50%
+    transform translateX(-50%)
+    line-height 1
+    margin-top -.5em
+    padding 0 .4em
+    background $black
 .-vertical
   width auto
   .divider-line

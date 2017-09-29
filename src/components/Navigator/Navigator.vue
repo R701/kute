@@ -1,5 +1,5 @@
 <template>
-  <div :class="['navigator', `-${size}`, {'-horizontal': horizontal, '-united': horizontal && united }]"
+  <div :class="['navigator', size ? `-${size}` : '', {'-horizontal': horizontal, '-united': horizontal && united }]"
        ref="container"
        v-click-outside="onClickOutside">
     <template v-for="(item, index) in items">
@@ -60,7 +60,8 @@
         innerValue: [],
         activeIndex: null,
         showChildrenIndex: null,
-        toggledIndexes: []
+        toggledIndexes: [],
+        inited: false
       }
     },
 
@@ -105,18 +106,6 @@
         this.innerValue = value
       },
 
-      initialToggleIndexes (arr) {
-        if (Array.isArray(arr)) {
-          this.toggledIndexes = arr.map(item => {
-            if (this.isNumber(item)) {
-              return item
-            } else if (typeof item === 'object' && this.isNumber(+Object.keys(item)[0])) {
-              return +Object.keys(item)[0]
-            }
-          })
-        }
-      },
-
       showChildrenIndex (newVal, oldVal) {
         if (this.isNumber(newVal)) {
           this.toggleDown(newVal)
@@ -151,6 +140,8 @@
             }
           })
         }
+
+        this.inited = true
       },
 
       getNested (index) {

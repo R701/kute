@@ -1,5 +1,5 @@
 <template>
-  <label>
+  <label :class="['checkbox', size ? `-${size}` : '', state ? `-${state}` : '', { '-checked': containedInArr, '-disabled': disabled, '-light': light }]">
     <input type="checkbox"
            ref="elem"
            :checked="containedInArr"
@@ -8,8 +8,11 @@
            @change="onChange"
            v-bind="$attrs"
            v-on="$listeners">
-    <span v-if="label">{{label}}</span>
-    <span v-else>
+    <icon-check class="icon-check"></icon-check>
+    <span class="checkbox-label"
+          v-if="label">{{label}}</span>
+    <span class="checkbox-content"
+          v-else>
       <slot></slot>
     </span>
   </label>
@@ -17,6 +20,7 @@
 
 <script>
   import props from './_props'
+  import IconCheck from './../_Icons/Check'
 
   export default {
 
@@ -24,6 +28,12 @@
       prop: 'arr',
       event: 'update'
     },
+
+    components: {
+      IconCheck
+    },
+
+    inheritAttrs: false,
 
     props,
 
@@ -56,10 +66,75 @@
 <style scoped lang="stylus">
 label
   cursor pointer
+  position relative
+  &:before
+    content ''
+    display inline-block
+    border-radius 20%
+    background $black-darker
+    width .93em
+    height .93em
+    vertical-align middle
+    position relative
+    transition all .1s $ease-in-cubic
+    border 0 solid $theme-primary
+    box-shadow psShadow(#000, 40%, 90, 1px, 0, 1px, true), psShadow(#000, 40%, 180, 1px, 0, 1px, true), psShadow(#000, 30%, -87, 1px, 0, 1px, true)
+  &.-light
+    &:before
+      box-shadow none
+      background $white-lighter
+    .icon-check
+      fill $white !important
+    &.-checked
+      &:before
+        background $theme-primary !important
+      &.-info
+        &:before
+          background $state-info !important
+      &.-success
+        &:before
+          background $state-success !important
+      &.-warn
+        &:before
+          background $state-warn !important
+      &.-error
+        &:before
+          background $state-error !important
+  &.-checked
+    .icon-check
+      opacity 1
+      margin-top 0
+      width .9em
+      height .9em
+      transform translateY(-50%) scale(1)
+  &.-info
+    .icon-check
+      fill $state-info
+  &.-success
+    .icon-check
+      fill $state-success
+  &.-warn
+    .icon-check
+      fill $state-warn
+  &.-error
+    .icon-check
+      fill $state-error
+  &.-disabled
+    cursor not-allowed
+    opacity .6
+  .icon-check
+    absCenterY()
+    left .1em
+    fill $theme-primary
+    opacity 0
+    transition all .1s $ease-in-cubic
+    transform translateY(-50%) scale(.3)
+
 input
   vertical-align middle
-span
+  hide()
+span.checkbox-label, span.checkbox-content
   vertical-align middle
-  padding-left .3em
+  padding-left .4em
   user-select none
 </style>

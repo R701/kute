@@ -1,7 +1,7 @@
 <template>
   <overlay transition="bottom-in"
            ref="overlay">
-    <div :class="['notification', `-${state}`, {'-link': href}]"
+    <div :class="['notification', state ? `-${state}` : '', {'-link': href}]"
          ref="main"
          @click="onClick">
       <i :class="['notification-icon', `${config$.iconClassPrefix}${icon}`]"

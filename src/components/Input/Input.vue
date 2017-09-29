@@ -1,5 +1,5 @@
 <template>
-  <div :class="['input-field', `-${state}`, `-${size}`, { '-focused': focused, '-disabled': disabled, '-error': errmsg, '-pr': clearable || loading || select, '-pl': icon, '-block': block, 'select': select, 'textarea': textarea, '-resizable': resize != 'none' }]"
+  <div :class="['input-field', size ? `-${size}` : '', state ? `-${state}` : '', { '-focused': focused, '-disabled': disabled, '-error': errmsg, '-pr': clearable || loading || select, '-pl': icon, '-block': block, 'select': select, 'textarea': textarea, '-resizable': resize != 'none' }]"
        v-click-outside="onClickOutside">
     <label :for="$attrs.id"
            v-if="label">{{label}}</label>
@@ -24,7 +24,8 @@
                   @click.native="onClearClick"
                   class="icon icon-clear"></icon-close>
       <icon-arrow-down v-if="select"
-                       :class="['icon', 'icon-down', { '-reverse': showOptions }]"></icon-arrow-down>
+                       :class="['icon', 'icon-down', { '-reverse': showOptions }]"
+                       @click.native.stop="onArrowClick"></icon-arrow-down>
       <div class="input-spinner"
            v-if="loading && !select">
         <spinner color="#8a8f99"
@@ -89,7 +90,7 @@
       return {
         focused: false,
         errmsg: '',
-        activeIndex: 0,
+        activeIndex: -1,
         showSuggestions: false,
         showOptions: false,
         innerValue: '',
@@ -334,9 +335,6 @@
         evt.preventDefault()
         var options = this.$refs.options
         var marginTop = +window.getComputedStyle(options).marginTop.match(/-?\d+/)[0] || 0
-        console.log(this.scrollMin, this.scrollMax)
-        console.log(marginTop)
-        console.log('------------------------------------')
         if (marginTop <= this.scrollMin) {
           marginTop = this.scrollMin + 1
         }
@@ -344,6 +342,10 @@
           marginTop = this.scrollMax - 1
         }
         options.style.marginTop = `${marginTop - evt.deltaY}px`
+      },
+
+      onArrowClick () {
+        this.showOptions = !this.showOptions
       }
     }
   }
