@@ -7,7 +7,7 @@
            :disabled="disabled"
            @change="onChange"
            @click.stop>
-    <div :class="['switch-indicator', state ? `-${state}-bg` : '',]"></div>
+    <div :class="['switch-indicator', state ? `-${state}-bg` : '']"></div>
   </div>
 </template>
 
@@ -54,7 +54,7 @@
 </script>
 
 <style lang="stylus" scoped>
-$w = 2.6em
+$w = 2.8em
 $h = 1.3em
 .switch
   display inline-block
@@ -70,7 +70,7 @@ $h = 1.3em
     content ''
     display block
     absCover()
-    box-shadow psShadow(#000, 90%, 90, 1px, 0, 1px, true), psShadow(#000, 90%, 180, 1px, 0, 1px, true), psShadow(#000, 80%, -87, 1px, 0, 1px, true)
+    box-shadow psShadow(#000, 80%, 90, 1px, 0, 1px, true), psShadow(#000, 80%, 180, 1px, 0, 1px, true)
     rounded()
   input
     hide()

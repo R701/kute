@@ -14,10 +14,7 @@ export default {
     default: 'change'
   },
   label: String,
-  state: {
-    type: String,
-    default: 'default'
-  },
+  state: String,
   suggestions: [Array, Promise],
   suggestDebounce: {
     type: Number,

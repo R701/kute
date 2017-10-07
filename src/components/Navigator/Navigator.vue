@@ -342,7 +342,7 @@
       position absolute
       top .5em
       left 0
-      background-color $grey
+      background-color alpha($grey, .5)
       transition all .2s
     &:hover
       &:before

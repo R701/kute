@@ -86,23 +86,14 @@
             ch: '开关'
           },
           {
+            text: 'Slider',
+            href: 'slider',
+            ch: '滑块'
+          },
+          {
             text: 'Picker',
             href: 'picker',
             ch: '时间/日期 选择器',
-            badge: 'TODO',
-            disabled: true
-          },
-          {
-            text: 'Cropper',
-            href: 'cropper',
-            ch: '图像裁剪器',
-            badge: 'TODO',
-            disabled: true
-          },
-          {
-            text: 'Slider',
-            href: 'slider',
-            ch: '滑块',
             badge: 'TODO',
             disabled: true
           },
@@ -177,6 +168,13 @@
             badge: 'TODO',
             disabled: true
           },
+          {
+            text: 'Pagination',
+            href: 'pagination',
+            ch: '分页',
+            badge: 'TODO',
+            disabled: true
+          },
           { divider: true, color: '$grey', margin: '2em', text: 'Overlay' },
           {
             text: 'Toast',
@@ -219,13 +217,6 @@
             text: 'Progress',
             href: 'progress',
             ch: '进度条',
-            badge: 'TODO',
-            disabled: true
-          },
-          {
-            text: 'Pagination',
-            href: 'pagination',
-            ch: '分页',
             badge: 'TODO',
             disabled: true
           }
