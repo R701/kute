@@ -30,16 +30,16 @@ module.exports = {
       '~assets': resolve('./src/assets'),
       '~mixins': resolve('./src/mixins'),
       '/assets': resolve('./src/assets'),
-      'assets': resolve('./src/assets'),
+      assets: resolve('./src/assets'),
       '~stylus': resolve('./src/stylus'),
-      'stylus': resolve('./src/stylus'),
+      stylus: resolve('./src/stylus'),
       '/stylus': resolve('./src/stylus'),
-      'settings': resolve('./src/stylus/0_settings'),
-      'tools': resolve('./src/stylus/1_tools'),
-      'generic': resolve('./src/stylus/2_generic'),
-      'element': resolve('./src/stylus/3_element'),
-      'object': resolve('./src/stylus/4_object'),
-      'trumps': resolve('./src/stylus/5_trumps')
+      settings: resolve('./src/stylus/0_settings'),
+      tools: resolve('./src/stylus/1_tools'),
+      generic: resolve('./src/stylus/2_generic'),
+      element: resolve('./src/stylus/3_element'),
+      object: resolve('./src/stylus/4_object'),
+      trumps: resolve('./src/stylus/5_trumps')
     }
   },
   externals: {
@@ -56,7 +56,10 @@ module.exports = {
         test: /\.(vue|js)$/,
         enforce: 'pre',
         loader: 'eslint-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        options: {
+          fix: true
+        }
       },
       {
         test: /\.vue$/,
