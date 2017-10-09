@@ -86,14 +86,11 @@
             ch: '开关'
           },
           {
-<<<<<<< HEAD
             text: 'Slider',
             href: 'slider',
             ch: '滑块'
           },
           {
-=======
->>>>>>> origin/feature/popup
             text: 'Picker',
             href: 'picker',
             ch: '时间/日期 选择器',
@@ -101,23 +98,6 @@
             disabled: true
           },
           {
-<<<<<<< HEAD
-=======
-            text: 'Cropper',
-            href: 'cropper',
-            ch: '图像裁剪器',
-            badge: 'TODO',
-            disabled: true
-          },
-          {
-            text: 'Slider',
-            href: 'slider',
-            ch: '滑块',
-            badge: 'TODO',
-            disabled: true
-          },
-          {
->>>>>>> origin/feature/popup
             text: 'Editor',
             href: 'editor',
             ch: '富文本编辑器',
@@ -188,7 +168,6 @@
             badge: 'TODO',
             disabled: true
           },
-<<<<<<< HEAD
           {
             text: 'Pagination',
             href: 'pagination',
@@ -196,8 +175,6 @@
             badge: 'TODO',
             disabled: true
           },
-=======
->>>>>>> origin/feature/popup
           { divider: true, color: '$grey', margin: '2em', text: 'Overlay' },
           {
             text: 'Toast',
@@ -239,16 +216,12 @@
           {
             text: 'Progress',
             href: 'progress',
-<<<<<<< HEAD
-            ch: '进度条',
-=======
             ch: '进度条'
           },
           {
             text: 'Pagination',
             href: 'pagination',
             ch: '分页',
->>>>>>> origin/feature/popup
             badge: 'TODO',
             disabled: true
           }

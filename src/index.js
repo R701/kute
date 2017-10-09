@@ -12,10 +12,7 @@ import Input from './components/Input/Input'
 import Checkbox from './components/Checkbox/Checkbox'
 import Radio from './components/Radio/Radio'
 import Switch from './components/Switch/Switch'
-<<<<<<< HEAD
 import Slider from './components/Slider/Slider'
-=======
->>>>>>> origin/feature/popup
 import { showToast, Toast } from './components/Toast'
 import { notify, Notification } from './components/Notification'
 import { showDialog, Dialog } from './components/Dialog'
@@ -34,10 +31,7 @@ var components = {
   checkbox: Checkbox,
   radio: Radio,
   switch: Switch,
-<<<<<<< HEAD
   slider: Slider,
-=======
->>>>>>> origin/feature/popup
   toast: Toast,
   notification: Notification,
   dialog: Dialog,
@@ -59,11 +53,11 @@ export default {
     console.log('env:', process.env.NODE_ENV)
     Vue.mixin({
       props:
-        process.env.NODE_ENV === 'development'
-          ? {
-            debug: Boolean
-          }
-          : {},
+      process.env.NODE_ENV === 'development'
+        ? {
+          debug: Boolean
+        }
+        : {},
 
       data () {
         return {
@@ -99,10 +93,7 @@ export {
   Checkbox,
   Radio,
   Switch,
-<<<<<<< HEAD
   Slider,
-=======
->>>>>>> origin/feature/popup
   Toast,
   Notification,
   Dialog,
