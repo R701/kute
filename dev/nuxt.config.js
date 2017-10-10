@@ -11,19 +11,27 @@ module.exports = {
   head: {
     title: 'kute-page',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Main page for project kute.' }
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Main page for project kute.'
+      }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', type: 'text/css', href: '//at.alicdn.com/t/font_408131_ea0jbjd6r3k57b9.css' }
+      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href: '//at.alicdn.com/t/font_408131_ea0jbjd6r3k57b9.css'
+      }
     ]
   },
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#3B8070' },
+  loading: {color: '#3B8070'},
   /*
   ** Build configuration
   */
@@ -37,11 +45,17 @@ module.exports = {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules)/
+          exclude: /(node_modules)/,
+          options: {
+            fix: true
+          }
         })
       }
 
-      config.resolve.modules = [resolve('./node_modules'), resolve('./../node_modules')]
+      config.resolve.modules = [
+        resolve('./node_modules'),
+        resolve('./../node_modules')
+      ]
 
       config.resolve.alias.kute = resolve('../src')
       config.resolve.alias['~'] = resolve('../src')
@@ -60,19 +74,19 @@ module.exports = {
       config.resolve.alias['object'] = resolve('../src/stylus/4_object')
       config.resolve.alias['trumps'] = resolve('../src/stylus/5_trumps')
       config.resolve.extensions.push('.styl')
-      config.plugins.push(new webpack.LoaderOptionsPlugin({
-        options: {
-          stylus: {
-            preferPathResolver: 'webpack',
-            use: [axis()],
-            import: ['~stylus/util']
+      config.plugins.push(
+        new webpack.LoaderOptionsPlugin({
+          options: {
+            stylus: {
+              preferPathResolver: 'webpack',
+              use: [axis()],
+              import: ['~stylus/util']
+            }
           }
-        }
-      }))
+        })
+      )
     }
   },
 
-  plugins: [
-    '~/plugins/kute'
-  ]
+  plugins: ['~/plugins/kute']
 }
