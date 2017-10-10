@@ -15,6 +15,8 @@ import Switch from './components/Switch/Switch'
 import { showToast, Toast } from './components/Toast'
 import { notify, Notification } from './components/Notification'
 import { showDialog, Dialog } from './components/Dialog'
+import Popover from './components/Popover/Popover'
+import Progress from './components/Progress/Progress'
 
 var components = {
   button: Button,
@@ -30,7 +32,9 @@ var components = {
   switch: Switch,
   toast: Toast,
   notification: Notification,
-  dialog: Dialog
+  dialog: Dialog,
+  popover: Popover,
+  progress: Progress
 }
 
 export default {
@@ -46,9 +50,12 @@ export default {
     }
     console.log('env:', process.env.NODE_ENV)
     Vue.mixin({
-      props: process.env.NODE_ENV === 'development' ? {
-        debug: Boolean
-      } : {},
+      props:
+        process.env.NODE_ENV === 'development'
+          ? {
+            debug: Boolean
+          }
+          : {},
 
       data () {
         return {
@@ -86,5 +93,6 @@ export {
   Switch,
   Toast,
   Notification,
-  Dialog
+  Dialog,
+  Popover
 }
