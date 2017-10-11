@@ -1,29 +1,47 @@
-<template lang="html">
-  <div class="tabs">
-      <tab-nav :panes='panes' :activeKey.sync='currentKey'></tab-nav>
-      <div class="tabs-content">
-        <slot/>
-      </div>
-  </div>
-</template>
-
 <script>
-import tabNav from './TabNav'
+/* eslint-disable */
+import TabNav from './TabNav'
+/* eslint-enable */
 export default {
-  components: {
-    tabNav
-  },
-  computed: {
-    panes () {
-      console.log('com')
-      return this.$slots.default.map(i => i.componentOptions.propsData) || []
+  props: {
+    defaultActiveKey: {
+      type: null
+    },
+    currentKey: {
+      type: null
     }
   },
   data () {
-    return {currentKey: 1}
+    return {priCurrentKey: 2}
+  },
+  created () {
+    this.priCurrentKey = this.defaultActiveKey || this.$slots.default[0].componentOptions.propsData['tabKey']
+  },
+  methods: {
+    handleUpdate (key) {
+      this.$emit('keyChanged', key)
+      this.priCurrentKey = key
+    }
   },
   updated () {
-    console.log('updated')
+    if (this.currentKey) {
+      this.priCurrentKey = this.currentKey
+    }
+  },
+  render () {
+    const panes = this.$slots.default.map(i => i.componentOptions.propsData)
+    const data = {
+      props: {
+        panes: panes,
+        activeKey: this.priCurrentKey
+      }
+    }
+    return (
+      <div class="tabs">
+        <TabNav {...data} onUpdateActiveKey={i => this.handleUpdate(i)} ></TabNav>
+        <div class="tabs-content" slot="slot"/>
+      </div>
+    )
   }
 }
 </script>

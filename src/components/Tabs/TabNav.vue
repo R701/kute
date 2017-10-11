@@ -2,7 +2,7 @@
   <div class="tabs-nav">
     <div class="tabs-nav-activebar" ref="activeScrollBar" :style="{'transform':`translateX(${currentPosiOfBar}px)`,'width':`${barWidth}px`}"></div>
     <div ref="nav">
-        <span v-for="item in panes"  @click="$emit('update:activeKey',item.tabKey)" class="tabs-nav-item" :class="{'-active':activeKey===item.tabKey, '-disabled':item.disabled}">{{item.label}}</span>
+        <span v-for="item in panes"  @click="$emit('updateActiveKey',item.tabKey)" class="tabs-nav-item" :class="{'-active':activeKey===item.tabKey, '-disabled':item.disabled}">{{item.label}}</span>
     </div>
   </div>
 </template>

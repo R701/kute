@@ -164,9 +164,7 @@
           {
             text: 'Tabs',
             href: 'tabs',
-            ch: '标签页',
-            badge: 'TODO',
-            disabled: true
+            ch: '标签页'
           },
           {
             text: 'Pagination',
