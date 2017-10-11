@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=development webpack --config webpack.dev.config.js",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js"
+    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js",
+    "commit": "git-cz",
+    "lint": "eslint src/*.js src/*.vue --cache --config .eslintrc.js --fix"
   },
   "eslintIgnore": [
     "dist"
@@ -41,6 +43,8 @@
     "css-loader": "^0.28.5",
     "cssnano": "^3.10.0",
     "cssnano-preset-default": "^4.0.0-rc.2",
+    "cz-conventional-changelog": "^2.0.0",
+    "cz-conventional-changelog-emoji": "^0.1.0",
     "eslint": "^4.5.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-loader": "^1.9.0",
@@ -56,6 +60,7 @@
     "postcss": "^6.0.9",
     "postcss-cssnext": "^3.0.2",
     "postcss-loader": "^2.0.6",
+    "pre-commit": "^1.2.2",
     "style-loader": "^0.18.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
@@ -65,6 +70,9 @@
     "webpack": "^3.5.5",
     "webpack-merge": "^4.1.0"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "dependencies": {
     "is-css-color": "^1.0.0",
     "object-assign": "^4.1.1",
@@ -72,5 +80,10 @@
     "v-dragged": "0.0.2",
     "vue-croppa": "^1.0.2",
     "vue-outside-events": "^1.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog-emoji"
+    }
   }
 }
