@@ -3,7 +3,7 @@
     <div class="slider-groove"
          :style="grooveStyle"
          @mousedown="onGrooveMouseDown">
-      <template v-if="totalSteps & hint">
+      <template v-if="totalSteps && hint">
         <div class="slider-hint"
              @mousedown.stop.prevent="onHintMouseDown(n)"
              v-for="n in (totalSteps + 1)"
