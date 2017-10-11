@@ -81,56 +81,66 @@
 </script>
 
 <style lang="stylus" scoped>
-.toast
-  min-width 36px
-  padding 0 18px
-  height 36px
-  line-height 36px
-  text-align center
-  border-radius 18px
-  background-color $theme-primary
-  absCenterX(fixed)
-  top 100px
-  font-size 16px
-  box-shadow psShadow(#000, .56, 90, 8px, 0, 35px), psShadow(#000, .8, -90, .5px, 0, 1px, true), psShadow(#fff, .5, 90, .5px, 0, 1px, true)
-  color $white
-  display flex
-  align-items center
-  &-close
-    fill $white
-    display inline-block
-    cursor pointer
-    height 22px
-    width 22px
-    absCenterY()
-    right 10px
-    padding 5px
-    transition fill .2s
-    &:hover
-      fill $white-darker
-  &-spinner
-    height 1.5em
-  &-icon
-    margin-right 3px
+  .toast
+    min-width 36px
+    padding 0 18px
+    height 36px
+    line-height 36px
+    text-align center
+    border-radius 18px
+    background-color $theme-primary
+    absCenterX(fixed)
+    top 100px
+    font-size 16px
+    box-shadow psShadow(#000, 0.56, 90, 8px, 0, 35px), psShadow(#000, 0.8, -90, 0.5px, 0, 1px, true), psShadow(#fff, 0.5, 90, 0.5px, 0, 1px, true)
+    color $white
+    display flex
+    align-items center
 
-.-loading
-  padding-left 36px
-  .toast-spinner
-    absCenterY()
-    left 7px
-.-loading-only
-  .toast-spinner
-    absCenter()
-    position absolute !important
-.-closable
-  padding-right 18px + 22px
-.-info
-  background-color: $state-info
-.-success
-  background-color: $state-success
-.-warn
-  background-color: $state-warn
-.-error
-  background-color: $state-error
+    &-close
+      fill $white
+      display inline-block
+      cursor pointer
+      height 22px
+      width 22px
+      absCenterY()
+      right 10px
+      padding 5px
+      transition fill 0.2s
 
+      &:hover
+        fill $white-darker
+
+    &-spinner
+      height 1.5em
+
+    &-icon
+      margin-right 3px
+
+  .-loading
+    padding-left 36px
+
+    .toast-spinner
+      absCenterY()
+      left 7px
+
+  .-loading-only
+    .toast-spinner
+      absCenter()
+      position absolute !important
+
+  .-closable
+    padding-right 18px + 22px
+
+  .-info
+    background-color $state-info
+
+  .-success
+    background-color $state-success
+
+  .-warn
+    background-color $state-warn
+
+  .-error
+    background-color $state-error
 </style>

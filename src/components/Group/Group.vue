@@ -64,11 +64,13 @@
 </script>
 
 <style lang="stylus" scoped>
-.group
-  display flex
-  align-items stretch
-  &.vertical
-    flex-direction column
-  .button
-    margin-left 0 !important
+  .group
+    display flex
+    align-items stretch
+
+    &.vertical
+      flex-direction column
+
+    .button
+      margin-left 0 !important
 </style>

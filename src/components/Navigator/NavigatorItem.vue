@@ -73,12 +73,11 @@
 </script>
 
 <style lang="stylus" scoped>
-.children-enter-active, .children-leave-active {
-  transition all .2s $ease-out-quint
-}
-.children-enter, .children-leave-to {
-  transform-origin 0 0
-  transform translateY(-1.5em)
-  opacity 0
-}
+  .children-enter-active, .children-leave-active
+    transition all 0.2s $ease-out-quint
+
+  .children-enter, .children-leave-to
+    transform-origin 0 0
+    transform translateY(-1.5em)
+    opacity 0
 </style>

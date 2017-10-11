@@ -300,12 +300,14 @@
 </script>
 
 <style lang="stylus" scoped>
-.navigator
-  position relative
- .navigator-item
+  .navigator
+    position relative
+
+  .navigator-item
     color white
     position relative
     line-height 2
+
     >>> a
       padding-left 1em
       color inherit
@@ -313,26 +315,30 @@
       display inline-block
       width 100%
       height 100%
-      transition all .2s
+      transition all 0.2s
       cursor pointer
+
       i, span
         vertical-align middle
         display inline-block
+
       .navigator-item-icon
         margin-right 5px
         vertical-align middle
+
       .navigator-item-badge
         position relative
         display inline-block
-        left .6em
+        left 0.6em
         color white
         padding 2px 5px
         border-radius 15px
         background-color $theme-primary
         line-height 1
         font-size 12px
-        transform scale(.9)
+        transform scale(0.9)
         vertical-align middle
+
     &:before
       content ' '
       display block
@@ -340,141 +346,168 @@
       height 1.2em
       border-radius 1.5px
       position absolute
-      top .5em
+      top 0.5em
       left 0
-      background-color alpha($grey, .5)
-      transition all .2s
+      background-color alpha($grey, 0.5)
+      transition all 0.2s
+
     &:hover
       &:before
         background-color $theme-secondary
+
     &.-toggled
       color white
+
       &:before
         content ' '
-        top .6em
+        top 0.6em
         transform rotate(45deg)
         border 3px solid $grey
-        width .7em
-        height .7em
+        width 0.7em
+        height 0.7em
         background-color transparent
-        left -.3em
+        left -0.3em
         border-top 0
         border-left 0
+
       &:hover
         &:before
           border-color $theme-secondary
+
     &.-active
       color $theme-primary-lighter
+
       &:before
         content ' '
         border 3px solid $theme-secondary
-        width .7em
-        height .7em
+        width 0.7em
+        height 0.7em
         background-color transparent
-        left -.3em
-        top .7em
+        left -0.3em
+        top 0.7em
         transform rotate(-45deg)
         border-top 0
         border-left 0
+
       &.-parent
-          &:before
-            top .9em
-            transform rotate(-135deg)
-        &.-toggled
-          &:before
-            top .6em
-            transform rotate(45deg)
+        &:before
+          top 0.9em
+          transform rotate(-135deg)
+
+      &.-toggled
+        &:before
+          top 0.6em
+          transform rotate(45deg)
+
     &.-disabled
       cursor not-allowed !important
       color $grey-lighter !important
+
       >>> *
         cursor not-allowed !important
+
     >>> .navigator
       padding-left 1em
 
-.-horizontal
-  display flex
-  > .navigator-item
-    padding 0
-    line-height 2
-    margin-right 10px
-    transition all .2s
-    border-radius 4px
-    text-align center
-    flex 1
-    white-space nowrap
-    &:last-child
-      margin-right 0
-    &:before
-      width 100%
-      height 2px
-      bottom 0px
-      top auto
-      border 0
-      cursor default
-      font-size inherit
-      margin-bottom -.44em
-      z-index 2
-    >>> a
-      padding 0 .4em
-      display inline-block
-      ellipsis()
-      width 100%
-    >>> .navigator-item-badge
-      left .2em
-    &:hover
-      background-color alpha($black-darker, .6)
+  .-horizontal
+    display flex
+
+    > .navigator-item
+      padding 0
+      line-height 2
+      margin-right 10px
+      transition all 0.2s
+      border-radius 4px
+      text-align center
+      flex 1
+      white-space nowrap
+
+      &:last-child
+        margin-right 0
+
       &:before
-        background-color $grey
-    &.-toggled
-      background-color alpha($black-darker, .75)
-    &.-active
-      background-color alpha($black-darker, .75)
-      &:before
-        background-color $theme-secondary
         width 100%
         height 2px
-        border none
-        left 0
+        bottom 0px
         top auto
-        transform none
-    &.-parent
-      &:before
-        transform rotate(0) !important
-        top auto !important
-    > .navigator
-      position absolute
-      z-index 4
-      margin-top 10px
-      box-shadow psShadow(#000, .5, 90, 8px, 0, 35px)
-      border-radius 4px
-      background-color $black-darker
-      padding-top .3em
-      padding-bottom .3em
-      &:before
-        content ''
-        display block
-        position absolute
+        border 0
+        cursor default
+        font-size inherit
+        margin-bottom -0.44em
+        z-index 2
+
+      >>> a
+        padding 0 0.4em
+        display inline-block
+        ellipsis()
         width 100%
-        height 10px
-        top -10px
-    >>> .navigator
-      padding-right .5em
-      min-width 100%
-      text-align left
-      white-space nowrap
-      .navigator-item
-        a
-          padding-left 1em
-.-united
-  &:after
-    content ''
-    display block
-    position absolute
-    bottom 0
-    left 0
-    border-bottom 2px solid $grey
-    width 100%
-    margin-bottom -.44em
+
+      >>> .navigator-item-badge
+        left 0.2em
+
+      &:hover
+        background-color alpha($black-darker, 0.6)
+
+        &:before
+          background-color $grey
+
+      &.-toggled
+        background-color alpha($black-darker, 0.75)
+
+      &.-active
+        background-color alpha($black-darker, 0.75)
+
+        &:before
+          background-color $theme-secondary
+          width 100%
+          height 2px
+          border none
+          left 0
+          top auto
+          transform none
+
+      &.-parent
+        &:before
+          transform rotate(0) !important
+          top auto !important
+
+      > .navigator
+        position absolute
+        z-index 4
+        margin-top 10px
+        box-shadow psShadow(#000, 0.5, 90, 8px, 0, 35px)
+        border-radius 4px
+        background-color $black-darker
+        padding-top 0.3em
+        padding-bottom 0.3em
+
+        &:before
+          content ''
+          display block
+          position absolute
+          width 100%
+          height 10px
+          top -10px
+
+      >>> .navigator
+        padding-right 0.5em
+        min-width 100%
+        text-align left
+        white-space nowrap
+
+        .navigator-item
+          a
+            padding-left 1em
+
+  .-united
+    &:after
+      content ''
+      display block
+      position absolute
+      bottom 0
+      left 0
+      border-bottom 2px solid $grey
+      width 100%
+      margin-bottom -0.44em
 </style>
 

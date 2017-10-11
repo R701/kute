@@ -103,8 +103,8 @@
 </script>
 
 <style lang="stylus">
-@require '~object/layout'
+  @require '~object/layout'
 
-.container
-  @extend .kute-box
+  .container
+    @extend .kute-box
 </style>

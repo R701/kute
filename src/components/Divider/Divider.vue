@@ -95,36 +95,42 @@
 
 
 <style lang="stylus" scoped>
-.divider-container
-  display block
-  width 100%
-  .divider-line
-    position relative
+  .divider-container
     display block
     width 100%
-    left 0
-    border-radius 0
-    position relative
-    border 0
-    transition opacity .2s
-    opacity 0
-    &.-full
+
+    .divider-line
+      position relative
+      display block
+      width 100%
+      left 0
+      border-radius 0
+      position relative
+      border 0
+      transition opacity 0.2s
+      opacity 0
+
+      &.-full
+        position absolute
+
+      &.-show
+        opacity 1
+
+    .divider-text
       position absolute
-    &.-show
-      opacity 1
-  .divider-text
-    position absolute
-    left 50%
-    transform translateX(-50%)
-    line-height 1
-    margin-top -.5em
-    padding 0 .4em
-    background $black
-.-vertical
-  width auto
-  .divider-line
+      left 50%
+      transform translateX(-50%)
+      line-height 1
+      margin-top -0.5em
+      padding 0 0.4em
+      background $black
+
+  .-vertical
     width auto
-    left auto
-    top 0
+
+    .divider-line
+      width auto
+      left auto
+      top 0
 </style>
 

@@ -44,36 +44,36 @@
 
 
 <style lang="stylus" scoped>
-@require '~object/layout'
+  @require '~object/layout'
 
-$panel-padding = 28px
+  $panel-padding = 28px
 
-.panel
-  box-shadow $shadow-material
-  border-radius 4px
-  background-color $black-lighter
+  .panel
+    box-shadow $shadow-material
+    border-radius 4px
+    background-color $black-lighter
 
-  &-head
-    pv 28px
-    border-bottom 1px solid $grey-darker
-    ~/.-plain &
-      border 0
-      padding-bottom 0
+    &-head
+      pv 28px
+      border-bottom 1px solid $grey-darker
 
-  &-body
-    pv 28px
-  
-  &-foot
-    pv 18px
-    border-top 1px solid $grey-darker
-    ~/.-plain &
-      border 0
-      padding-top 0
-      
-.panel
-  &-head, &-body, &-foot
-    ph $panel-padding
-  
+      ~/.-plain &
+        border 0
+        padding-bottom 0
 
+    &-body
+      pv 28px
+
+    &-foot
+      pv 18px
+      border-top 1px solid $grey-darker
+
+      ~/.-plain &
+        border 0
+        padding-top 0
+
+  .panel
+    &-head, &-body, &-foot
+      ph $panel-padding
 </style>
 

@@ -19,8 +19,5 @@ export default {
   tip: Boolean,
   annotated: Boolean,
   precision: Number,
-  lineColor: [String, Array],
-  validator: [Function, String],
-  validateOnBlur: Boolean,
-  label: String
+  lineColor: [String, Array]
 }

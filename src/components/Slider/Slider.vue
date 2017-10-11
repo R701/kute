@@ -1,5 +1,6 @@
 <template>
-  <div :class="['slider', state ? `-${state}-bg` : '', { '-disabled': disabled }]">
+  <div :class="['slider', { '-disabled': disabled, '-focused': focused }]"
+       :style="{height: totalSteps && annotated && hint ? '2.5em' : '2em'}">
     <div class="slider-groove"
          :style="grooveStyle"
          @mousedown="onGrooveMouseDown">
@@ -13,8 +14,9 @@
                v-if="annotated">{{((n - 1) * step).toFixed(precision)}}</div>
         </div>
       </template>
-      <div class="slider-indicator"
-           :style="{width: `${this.offset}px`}">
+      <div :class="['slider-indicator', state ? `-${state}-bg` : '']"
+           :style="{width: `${this.offset}px`}"
+           ref="indicator">
         <div :class="['slider-handle', {'-dragged': focused}]"
              v-dragged="onHandlerDrag"
              @mousedown.stop.prevent
@@ -31,7 +33,7 @@
 
 <script>
   import props from './_props'
-  import withIcon from '~mixins/with-icon'
+  import u from '~utils'
 
   import { directive as vDragged } from 'v-dragged'
 
@@ -85,6 +87,7 @@
       },
 
       stepSize () {
+        if (!this.stepRatio) return null
         return this.stepRatio * this.length
       },
 
@@ -98,38 +101,39 @@
         if (this.precision) {
           result = +result.toFixed(this.precision)
         }
-
-        this.$emit('update:value', result)
         return result
       }
     },
 
-    mixins: [withIcon],
+    watch: {
+      value (value) {
+        if (!isNaN(value)) {
+          this.offset = (value - this.min) / this.rangeSize * this.length
+        }
+      },
+
+      _value (value) {
+        this.$emit('update:value', value)
+      }
+    },
 
     mounted () {
       if (this.value) {
         this.offset = (this.value - this.min) / this.rangeSize * this.length
       }
+
+      if (typeof this.lineColor === 'string') {
+        this.$refs.indicator.style.background = u.getCSSColor(this.lineColor)
+      } else if (u.isArray(this.lineColor)) {
+        var colors = this.lineColor.map(item => u.getCSSColor(item)).join(', ')
+        this.$refs.indicator.style.background = `linear-gradient(to right, ${colors})`
+        this.$refs.indicator.style.background = `-webkit-linear-gradient(to right, ${colors})`
+        this.$refs.indicator.style.background = `-moz-linear-gradient(to right, ${colors})`
+        this.$refs.indicator.style.backgroundSize = `${this.length}px 100%`
+      }
     },
 
     methods: {
-
-      onChange () {
-        if (!this.validateOnBlur) {
-          this.validate()
-        }
-      },
-
-      async validate () {
-        if (typeof this.validator === 'function') {
-          var returnValue = this.validator(this.value)
-          if (returnValue instanceof Promise) {
-            this.errmsg = await returnValue
-          } else {
-            this.errmsg = returnValue
-          }
-        }
-      },
 
       onHandlerDrag ({ deltaX, offsetX, first, last, el }) {
         if (this.disabled) return
@@ -146,7 +150,7 @@
         }
         if (!deltaX) return
         var realStep = 0
-        if (!isNaN(this.stepSize)) {
+        if (this.stepSize) {
           if (deltaX > 0 && offsetX >= this.stepSize * (this.offsetStepCount + 1)) {
             this.offsetStepCount++
             realStep = this.stepSize
@@ -166,9 +170,10 @@
 
       onGrooveMouseDown (evt) {
         var newOffset = evt.offsetX
-        if (!isNaN(this.stepSize)) {
+        if (this.stepSize) {
           newOffset = Math.ceil(evt.offsetX / this.stepSize) * this.stepSize
         }
+
         this.offset = newOffset
       },
 
@@ -185,7 +190,7 @@
 
   .slider
     font-size 14px
-    height 2.5em
+    height 2em
     display inline-block
 
     &-groove
@@ -212,6 +217,7 @@
       width $defaultValue
       background $theme-primary
       position relative
+      transition width 0.2s
 
     &-tooltip
       tooltip(true)
@@ -230,7 +236,7 @@
       background-color white
       left 0
       absCenterY()
-      transition box-shadow 0.3s, transform 0.2s
+      transition box-shadow 0.3s, transform 0.2s, left 0.2s
       cursor pointer
 
       &:hover, &.-dragged
@@ -238,15 +244,23 @@
 
   .-disabled
     .slider-indicator
-      background-color $white-darker
+      background-color $white-darker !important
+      background $white-darker !important
       cursor not-allowed
 
     .slider-handle
-      background-color $grey-darker
+      background-color $grey-darker !important
       cursor not-allowed
 
       &:hover
-        box-shadow none
+        box-shadow none !important
+
+  .-focused
+    .slider-indicator
+      transition none !important
+
+    .slider-handle
+      transition box-shadow 0.3s, transform 0.2s !important
 
   .zoom-down-in-enter-active, .zoom-down-in-leave-active
     transition all 0.5s $ease-out-back

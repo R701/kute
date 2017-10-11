@@ -352,211 +352,253 @@
 </script>
 
 <style lang="stylus" scoped>
-.input-field
-  display inline-block
-  font-size 14px
-  line-height 34px
-  label
-    display block
-    line-height 1.5
-  .input-wrapper
-    position relative
-    input, textarea
-      color $grey-darker
-      background-color $white-darker
-      border-radius 2px
-      border 0
-      font-size inherit
-      outline none
-      padding 0 (10px/14px)em
-      transition all .2s
-      position relative
-      &::placeholder
-        color $grey-lighter
-    input
-      height 34px
-      width 220px
-      line-height 1
-    textarea
-      line-height 1.5
-      min-height 76px
-      width 220px
-      pv(5px)
-    .input-errmsg
-      font-size $font-size-h6
-      position absolute
-      left 0
-      bottom  -1.3em
-      line-height 1
-      color $state-error
+  .input-field
+    display inline-block
+    font-size 14px
+    line-height 34px
 
-    .icon-clear
-      position absolute
-      width 1em
-      height 1em
-      fill $grey-lighter
-      absCenterY()
-      right (8px/14px)em
+    label
+      display block
+      line-height 1.5
+
+    .input-wrapper
+      position relative
+
+      input, textarea
+        color $grey-darker
+        background-color $white-darker
+        border-radius 2px
+        border 0
+        font-size inherit
+        outline none
+        padding 0 10px / 14px em
+        transition all 0.2s
+        position relative
+
+        &::placeholder
+          color $grey-lighter
+
+      input
+        height 34px
+        width 220px
+        line-height 1
+
+      textarea
+        line-height 1.5
+        min-height 76px
+        width 220px
+        pv(5px)
+
+      .input-errmsg
+        font-size $font-size-h6
+        position absolute
+        left 0
+        bottom -1.3em
+        line-height 1
+        color $state-error
+
+      .icon-clear
+        position absolute
+        width 1em
+        height 1em
+        fill $grey-lighter
+        absCenterY()
+        right 8px / 14px em
+        cursor pointer
+        transition all 0.2s
+
+        &:hover
+          fill $grey-darker
+
+      .input-spinner
+        position absolute
+        absCenterY()
+        right 8px / 14px em
+
+      .input-icon
+        position absolute
+        left 6px / 14px em
+        top 0
+        color $grey-darker
+        display block
+        width 1em
+        height 100%
+        font-size percentage(16px / 14px)
+
+      .suggestions
+        background-color $white
+        display flex
+        flex-direction column
+        box-shadow psShadow(#000, 43%, 120, 2px, 0, 8px)
+        position absolute
+        min-width 100%
+        top 2px + 34px
+        z-index 10
+        max-height 34px * 5
+        overflow-y auto
+
+        .suggestion-item
+          background-color transparent
+          padding 0 10px / 14px em
+          color $grey-darker
+          cursor pointer
+
+          &.-active
+            color $white-lighter
+            background-color alpha($grey-lighter, 0.8)
+
+          &:hover
+            color $white-lighter
+            background-color $grey-lighter
+
+      .options
+        background-color $white
+        display flex
+        flex-direction column
+        box-shadow psShadow(#000, 43%, 120, 2px, 0, 8px)
+        absCenterY()
+        right 2.3em
+        min-width 100%
+        top 2px + 34px
+        z-index 10
+        border-radius 2px
+        overflow hidden
+
+        .option-item
+          background-color transparent
+          padding 0 10px / 14px em
+          color $grey-darker
+          cursor pointer
+
+          &.-active
+            color $white-lighter
+            background-color alpha($grey-lighter, 0.8)
+
+          &:hover
+            color $white-lighter
+            background-color $grey-lighter
+
+  .select
+    input
       cursor pointer
-      transition all .2s
-      &:hover
-        fill $grey-darker
+
+    .icon-down
+      position absolute
+      width 2em
+      height 2em
+      fill $grey-darker
+      absCenterY()
+      right 6px / 14px em
+      cursor pointer
+      transition all 0.2s
+
+      &.-reverse
+        transform rotate(-180deg)
+
+  .textarea
+    .input-errmsg
+      bottom -0.4em !important
+
     .input-spinner
       position absolute
-      absCenterY()
-      right (8px/14px)em
-    .input-icon
-      position absolute
-      left (6px/14px)em
-      top 0
-      color $grey-darker
-      display block
-      width 1em
-      height 100%
-      font-size percentage(16px/14px)
+      top auto !important
+      transform none
+      bottom 0.5em !important
+
+  .-focused
+    input, textarea
+      color $black !important
+      background-color $white-lighter !important
+      box-shadow psShadow(#000, 40%, 90, 1px, 0, 2px, true), psShadow(#000, 40%, 180, 1px, 0, 2px, true), psShadow(#000, 30%, -87, 1px, 0, 2px, true) !important
+
+  .-disabled
+    input, textarea
+      cursor not-allowed !important
+      background-color alpha($white-darker, 50%) !important
+
+      &::placeholder
+        color $grey-lighter !important
+
+  .-success
+    input, textarea
+      border 1px solid $state-success !important
+
+  .-warn
+    input, textarea
+      border 1px solid $state-warn !important
+
+  .-error
+    input, textarea
+      border 1px solid $state-error !important
+
+  .-pr
+    input
+      padding-right 2em !important
+
+  .-pl
+    input
+      padding-left 2em !important
+
+  .-block
+    input, textarea
+      width 100% !important
+
+  .-small
+    line-height 26px !important
+
+    input
+      height 26px !important
+      min-width 180px !important
+
+    textarea
+      min-height 48px !important
+      width 180px
+
     .suggestions
-      background-color $white
-      display flex
-      flex-direction column
-      box-shadow psShadow(#000, 43%, 120, 2px, 0, 8px)
-      position absolute
-      min-width 100%
-      top 2px + 34px
-      z-index 10
-      max-height 34px * 5
-      overflow-y auto
-      .suggestion-item
-        background-color transparent
-        padding 0 (10px/14px)em
-        color $grey-darker
-        cursor pointer
-        &.-active
-          color $white-lighter
-          background-color alpha($grey-lighter, .8)
-        &:hover
-          color $white-lighter
-          background-color $grey-lighter
-    .options
-      background-color $white
-      display flex
-      flex-direction column
-      box-shadow psShadow(#000, 43%, 120, 2px, 0, 8px)
-      absCenterY()
-      right 2.3em
-      min-width 100%
-      top 2px + 34px
-      z-index 10
-      border-radius 2px
-      overflow hidden
-      .option-item
-        background-color transparent
-        padding 0 (10px/14px)em
-        color $grey-darker
-        cursor pointer
-        &.-active
-          color $white-lighter
-          background-color alpha($grey-lighter, .8)
-        &:hover
-          color $white-lighter
-          background-color $grey-lighter
-.select
-  input
-    cursor pointer
-  .icon-down
-    position absolute
-    width 2em
-    height 2em
-    fill $grey-darker
-    absCenterY()
-    right (6px/14px)em
-    cursor pointer
-    transition all .2s
-    &.-reverse
-      transform rotate(-180deg)
+      top 2px + 26px !important
+      max-height 26px * 5 !important
 
-.textarea
-  .input-errmsg
-    bottom  -.4em !important
-  .input-spinner
-    position absolute
-    top auto !important
-    transform: none
-    bottom .5em !important
+  .-large
+    line-height 44px !important
 
-.-focused
-  input, textarea
-    color $black !important
-    background-color $white-lighter !important
-    box-shadow psShadow(#000, 40%, 90, 1px, 0, 2px, true), psShadow(#000, 40%, 180, 1px, 0, 2px, true), psShadow(#000, 30%, -87, 1px, 0, 2px, true) !important
-.-disabled
-  input, textarea
-    cursor not-allowed !important
-    background-color alpha($white-darker, 50%) !important
-    &::placeholder
-      color $grey-lighter !important
-.-success
-  input, textarea
-    border 1px solid $state-success !important
-.-warn
-  input, textarea
-    border 1px solid $state-warn !important
-.-error
-  input, textarea
-    border 1px solid $state-error !important
-.-pr
-  input
-    padding-right 2em !important
-.-pl
-  input
-    padding-left 2em !important
-.-block
-  input, textarea
-    width 100% !important
-.-small
-  line-height 26px !important
-  input
-    height 26px !important
-    min-width 180px !important
-  textarea
-    min-height 48px !important
-    width 180px
-  .suggestions
-    top 2px + 26px !important
-    max-height 26px * 5 !important
-.-large
-  line-height 44px !important
-  input
-    height 44px !important
-    min-width 260px !important
-  textarea
-    min-height 98px !important
-    width 264px
-  .suggestions
-    top 2px + 44px !important
-    max-height 44px * 5 !important
+    input
+      height 44px !important
+      min-width 260px !important
 
-.-icon-clickable
-  cursor pointer !important
-  &:hover
-    color $black-lighter !important
+    textarea
+      min-height 98px !important
+      width 264px
 
-.errmsg-enter-active, .errmsg-leave-active
-  transition: all .2s
-.errmsg-enter, .errmsg-leave-to
-  transform: translateY(-50%)
-  opacity: 0
-  filter: saturate(0%)
+    .suggestions
+      top 2px + 44px !important
+      max-height 44px * 5 !important
 
-.suggestions-enter-active, .suggestions-leave-active
-  transition: all .1s
-.suggestions-enter, .suggestions-leave-to
-  transform: translateY(-10px)
-  opacity: 0
-  filter: saturate(0%)
+  .-icon-clickable
+    cursor pointer !important
 
-.options-enter-active, .options-leave-active
-  transition: all .1s
-.options-enter, .options-leave-to
-  margin-right -10px
-  opacity: 0
+    &:hover
+      color $black-lighter !important
+
+  .errmsg-enter-active, .errmsg-leave-active
+    transition all 0.2s
+
+  .errmsg-enter, .errmsg-leave-to
+    transform translateY(-50%)
+    opacity 0
+    filter saturate(0%)
+
+  .suggestions-enter-active, .suggestions-leave-active
+    transition all 0.1s
+
+  .suggestions-enter, .suggestions-leave-to
+    transform translateY(-10px)
+    opacity 0
+    filter saturate(0%)
+
+  .options-enter-active, .options-leave-active
+    transition all 0.1s
+
+  .options-enter, .options-leave-to
+    margin-right -10px
+    opacity 0
 </style>

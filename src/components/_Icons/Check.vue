@@ -13,7 +13,7 @@
 </template>
 
 <style lang="stylus" scoped>
-svg
-  width 1em
-  height 1em
+  svg
+    width 1em
+    height 1em
 </style>

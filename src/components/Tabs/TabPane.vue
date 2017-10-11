@@ -6,22 +6,23 @@
 </template>
 
 <script>
-export default {
-  created () {
-  },
-  props: {
-    tabKey: String,
-    label: String,
-    disabled: Boolean
-  },
-  computed: {
-    active () {
-      return this.$parent.currentKey === this.tabKey
+  export default {
+    created () {
+    },
+    props: {
+      tabKey: String,
+      label: String,
+      disabled: Boolean
+    },
+    computed: {
+      active () {
+        return this.$parent.currentKey === this.tabKey
+      }
     }
-  }
 
-}
+  }
 </script>
 
 <style lang="css">
+
 </style>

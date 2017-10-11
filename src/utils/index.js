@@ -11,6 +11,10 @@ export default {
     return !isNaN(n)
   },
 
+  isArray (val) {
+    return Object.prototype.toString.call(val) === '[object Array]'
+  },
+
   assign,
 
   omit,
