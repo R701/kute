@@ -70,7 +70,6 @@
     "object-assign": "^4.1.1",
     "object.omit": "^3.0.0",
     "v-dragged": "0.0.2",
-    "v-tooltip": "^2.0.0-rc.2",
     "vue-croppa": "^1.0.2",
     "vue-outside-events": "^1.1.0"
   }

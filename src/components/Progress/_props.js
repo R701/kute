@@ -22,5 +22,6 @@ export default {
   type: {
     type: String,
     default: 'bar'
-  }
+  },
+  tooltip: Boolean
 }

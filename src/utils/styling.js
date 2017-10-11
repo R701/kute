@@ -66,7 +66,7 @@ export default {
       '$state-error': '#f24236'
     }
 
-    return cssSettings[val]
+    return cssSettings[val] || val
   },
 
   getPxValue (str) {

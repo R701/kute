@@ -1,20 +1,18 @@
 <template lang="html">
-    <div class="progress" :style="{display:type==='bar'?'block':'inline-block'}">
-
-    <div class="progress-bar-container" :class="size" v-if='type==="bar"'>
-      <div class="progress-bar-main" :style="{  'clip-path': `inset(0 ${100-_percent}% 0 0 round 999px)`}" :class="`-${_state}`">
+    <div class="progress" :style="{display:type === 'bar' ? 'block' : 'inline-block'}">
+      <div class="progress-bar-container" :class="size" v-if="type === 'bar'">
+        <div class="progress-bar-main" :style="{  'clip-path': `inset(0 ${100-_percent}% 0 0 round 999px)`}" :class="`-${_state}`"></div>
+        <span class="progress-bar-tooltip" :style="{left:`${_percent}%`}" v-if="tooltip">
+          {{_text}}
+        </span>
       </div>
-      <span class="progress-bar-tooltip" :style="{left:`${_percent}%`}">
-        {{_text}}
-      </span>
-    </div>
       <svg v-else class="progress-circle-container" viewBox="0 0 100 100" :class="`-${size}`">
         <text x="50" y="50" font-family="YaHei" font-size="15" class="progress-circle-text" dominant-baseline="central" text-anchor="middle">
-    {{_text}}
-  </text>
+          {{_text}}
+        </text>
         <circle cx="50" cy="50" :r="47.5" stroke-width="5" fill="none" class="progress-circle-outsider"></circle>
         <circle cx="50" cy="50" :r="radius" stroke-width="5" fill="none" :stroke-dasharray="_dashLength" stroke-linecap="round" class="progress-circle-insider" :class="`-${_state}`"></circle>
-    </svg>
+      </svg>
     </div>
 </template>
 
@@ -88,43 +86,25 @@
         height 100%
         overflow hidden
         will-change clip-path
-        transition all 0.3s
+        transition all 0.3s linear
 
         &.-active
-          background linear-gradient(90deg, #01f1a4, #15526b)
+          background linear-gradient(90deg, $theme-primary, $state-success)
 
         &.-failed
-          background linear-gradient(to right, #a73737, #7a2828)
+          background linear-gradient(to right, $state-warn, $state-error)
 
         &.-success
-          background linear-gradient(90deg, #01f1a4, #15526b)
+          background linear-gradient(90deg, $theme-primary, $state-success)
 
       &-tooltip
-        z-index 999
-        background $black-darker
-        rounded()
-        display inline-block
-        padding 5px 15px
-        box-shadow $shadow-basic
+        tooltip()
         position absolute
         left 0px
         top calc(100% + 5px)
         transform translateX(-50%)
-        text-align center
         will-change transform
-        transition all 0.3s
-
-        &:before
-          position absolute
-          content ''
-          rounded()
-          display inline-block
-          height 10px
-          width 10px
-          top -3px
-          left 50%
-          transform translateX(-50%)
-          background $black-darker
+        transition all 0.3s linear
 
     &-circle
       &-container
@@ -150,10 +130,10 @@
         transform-origin 50% 50%
         transform rotate(-90deg)
         stroke #0ba488
-        transition all 0.3s
+        transition all 0.3s linear
 
         &.-active
-          stroke #03e19e
+          stroke url('#active')
 
         &.-failed
           stroke $state-error
