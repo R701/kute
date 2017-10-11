@@ -18,6 +18,8 @@ import { notify, Notification } from './components/Notification'
 import { showDialog, Dialog } from './components/Dialog'
 import Popover from './components/Popover/Popover'
 import Progress from './components/Progress/Progress'
+import Tabs from './components/Tabs/Tabs'
+import TabPane from './components/Tabs/TabPane'
 
 var components = {
   button: Button,
@@ -36,7 +38,9 @@ var components = {
   notification: Notification,
   dialog: Dialog,
   popover: Popover,
-  progress: Progress
+  progress: Progress,
+  tabs: Tabs,
+  'tab-pane': TabPane
 }
 
 export default {
