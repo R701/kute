@@ -54,3 +54,30 @@ hide()
   padding: 0
   position: absolute
   width: 1px
+
+tooltip()
+  z-index 999
+  background $black-darker
+  rounded()
+  display inline-block
+  padding 5px 15px
+  box-shadow $shadow-basic
+  // position absolute
+  // left 0px
+  // top calc(100% + 5px)
+  // transform translateX(-50%)
+  text-align center
+  will-change transform
+  transition all 0.3s
+
+  &:before
+    position absolute
+    content ''
+    rounded()
+    display inline-block
+    height 10px
+    width 10px
+    top -3px
+    left 50%
+    transform translateX(-50%)
+    background $black-darker

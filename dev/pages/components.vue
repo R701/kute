@@ -216,13 +216,7 @@
           {
             text: 'Progress',
             href: 'progress',
-<<<<<<< HEAD
             ch: '进度条'
-=======
-            ch: '进度条',
-            badge: 'TODO',
-            disabled: true
->>>>>>> 2925e7ef8b7bb4ccfa63c43045494eefb144b779
           },
           {
             text: 'Pagination',

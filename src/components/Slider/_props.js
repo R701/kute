@@ -1,12 +1,18 @@
 export default {
-  min: Number,
-  max: Number,
+  min: {
+    type: Number,
+    default: 0
+  },
+  max: {
+    type: Number,
+    default: 100
+  },
   step: Number,
   value: Number,
   state: String,
   size: String,
   length: {
-    type: [String, Number],
+    type: Number,
     default: 220
   },
   block: Boolean,
