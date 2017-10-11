@@ -20,6 +20,8 @@ import Popover from './components/Popover/Popover'
 import Progress from './components/Progress/Progress'
 import Tabs from './components/Tabs/Tabs'
 import TabPane from './components/Tabs/TabPane'
+import Breadcrumb from './components/Breadcrumb/Breadcrumb'
+import BreadcrumbItem from './components/Breadcrumb/Breadcrumb.item'
 
 var components = {
   button: Button,
@@ -40,7 +42,9 @@ var components = {
   popover: Popover,
   progress: Progress,
   tabs: Tabs,
-  'tab-pane': TabPane
+  'tab-pane': TabPane,
+  breadcrumb: Breadcrumb,
+  'breadcrumb-item': BreadcrumbItem
 }
 
 export default {

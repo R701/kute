@@ -155,11 +155,10 @@
             ch: '导航栏'
           },
           {
-            text: 'Breadcrumbs',
-            href: 'breadcrumbs',
+            text: 'Breadcrumb',
+            href: 'breadcrumb',
             ch: '面包屑导航',
-            badge: 'TODO',
-            disabled: true
+            badge: 'TODO'
           },
           {
             text: 'Tabs',

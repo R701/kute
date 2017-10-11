@@ -39,7 +39,7 @@
       return (
         <div class="tabs">
           <TabNav {...data} onUpdateActiveKey={i => this.handleUpdate(i)} ></TabNav>
-          <div class="tabs-content" slot="slot" />
+          <div class="tabs-content">{this.$slots.default}</div>
         </div>
       )
     }

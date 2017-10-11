@@ -16,10 +16,11 @@
     },
     computed: {
       active () {
-        return this.$parent.currentKey === this.tabKey
+        console.log(this.$parent.priCurrentKey)
+        return this.$parent.priCurrentKey === this.tabKey
       }
-    }
 
+    }
   }
 </script>
 
