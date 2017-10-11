@@ -21,5 +21,6 @@ export default {
 
   isWhichVM (obj, name) {
     return this.isVM(obj) && obj.$options.name === name
-  }
+  },
+  noop: () => {}
 }
