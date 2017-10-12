@@ -191,9 +191,7 @@
           {
             text: 'Modal',
             href: 'modal',
-            ch: '弹窗',
-            badge: 'TODO',
-            disabled: true
+            ch: '弹窗'
           },
           { divider: true, color: '$grey', margin: '2em', text: 'Data' },
           {
@@ -214,13 +212,6 @@
             text: 'Progress',
             href: 'progress',
             ch: '进度条'
-          },
-          {
-            text: 'Pagination',
-            href: 'pagination',
-            ch: '分页',
-            badge: 'TODO',
-            disabled: true
           }
         ],
         initialNav: [0],

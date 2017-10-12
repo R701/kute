@@ -14,7 +14,7 @@
                v-if="annotated">{{((n - 1) * step).toFixed(precision)}}</div>
         </div>
       </template>
-      <div :class="['slider-indicator', state ? `-${state}-bg` : '']"
+      <div :class="['slider-indicator', state ? `-${state}-gradient` : '']"
            :style="{width: `${this.offset}px`}"
            ref="indicator">
         <div :class="['slider-handle', {'-dragged': focused}]"

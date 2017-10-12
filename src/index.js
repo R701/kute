@@ -16,6 +16,7 @@ import Slider from './components/Slider/Slider'
 import { showToast, Toast } from './components/Toast'
 import { notify, Notification } from './components/Notification'
 import { showDialog, Dialog } from './components/Dialog'
+import Modal from './components/Modal/Modal'
 import Popover from './components/Popover/Popover'
 import Progress from './components/Progress/Progress'
 import Tabs from './components/Tabs/Tabs'
@@ -39,6 +40,7 @@ var components = {
   toast: Toast,
   notification: Notification,
   dialog: Dialog,
+  modal: Modal,
   popover: Popover,
   progress: Progress,
   tabs: Tabs,
@@ -105,5 +107,6 @@ export {
   Toast,
   Notification,
   Dialog,
+  Modal,
   Popover
 }
