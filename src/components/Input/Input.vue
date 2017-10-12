@@ -371,7 +371,7 @@
         border 0
         font-size inherit
         outline none
-        padding 0 10px / 14px em
+        padding 0 unit(operate('/', 10px, 14px), 'em')
         transition all 0.2s
         position relative
 
@@ -403,7 +403,7 @@
         height 1em
         fill $grey-lighter
         absCenterY()
-        right 8px / 14px em
+        right unit(operate('/', 8px, 14px), 'em')
         cursor pointer
         transition all 0.2s
 
@@ -413,11 +413,11 @@
       .input-spinner
         position absolute
         absCenterY()
-        right 8px / 14px em
+        right unit(operate('/', 8px, 14px), 'em')
 
       .input-icon
         position absolute
-        left 6px / 14px em
+        left unit(operate('/', 6px, 14px), 'em')
         top 0
         color $grey-darker
         display block
@@ -439,7 +439,7 @@
 
         .suggestion-item
           background-color transparent
-          padding 0 10px / 14px em
+          padding 0 unit(operate('/', 10px, 14px), 'em')
           color $grey-darker
           cursor pointer
 
@@ -466,7 +466,7 @@
 
         .option-item
           background-color transparent
-          padding 0 10px / 14px em
+          padding 0 unit(operate('/', 10px, 14px), 'em')
           color $grey-darker
           cursor pointer
 
@@ -488,7 +488,7 @@
       height 2em
       fill $grey-darker
       absCenterY()
-      right 6px / 14px em
+      right unit(operate('/', 6px, 14px), 'em')
       cursor pointer
       transition all 0.2s
 

@@ -119,7 +119,7 @@
       width $w
 
       &:after
-        right -1px / 14px em
+        right unit(operate('/', -1px, 14px), 'em')
         background white
         box-shadow $shadow-material
 
