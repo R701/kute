@@ -5,19 +5,38 @@ const LoadingConstructor = Vue.extend(Loading)
 
 var instance
 
-const startLoading = function ({ onClose, ...rest } = {}) {
+const startLoading = function ({ onShow, onClose, onProgress, onTimeout, timeout, ...rest } = {}) {
   if (instance) return
+  console.log(rest)
   instance = new LoadingConstructor({
+
     propsData: {
       ...rest
     },
 
     destroyed () {
+      instance = null
       onClose && onClose()
+    },
+
+    watch: {
+      progress (val) {
+        onProgress && onProgress(val)
+      }
     }
   })
 
-  instance.insert()
+  instance.insert(onShow)
+
+  timeout = timeout || instance.config$.defaultLoadingTimeout
+  if (timeout) {
+    setTimeout(() => {
+      if (instance) {
+        onTimeout && onTimeout(instance)
+        instance.close()
+      }
+    }, timeout)
+  }
 
   return instance
 }
@@ -26,8 +45,6 @@ const stopLoading = function () {
   if (!instance) return
 
   instance.close()
-
-  instance = null
 }
 
 export { startLoading, stopLoading, Loading }

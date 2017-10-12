@@ -10,11 +10,18 @@
                   @after-leave="afterLoadingLeave">
         <div :class="['loading', {'-freezing': freezeScreen}]"
              v-if="entered">
-          <k-spinner rainbow
+          <div class="bar-wrapper"
+               v-if="bar">
+            <k-progress size="small"
+                        :percent="progress"
+                        v-bind="$attrs"></k-progress>
+          </div>
+          <k-spinner v-else
+                     rainbow
                      d="100"
                      :stroke-width="3"
                      v-bind="$attrs"></k-spinner>
-          <div class="message">{{message}}</div>
+          <div class="message">{{_message}}</div>
         </div>
       </transition>
     </div>
@@ -41,13 +48,60 @@
 
     data () {
       return {
-        entered: false
+        entered: false,
+        innerMessage: '',
+        progress: 0
+      }
+    },
+
+    computed: {
+      _message () {
+        if (this.innerMessage !== null && this.innerMessage !== undefined) {
+          return this.innerMessage
+        } else {
+          return this.config$.defaultLoadingMessage
+        }
+      }
+    },
+
+    mounted () {
+      this.innerMessage = this.message
+      var interval
+      if (this.autoProgress) {
+        interval = setInterval(() => {
+          if (this.progress > 55) {
+            clearInterval(interval)
+            interval = setInterval(() => {
+              if (this.progress > 75) {
+                clearInterval(interval)
+                interval = setInterval(() => {
+                  if (this.progress >= 99) {
+                    clearInterval(interval)
+                  } else {
+                    this.progress++
+                  }
+                }, 300)
+              } else {
+                this.progress++
+              }
+            }, 200)
+          } else {
+            this.progress++
+          }
+        }, 100)
       }
     },
 
     methods: {
       close () {
-        this.entered = false
+        if (this.bar) {
+          this.progress = 100
+          setTimeout(() => {
+            this.entered = false
+          }, 500)
+        } else {
+          this.entered = false
+        }
       },
 
       afterLoadingLeave () {
@@ -61,12 +115,6 @@
         this.entered = true
         if (this.freezeScreen) {
           document.documentElement.style.overflow = 'hidden'
-        }
-
-        if (this.timeout) {
-          setTimeout(() => {
-            this.close()
-          }, this.timeout)
         }
       },
 
@@ -83,7 +131,12 @@
     absCenter()
     transition-duration 0.1s
 
+    .bar-wrapper
+      width 240px
+
     .message
       padding 10px
+      margin-top 15px
+      text-align center
 </style>
 

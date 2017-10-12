@@ -196,8 +196,7 @@
           {
             text: 'Loading',
             href: 'loading',
-            ch: '加载遮罩',
-            badge: 'TODO'
+            ch: '加载遮罩'
           },
           { divider: true, color: '$grey', margin: '2em', text: 'Data' },
           {

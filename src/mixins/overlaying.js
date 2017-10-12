@@ -3,11 +3,13 @@ import Overlay from '~components/_Helpers/Overlay'
 export default {
   components: { Overlay },
   methods: {
-    insert () {
+    insert (onInsert) {
       if (this.$isServer) return
       var vm = this.$mount()
       var parent = this.parent || document.body
       parent.appendChild(vm.$el)
+
+      onInsert && onInsert(this)
     },
 
     remove () {

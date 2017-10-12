@@ -73,6 +73,8 @@ export default {
       data () {
         return {
           config$: {
+            defaultLoadingMessage: options.defaultLoadingMessage || '加载中，请稍等片刻',
+            defaultLoadingTimeout: options.defaultLoadingTimeout || 0,
             defaultToastTop: options.defaultToastTop,
             defaultDialogTop: options.defaultDialogTop,
             iconClassPrefix: options.iconClassPrefix || 'iconfont icon-',
