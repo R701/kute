@@ -1,16 +1,18 @@
 <template>
-  <div :class="['spinner', { '-grad': grad }]"
+  <div :class="['spinner', { '-rainbow': rainbow }]"
        :style="{width}">
     <svg class="circular"
-         viewBox="25 25 50 50">
+         viewBox="25 25 50 50"
+         :style="{animationDuration: duration + 's'}">
       <circle class="path"
               cx="50"
               cy="50"
               r="20"
               fill="none"
               :stroke="color"
-              stroke-width="2"
-              stroke-miterlimit="10" />
+              :stroke-width="strokeWidth"
+              stroke-miterlimit="10"
+              :style="{animationDuration: duration * (3/4) + 's'}" />
     </svg>
   </div>
 </template>
@@ -65,7 +67,7 @@
     animation dash 1.5s ease-in-out infinite
     stroke-linecap round
 
-  .spinner.-grad
+  .spinner.-rainbow
     .path
       // animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite
       animation-name dash, color

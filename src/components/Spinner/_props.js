@@ -8,5 +8,15 @@ export default {
     default: '#eee'
   },
 
-  grad: Boolean
+  rainbow: Boolean,
+
+  strokeWidth: {
+    default: 2,
+    type: Number
+  },
+
+  duration: {
+    default: 2,
+    type: Number
+  }
 }

@@ -193,6 +193,12 @@
             href: 'modal',
             ch: '弹窗'
           },
+          {
+            text: 'Loading',
+            href: 'loading',
+            ch: '加载遮罩',
+            badge: 'TODO'
+          },
           { divider: true, color: '$grey', margin: '2em', text: 'Data' },
           {
             text: 'List',

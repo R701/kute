@@ -8,13 +8,25 @@
       <k-spinner color="#E5B547"></k-spinner>
     </named-block>
     <br>
-    <named-block name="grad">
-      <k-spinner grad></k-spinner>
+    <named-block name="rainbow">
+      <k-spinner rainbow></k-spinner>
     </named-block>
     <br>
-    <named-block name="grad, d: 50px">
-      <k-spinner grad
+    <named-block name="rainbow, d: 50px">
+      <k-spinner rainbow
                  d="50px"></k-spinner>
+    </named-block>
+    <br>
+    <named-block name="rainbow, d: 50px, duration: 6">
+      <k-spinner rainbow
+                 :duration="6"
+                 d="50px"></k-spinner>
+    </named-block>
+    <br>
+    <named-block name="rainbow, d: 50px, stoke-width: 8">
+      <k-spinner rainbow
+                 d="50px"
+                 :stroke-width="8"></k-spinner>
     </named-block>
   </div>
 </template>
