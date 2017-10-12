@@ -191,9 +191,7 @@
           {
             text: 'Modal',
             href: 'modal',
-            ch: '弹窗',
-            badge: 'TODO',
-            disabled: true
+            ch: '弹窗'
           },
           { divider: true, color: '$grey', margin: '2em', text: 'Data' },
           {

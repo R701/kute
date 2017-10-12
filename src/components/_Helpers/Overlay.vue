@@ -28,7 +28,8 @@
         validator (val) {
           return u.isTolerantNumber(val)
         }
-      }
+      },
+      stay: Boolean
     },
 
     data () {
@@ -77,7 +78,7 @@
         this.$emit('leave')
       },
       afterLeave () {
-        this.remove && this.remove()
+        this.remove && !this.stay && this.remove()
         this.$emit('after-leave')
       }
     }
