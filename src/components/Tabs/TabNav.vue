@@ -14,10 +14,12 @@
       activeKey: null,
       width: {
         type: String,
-        default: '250px'},
+        default: '250px'
+      },
       gap: {
         type: String,
-        default: '5px'}
+        default: '5px'
+      }
     },
     mounted () {
       this.scrollToActive()
@@ -51,8 +53,9 @@
 <style lang="stylus" scoped>
   .tabs
     &-nav
-      border-bottom 2px solid #737780;
+      border-bottom 2px solid #737780
       position relative
+
       &-activebar
         position absolute
         bottom -2px
@@ -60,6 +63,7 @@
         background-color $theme-primary-lighter
         z-index 1
         transition transform 0.3s $ease-in-out-circ
+
       &-item
         display inline-block
         padding 0 20px
@@ -67,23 +71,28 @@
         line-height 40px
         cursor pointer
         user-select none
-        text-align:center
+        text-align center
+
         &.-disabled
           cursor not-allowed
           pointer-events none
           color #666
+
     &.-default
       & ^[0]-nav
         &-item
           &:hover, &.-active
             color $theme-primary-lighter
+
     &.-tab
       & ^[0]-nav
         &-activebar
           background-color $theme-secondary-lighter
+
         &-item
           &:hover, &.-active
             color $theme-primary-lighter
+
           &.-active
-            background:$black-darker
+            background $black-darker
 </style>
