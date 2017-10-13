@@ -9,7 +9,17 @@
       },
       currentKey: {
         type: null
-      }
+      },
+      type: {
+        type: String,
+        default: 'default'
+      },
+      width: {
+        type: String,
+        default: '250px'},
+      gap: {
+        type: String,
+        default: '5px'}
     },
     data () {
       return { priCurrentKey: 2 }
@@ -33,12 +43,14 @@
       const data = {
         props: {
           panes: panes,
-          activeKey: this.priCurrentKey
+          activeKey: this.priCurrentKey,
+          width: this.width,
+          gap: this.gap
         }
       }
       return (
-        <div class="tabs">
-          <TabNav {...data} onUpdateActiveKey={i => this.handleUpdate(i)} ></TabNav>
+        <div class={`-${this.type} tabs`}>
+          <TabNav {...data} onUpdateActiveKey={i => this.handleUpdate(i)}></TabNav>
           <div class="tabs-content">{this.$slots.default}</div>
         </div>
       )

@@ -2,7 +2,7 @@
   <div class="tabs-nav">
     <div class="tabs-nav-activebar" ref="activeScrollBar" :style="{'transform':`translateX(${currentPosiOfBar}px)`,'width':`${barWidth}px`}"></div>
     <div ref="nav">
-        <span v-for="item in panes"  @click="$emit('updateActiveKey',item.tabKey)" class="tabs-nav-item" :class="{'-active':activeKey===item.tabKey, '-disabled':item.disabled}">{{item.label}}</span>
+        <span v-for="item in panes"  @click="$emit('updateActiveKey',item.tabKey)" class="tabs-nav-item" :class="{'-active':activeKey===item.tabKey, '-disabled':item.disabled}" :style="{'width':width, 'margin-right':gap}">{{item.label}}</span>
     </div>
   </div>
 </template>
@@ -11,15 +11,17 @@
   export default {
     props: {
       panes: Array,
-      activeKey: null
-    },
-    created () {
-      console.log(this.panes)
+      activeKey: null,
+      width: {
+        type: String,
+        default: '250px'},
+      gap: {
+        type: String,
+        default: '5px'}
     },
     mounted () {
-
+      this.scrollToActive()
     },
-
     methods: {
       scrollToActive () {
         const { nav, activeScrollBar } = this.$refs
@@ -49,18 +51,15 @@
 <style lang="stylus" scoped>
   .tabs
     &-nav
-      border-bottom 2px solid #999
+      border-bottom 2px solid #737780;
       position relative
-
       &-activebar
         position absolute
         bottom -2px
         height 2px
-        width 20px
         background-color $theme-primary-lighter
         z-index 1
         transition transform 0.3s $ease-in-out-circ
-
       &-item
         display inline-block
         padding 0 20px
@@ -68,12 +67,23 @@
         line-height 40px
         cursor pointer
         user-select none
-
-        &:hover, &.-active
-          color $theme-primary-lighter
-
+        text-align:center
         &.-disabled
           cursor not-allowed
           pointer-events none
           color #666
+    &.-default
+      & ^[0]-nav
+        &-item
+          &:hover, &.-active
+            color $theme-primary-lighter
+    &.-tab
+      & ^[0]-nav
+        &-activebar
+          background-color $theme-secondary-lighter
+        &-item
+          &:hover, &.-active
+            color $theme-primary-lighter
+          &.-active
+            background:$black-darker
 </style>
