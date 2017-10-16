@@ -113,9 +113,7 @@
           {
             text: 'Scrollable Container',
             href: 'scrollable-container',
-            ch: '滚动容器',
-            badge: 'TODO',
-            disabled: true
+            ch: '滚动容器'
           },
           {
             text: 'Draggable Container',

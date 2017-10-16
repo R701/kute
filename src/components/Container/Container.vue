@@ -1,6 +1,8 @@
 <template>
   <div :class="['container', computedClassNames]"
-       :style="boxStyle">
+       :style="boxStyle"
+       @scroll="onScroll"
+       ref="container">
     <slot></slot>
   </div>
 </template>
@@ -11,6 +13,13 @@
 
   export default {
     props,
+
+    data () {
+      return {
+        lastScroll: {}
+      }
+    },
+
     computed: {
       computedClassNames () {
         return {
@@ -20,7 +29,9 @@
           '-flex-wrap': this.flex && this.wrap,
           '-flex-column': this.column,
           '-relative': this.relative,
-          '-scroll': this.scroll
+          '-scroll': this.scroll,
+          '-scroll-x': this.scrollX && !this.scrollY,
+          '-scroll-y': this.scrollY && !this.scrollX
         }
       },
 
@@ -97,6 +108,52 @@
         }
 
         return obj
+      }
+    },
+
+    created () {
+      if (this.scrollX && this.scrollY) {
+        throw new Error('"scrollX" and "scrollY" should not be set at the same time.')
+      }
+    },
+
+    mounted () {
+      if (this.scrollY && this.scrollTop > 0) {
+        this.$refs.container.scrollTop = this.scrollTop
+      }
+
+      if (this.scrollX && this.scrollLeft > 0) {
+        this.$refs.container.scrollLeft = this.scrollLeft
+      }
+
+      if (this.scrollIntoView && this.$refs.container.querySelector(this.scrollIntoView)) {
+        this.$nextTick(() => {
+          this.$refs.container.querySelector(this.scrollIntoView).scrollIntoView({
+            behavior: 'smooth'
+          })
+        })
+      }
+    },
+
+    methods: {
+      onScroll ({ target }) {
+        if (!this.scrollX && !this.scrollY) return
+        var { scrollLeft, scrollTop, scrollWidth, scrollHeight, clientWidth, clientHeight } = target
+        var lastScrollLeft = (this.lastScroll ? this.lastScroll.scrollLeft : null) || this.scrollLeft || 0
+        var lastScrollTop = (this.lastScroll ? this.lastScroll.scrollTop : null) || this.scrollTop || 0
+        var deltaLeft = scrollLeft - lastScrollLeft
+        var deltaTop = scrollTop - lastScrollTop
+        var detail = { scrollLeft, scrollTop, scrollWidth, scrollHeight, clientWidth, clientHeight, deltaLeft, deltaTop }
+        this.$emit('scroll', detail)
+        if ((deltaTop > 0 && scrollTop >= scrollHeight - clientHeight - this.lowerThreshold) || (deltaLeft > 0 && scrollLeft >= scrollWidth - clientWidth - this.lowerThreshold)) {
+          this.$emit('scroll-to-lower', detail)
+        }
+
+        if ((deltaTop < 0 && scrollTop <= this.upperThreshold) || (deltaLeft < 0 && scrollLeft <= this.upperThreshold)) {
+          this.$emit('scroll-to-upper', detail)
+        }
+
+        this.lastScroll = { scrollLeft, scrollTop }
       }
     }
   }

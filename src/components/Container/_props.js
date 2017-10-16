@@ -5,6 +5,19 @@ export default {
   wrap: Boolean,
   relative: Boolean,
   scroll: Boolean,
+  scrollX: Boolean,
+  scrollY: Boolean,
+  scrollLeft: Number,
+  scrollTop: Number,
+  scrollIntoView: String,
+  upperThreshold: {
+    type: Number,
+    default: 20
+  },
+  lowerThreshold: {
+    type: Number,
+    default: 20
+  },
   w: [Number, String],
   h: [Number, String],
   pa: [Number, String],
