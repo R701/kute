@@ -116,13 +116,6 @@
             ch: '滚动容器'
           },
           {
-            text: 'Draggable Container',
-            href: 'draggable-container',
-            ch: '可拖动容器',
-            badge: 'TODO',
-            disabled: true
-          },
-          {
             text: 'Carousel',
             href: 'carousel',
             ch: '轮播',
