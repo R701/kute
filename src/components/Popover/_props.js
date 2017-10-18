@@ -1,12 +1,20 @@
-export default {
-  placement: {
-    default: 'top',
-    type: String
+const main = {
+  width: [Number, String],
+  position: {
+    type: String,
+    default: 's'
   },
-  title: String,
-  content: String,
-  trigger: {
-    default: 'click',
-    type: String
-  }
+  links: Array,
+  show: Boolean,
+  fixed: Boolean
 }
+
+const link = {
+  text: {
+    type: String,
+    required: true
+  },
+  disabled: Boolean
+}
+
+export { main, link }

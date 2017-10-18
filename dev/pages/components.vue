@@ -136,8 +136,7 @@
           {
             text: 'Popover',
             href: 'popover',
-            ch: '气泡弹出框',
-            badge: 'TODO'
+            ch: '气泡弹出框'
           },
           {
             text: 'Navigator',

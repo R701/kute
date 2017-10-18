@@ -5,7 +5,10 @@ export default {
   wrap: Boolean,
   relative: Boolean,
   scroll: Boolean,
-  overflow: Boolean,
+  overflow: {
+    default: true,
+    type: Boolean
+  },
   scrollX: Boolean,
   scrollY: Boolean,
   scrollLeft: Number,

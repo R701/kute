@@ -11,10 +11,10 @@ absCenter($position = absolute)
     margin-top: -($h/2)
   else if $w
     margin-left: -($w/2)
-    transform: translateY(-50%) @transform
+    transform: translateY(-50%)
   else if $h
     margin-top: -($h/2)
-    transform: translateX(-50%) @transform
+    transform: translateX(-50%)
 
 absCenterX($position = absolute)
   $w = @width
@@ -23,7 +23,7 @@ absCenterX($position = absolute)
   if $w
     margin-left: -($w/2)
   else
-    transform: translateX(-50%) @transform
+    transform: translateX(-50%)
 
 absCenterY($position = absolute)
   $h = @height
@@ -32,7 +32,7 @@ absCenterY($position = absolute)
   if $h
     margin-top: -($h/2)
   else
-    transform: translateY(-50%) @transform
+    transform: translateY(-50%)
 
 absCover($position = absolute)
   position: $position

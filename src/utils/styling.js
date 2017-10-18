@@ -2,7 +2,7 @@ import isCssColor from 'is-css-color'
 
 export default {
   getCSSLength (val, math) {
-    if (typeof (+val) === 'number' && !isNaN(+val)) {
+    if (typeof (+val) === 'number' && !isNaN(val)) {
       if (typeof math === 'function') {
         return math(+val) + 'px'
       }
