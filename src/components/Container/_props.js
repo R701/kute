@@ -5,6 +5,7 @@ export default {
   wrap: Boolean,
   relative: Boolean,
   scroll: Boolean,
+  overflow: Boolean,
   scrollX: Boolean,
   scrollY: Boolean,
   scrollLeft: Number,

@@ -29,6 +29,7 @@
           '-flex-wrap': this.flex && this.wrap,
           '-flex-column': this.column,
           '-relative': this.relative,
+          '-overflow': this.overflow,
           '-scroll': this.scroll,
           '-scroll-x': this.scrollX && !this.scrollY,
           '-scroll-y': this.scrollY && !this.scrollX

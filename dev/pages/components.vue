@@ -137,8 +137,7 @@
             text: 'Popover',
             href: 'popover',
             ch: '气泡弹出框',
-            badge: 'TODO',
-            disabled: true
+            badge: 'TODO'
           },
           {
             text: 'Navigator',

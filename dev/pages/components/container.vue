@@ -58,6 +58,7 @@
         wrap: false,
         relative: false,
         scroll: false,
+        overflow: false,
         w: '',
         h: '',
         pa: '',
@@ -125,15 +126,18 @@
 </script>
 
 <style lang="stylus">
-.c-container
-  .controller
-    margin-right 15px
-    margin-bottom 10px
-  .child
-    transition all .3s
-    &:hover
-      opacity .9
-      cursor pointer
-    &.active
-      border 1px solid white
+  .c-container
+    .controller
+      margin-right 15px
+      margin-bottom 10px
+
+    .child
+      transition all 0.3s
+
+      &:hover
+        opacity 0.9
+        cursor pointer
+
+      &.active
+        border 1px solid white
 </style>
