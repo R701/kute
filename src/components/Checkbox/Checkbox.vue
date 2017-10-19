@@ -88,6 +88,7 @@
 
       .icon-check
         fill $white !important
+        filter drop-shadow(1px 1px 1px alpha(#000, 0.55))
 
       &.-checked
         &:before
