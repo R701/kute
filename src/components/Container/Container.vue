@@ -29,7 +29,6 @@
           '-flex-wrap': this.flex && this.wrap,
           '-flex-column': this.column,
           '-relative': this.relative,
-          '-overflow': this.overflow,
           '-scroll': this.scroll,
           '-scroll-x': this.scrollX && !this.scrollY,
           '-scroll-y': this.scrollY && !this.scrollX
@@ -106,6 +105,12 @@
         }
         if (this.bg) {
           obj.backgroundColor = u.getCSSColor(this.bg)
+        }
+
+        if (this.overflow) {
+          obj.overflow = 'visible'
+        } else {
+          obj.overflow = 'hidden'
         }
 
         return obj

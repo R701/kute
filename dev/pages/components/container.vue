@@ -139,5 +139,5 @@
         cursor pointer
 
       &.active
-        border 1px solid white
+        background $theme-primary !important
 </style>

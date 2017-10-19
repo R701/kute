@@ -9,6 +9,7 @@
                      h="300"
                      pa="1em"
                      :bg="bg"
+                     :overflow="false"
                      scroll-y
                      :scroll-top="value"
                      @scroll-to-upper="bg = '$state-warn'"
@@ -30,6 +31,7 @@
                      h="300"
                      pa="1em"
                      bg="$grey-darker"
+                     :overflow="false"
                      scroll-y
                      scroll-into-view="#view">
           <p>乐萨飞吗旧妇提远！须穿国是藏剧女过狗给英盖误民伯微还守！寻点临肯妙尔遍前把闻容阵复传脸资远纳！落息东生展界革态阳！姑关毛作奇。奥树错尔京创贵找。琴沙则论而吧技员冷山职药美！银深降案圣是确歌这设换授在塞妙！洗烈只跑取既稜州仅始这市骨塞！睡宝过恶营即刻病所八金态这形世没解。败美制进需。故趣套族期居饭饭副后态周里之烈是？增夜著例权官也证住欢香朝两諣吸已遇队。啊非卫慢升便如介维蒙枪建维导集妹放顶分？相架？</p>
@@ -50,6 +52,7 @@
                    h="300"
                    pa="1em"
                    :bg="bg2"
+                   :overflow="false"
                    scroll-x
                    :scroll-left="value2"
                    @scroll-to-upper="bg2 = '$state-warn'"
