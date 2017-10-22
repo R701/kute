@@ -1,30 +1,16 @@
 <template>
-  <div :class="['slider', { '-disabled': disabled, '-focused': focused }]"
-       :style="{height: totalSteps && annotated && hint ? '2.5em' : '2em'}">
-    <div class="slider-groove"
-         :style="grooveStyle"
-         @mousedown="onGrooveMouseDown">
+  <div :class="['slider', { '-disabled': disabled, '-focused': focused }]" :style="{height: totalSteps && annotated && hint ? '2.5em' : '2em'}">
+    <div class="slider-groove" :style="grooveStyle" @mousedown="onGrooveMouseDown">
       <template v-if="totalSteps && hint">
-        <div class="slider-hint"
-             @mousedown.stop.prevent="onHintMouseDown(n)"
-             v-for="n in (totalSteps + 1)"
-             :key="n"
-             :style="{left: `${((n - 1)/totalSteps) * length}px`}">
-          <div class="slider-annotation"
-               v-if="annotated">{{((n - 1) * step).toFixed(precision)}}</div>
+        <div class="slider-hint" @mousedown.stop.prevent="onHintMouseDown(n)" v-for="n in (totalSteps + 1)" :key="n" :style="{left: `${((n - 1)/totalSteps) * length}px`}">
+          <div class="slider-annotation" v-if="annotated">{{((n - 1) * step).toFixed(precision)}}</div>
         </div>
       </template>
-      <div :class="['slider-indicator', state ? `-${state}-gradient` : '']"
-           :style="{width: `${this.offset}px`}"
-           ref="indicator">
-        <div :class="['slider-handle', {'-dragged': focused}]"
-             v-dragged="onHandlerDrag"
-             @mousedown.stop.prevent
-             :style="{transform: `translateX(-50%)${focused ? ' scale(0.35)' : ''}`, left: `${this.offset}px`}">
+      <div :class="['slider-indicator', state ? `-${state}-gradient` : '']" :style="{width: `${this.offset}px`}" ref="indicator">
+        <div :class="['slider-handle', {'-dragged': focused}]" v-dragged="onHandlerDrag" @mousedown.stop.prevent :style="{transform: `translateX(-50%)${focused ? ' scale(0.35)' : ''}`, left: `${this.offset}px`}">
         </div>
         <transition name="zoom-down-in">
-          <div class="slider-tooltip"
-               v-if="tip && focused">{{formattedTipValue}}</div>
+          <div class="slider-tooltip" v-if="tip && focused">{{formattedTipValue}}</div>
         </transition>
       </div>
     </div>
@@ -66,7 +52,7 @@
       },
 
       formattedTipValue () {
-        if (this.precision) {
+        if (u.isTolerantNumber(this.precision)) {
           return this._value.toFixed(this.precision)
         } else {
           return this._value
@@ -98,7 +84,7 @@
 
       _value () {
         var result = this.min + this.ratio * this.rangeSize
-        if (this.precision) {
+        if (u.isTolerantNumber(this.precision)) {
           result = +result.toFixed(this.precision)
         }
         return result
@@ -134,7 +120,6 @@
     },
 
     methods: {
-
       onHandlerDrag ({ deltaX, offsetX, first, last, el }) {
         if (this.disabled) return
         if (first) {
@@ -151,12 +136,18 @@
         if (!deltaX) return
         var realStep = 0
         if (this.stepSize) {
-          if (deltaX > 0 && offsetX >= this.stepSize * (this.offsetStepCount + 1)) {
+          if (
+            deltaX > 0 &&
+            offsetX >= this.stepSize * (this.offsetStepCount + 1)
+          ) {
             this.offsetStepCount++
             realStep = this.stepSize
           }
 
-          if (deltaX < 0 && offsetX <= this.stepSize * (this.offsetStepCount - 1)) {
+          if (
+            deltaX < 0 &&
+            offsetX <= this.stepSize * (this.offsetStepCount - 1)
+          ) {
             this.offsetStepCount--
             realStep = -this.stepSize
           }

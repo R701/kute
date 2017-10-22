@@ -19,11 +19,13 @@ import { showDialog, Dialog } from './components/Dialog'
 import { startLoading, stopLoading, Loading } from './components/Loading'
 import Modal from './components/Modal/Modal'
 import Popover from './components/Popover/Popover'
+import PopoverLink from './components/Popover/PopoverLink'
 import Progress from './components/Progress/Progress'
 import Tabs from './components/Tabs/Tabs'
 import TabPane from './components/Tabs/TabPane'
 import Breadcrumb from './components/Breadcrumb/Breadcrumb'
-import BreadcrumbItem from './components/Breadcrumb/Breadcrumb.item'
+import BreadcrumbItem from './components/Breadcrumb/BreadcrumbItem'
+import List from './components/List/List'
 
 var components = {
   button: Button,
@@ -41,13 +43,16 @@ var components = {
   toast: Toast,
   notification: Notification,
   dialog: Dialog,
+  loading: Loading,
   modal: Modal,
   popover: Popover,
+  'popover-link': PopoverLink,
   progress: Progress,
   tabs: Tabs,
   'tab-pane': TabPane,
   breadcrumb: Breadcrumb,
-  'breadcrumb-item': BreadcrumbItem
+  'breadcrumb-item': BreadcrumbItem,
+  list: List
 }
 
 export default {
@@ -64,11 +69,11 @@ export default {
     console.log('env:', process.env.NODE_ENV)
     Vue.mixin({
       props:
-      process.env.NODE_ENV === 'development'
-        ? {
-          debug: Boolean
-        }
-        : {},
+        process.env.NODE_ENV === 'development'
+          ? {
+            debug: Boolean
+          }
+          : {},
 
       data () {
         return {
@@ -114,5 +119,12 @@ export {
   Dialog,
   Loading,
   Modal,
-  Popover
+  Popover,
+  PopoverLink,
+  Progress,
+  Tabs,
+  TabPane,
+  Breadcrumb,
+  BreadcrumbItem,
+  List
 }

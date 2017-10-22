@@ -57,7 +57,7 @@
 
 <script>
   import NamedBlock from '@/components/NamedBlock'
-  export default {
+export default {
     components: {
       NamedBlock
     }
@@ -65,7 +65,7 @@
 </script>
 
 <style lang="stylus" scoped>
-.named-block.right
-  >>>.named-block-name
-    margin-left:35px;
+  .named-block.right
+    >>>.named-block-name
+      margin-left 35px
 </style>
