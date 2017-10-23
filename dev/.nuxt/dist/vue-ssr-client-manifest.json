@@ -1,5 +1,5 @@
 {
-  "publicPath": "/_nuxt/",
+  "publicPath": "/kute-page",
   "all": [
     "pages/components/textarea.63ffc3a720a8d1887088.js.map",
     "pages/components/textarea.63ffc3a720a8d1887088.js",
@@ -33,7 +33,7 @@
     "pages/components/index.01a1bb24b2863b67663e.js",
     "app.55042ad2cf04a8ecbc65.js",
     "common.454b50b632869976f2ca.js",
-    "manifest.892ade5456d8a242089c.js",
+    "manifest.dc763eb33691a15f1b33.js",
     "LICENSES",
     "pages/components/slider.85403428a25c8f3e41f1.js",
     "pages/components/slider.85403428a25c8f3e41f1.js.map",
@@ -67,12 +67,12 @@
     "pages/components/index.01a1bb24b2863b67663e.js.map",
     "app.55042ad2cf04a8ecbc65.js.map",
     "common.454b50b632869976f2ca.js.map",
-    "manifest.892ade5456d8a242089c.js.map",
+    "manifest.dc763eb33691a15f1b33.js.map",
     "index.spa.html",
     "index.ssr.html"
   ],
   "initial": [
-    "manifest.892ade5456d8a242089c.js",
+    "manifest.dc763eb33691a15f1b33.js",
     "common.454b50b632869976f2ca.js",
     "app.55042ad2cf04a8ecbc65.js"
   ],
