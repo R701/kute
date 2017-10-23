@@ -8,7 +8,8 @@
     "dev": "cross-env NODE_ENV=development webpack --config webpack.dev.config.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js",
     "commit": "git-cz",
-    "lint": "eslint src/*.js src/*.vue --cache --config .eslintrc.js --fix"
+    "lint": "eslint src/*.js src/*.vue --cache --config .eslintrc.js --fix",
+    "deploy": "git-directory-deploy --directory dev/dist --branch gh-pages"
   },
   "eslintIgnore": [
     "dist"
@@ -34,8 +35,12 @@
     "axis": "^1.0.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
+    "babel-helper-vue-jsx-merge-props": "^2.0.2",
     "babel-loader": "^7.1.2",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.5.0",
     "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "babel-preset-vue-app": "^1.2.1",
     "clean-webpack-plugin": "^0.1.16",
@@ -56,6 +61,7 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "friendly-errors-webpack-plugin": "^1.6.1",
+    "git-directory-deploy": "^1.5.1",
     "optimize-css-assets-webpack-plugin": "^3.1.1",
     "postcss": "^6.0.9",
     "postcss-cssnext": "^3.0.2",

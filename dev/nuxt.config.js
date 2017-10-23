@@ -9,10 +9,10 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'kute-page',
+    title: 'kute',
     meta: [
-      {charset: 'utf-8'},
-      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
@@ -20,7 +20,7 @@ module.exports = {
       }
     ],
     link: [
-      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
         type: 'text/css',
@@ -31,7 +31,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: {color: '#3B8070'},
+  loading: { color: '#3B8070' },
   /*
   ** Build configuration
   */
@@ -39,6 +39,7 @@ module.exports = {
     /*
     ** Run ESLINT on save
     */
+    // publicPath: '/kute/_nuxt/',
     extend (config, ctx) {
       if (ctx.dev && ctx.isClient) {
         config.module.rules.push({
@@ -57,22 +58,22 @@ module.exports = {
         resolve('./../node_modules')
       ]
 
-      config.resolve.alias.kute = resolve('../src')
-      config.resolve.alias['~'] = resolve('../src')
-      config.resolve.alias['~components'] = resolve('../src/components')
-      config.resolve.alias['~utils'] = resolve('../src/utils')
-      config.resolve.alias['~stylus'] = resolve('../src/stylus')
-      config.resolve.alias['~directives'] = resolve('../src/directives')
-      config.resolve.alias['~mixins'] = resolve('../src/mixins')
-      config.resolve.alias['~assets'] = resolve('../src/assets')
-      config.resolve.alias['assets'] = resolve('../src/assets')
-      config.resolve.alias['stylus'] = resolve('../src/stylus')
-      config.resolve.alias['settings'] = resolve('../src/stylus/0_settings')
-      config.resolve.alias['tools'] = resolve('../src/stylus/1_tools')
-      config.resolve.alias['generic'] = resolve('../src/stylus/2_generic')
-      config.resolve.alias['element'] = resolve('../src/stylus/3_element')
-      config.resolve.alias['object'] = resolve('../src/stylus/4_object')
-      config.resolve.alias['trumps'] = resolve('../src/stylus/5_trumps')
+      config.resolve.alias.kute = resolve('./../src')
+      config.resolve.alias['~'] = resolve('./../src')
+      config.resolve.alias['~components'] = resolve('./../src/components')
+      config.resolve.alias['~utils'] = resolve('./../src/utils')
+      config.resolve.alias['~stylus'] = resolve('./../src/stylus')
+      config.resolve.alias['~directives'] = resolve('./../src/directives')
+      config.resolve.alias['~mixins'] = resolve('./../src/mixins')
+      config.resolve.alias['~assets'] = resolve('./../src/assets')
+      config.resolve.alias['assets'] = resolve('./../src/assets')
+      config.resolve.alias['stylus'] = resolve('./../src/stylus')
+      config.resolve.alias['settings'] = resolve('./../src/stylus/0_settings')
+      config.resolve.alias['tools'] = resolve('./../src/stylus/1_tools')
+      config.resolve.alias['generic'] = resolve('./../src/stylus/2_generic')
+      config.resolve.alias['element'] = resolve('./../src/stylus/3_element')
+      config.resolve.alias['object'] = resolve('./../src/stylus/4_object')
+      config.resolve.alias['trumps'] = resolve('./../src/stylus/5_trumps')
       config.resolve.extensions.push('.styl')
       config.plugins.push(
         new webpack.LoaderOptionsPlugin({
@@ -89,4 +90,8 @@ module.exports = {
   },
 
   plugins: ['~/plugins/kute']
+
+  // router: {
+  //   base: process.env.NODE_ENV === 'development' ? '/' : '/kute/'
+  // }
 }
