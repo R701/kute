@@ -40,6 +40,7 @@ module.exports = {
     ** Run ESLINT on save
     */
     extend (config, ctx) {
+      config.output.publicPath = '/kute-page'
       if (ctx.dev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
