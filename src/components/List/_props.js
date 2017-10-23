@@ -3,14 +3,17 @@ export default {
     type: Array,
     required: true
   },
+  itemKey: String,
   listStyle: {
     type: String, // https://developer.mozilla.org/en-US/docs/Web/CSS/list-style
     default: 'none'
   },
+  flex: Boolean,
   wrap: {
     type: Boolean,
     default: true
   },
+  reverse: Boolean,
   xgap: {
     type: Number,
     default: 15
@@ -23,7 +26,12 @@ export default {
     type: Number,
     default: 1
   },
+  balanced: Boolean,
   sortable: Boolean,
+  transitionName: {
+    type: String,
+    default: 'cell'
+  },
   transitionEnterClass: {
     type: String,
     default: 'fade'

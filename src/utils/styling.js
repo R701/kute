@@ -2,15 +2,41 @@ import isCssColor from 'is-css-color'
 
 export default {
   getCSSLength (val, math) {
-    if (typeof (+val) === 'number' && !isNaN(val)) {
+    if (typeof +val === 'number' && !isNaN(val)) {
       if (typeof math === 'function') {
         return math(+val) + 'px'
       }
       return val + 'px'
     }
 
-    const units = ['%', 'em', 'ex', 'cap', 'ch', 'ic', 'rem', '1h', 'rlh', 'vh', 'vw', 'vi', 'vb', 'vmin', 'vmax', 'px', 'mm', 'q', 'cm', 'in', 'pt', 'pc']
-    if (typeof val === 'string' && new RegExp(`^[\\d.]+(${units.join('|')})$`).test(val)) {
+    const units = [
+      '%',
+      'em',
+      'ex',
+      'cap',
+      'ch',
+      'ic',
+      'rem',
+      '1h',
+      'rlh',
+      'vh',
+      'vw',
+      'vi',
+      'vb',
+      'vmin',
+      'vmax',
+      'px',
+      'mm',
+      'q',
+      'cm',
+      'in',
+      'pt',
+      'pc'
+    ]
+    if (
+      typeof val === 'string' &&
+      new RegExp(`^[\\d.]+(${units.join('|')})$`).test(val)
+    ) {
       if (typeof math === 'function') {
         var result = new RegExp(`^([\\d.]+)(${units.join('|')})$`).exec(val)
         var num = result[1]
@@ -48,15 +74,15 @@ export default {
       '$theme-secondary-lighter': '#ffca4f',
       '$theme-secondary-darker': '#cca23f',
       /*  */
-      '$black': '#272727',
+      $black: '#272727',
       '$black-lighter': '#303030',
       '$black-darker': '#222222',
       /*  */
-      '$grey': '#737780',
+      $grey: '#737780',
       '$grey-lighter': '#8a8f99',
       '$grey-darker': '#5c5f66',
       /*  */
-      '$white': '#dcdee0',
+      $white: '#dcdee0',
       '$white-darker': '#c8cacc',
       '$white-lighter': '#eff1f3',
       /*  */
@@ -72,5 +98,20 @@ export default {
   getPxValue (str) {
     var result = /^(\d+)px$/.exec(str)
     return result ? +result[1] : null
+  },
+
+  assignStyle (targetElem, sourceElem) {
+    if (!sourceElem) return
+    var source = sourceElem.style
+    if (!('style' in targetElem)) {
+      targetElem.style = {}
+    }
+    for (var rule in source) {
+      if (source.hasOwnProperty(rule) && !!source[rule]) {
+        targetElem.style[rule] = source[rule]
+      }
+    }
+
+    return targetElem
   }
 }

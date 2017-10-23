@@ -1,60 +1,60 @@
 <template>
   <div :class="['input-field', size ? `-${size}` : '', state ? `-${state}` : '', { '-focused': focused, '-disabled': disabled, '-error': errmsg, '-pr': clearable || loading || select, '-pl': icon, '-block': block, 'select': select, 'textarea': textarea, '-resizable': resize != 'none' }]"
-       v-click-outside="onClickOutside">
+    v-click-outside="onClickOutside">
     <label :for="$attrs.id"
-           v-if="label">{{label}}</label>
+      v-if="label">{{label}}</label>
     <div class="input-wrapper">
       <component :is="tag"
-                 ref="input"
-                 :value="realValue"
-                 v-bind="$attrs"
-                 v-on="$listeners"
-                 :disabled="disabled"
-                 :readonly="readonly || select"
-                 :spellcheck="spellcheck"
-                 @input="onInput"
-                 @focus="onFocus"
-                 @blur="onBlur"
-                 @change="onChange"
-                 @keydown="onKeydown">{{textarea && value ? value: ''}}</component>
+        ref="input"
+        :value="realValue"
+        v-bind="$attrs"
+        v-on="$listeners"
+        :disabled="disabled"
+        :readonly="readonly || select"
+        :spellcheck="spellcheck"
+        @input="onInput"
+        @focus="onFocus"
+        @blur="onBlur"
+        @change="onChange"
+        @keydown="onKeydown">{{textarea && value ? value: ''}}</component>
       <i :class="['input-icon', `${config$.iconClassPrefix}${icon}`, { '-icon-clickable': iconClickable }]"
-         v-if="icon"
-         @click="onIconClick"></i>
+        v-if="icon"
+        @click="onIconClick"></i>
       <icon-close v-if="clearable && value && !loading && !select"
-                  @click.native="onClearClick"
-                  class="icon icon-clear"></icon-close>
+        @click.native="onClearClick"
+        class="icon icon-clear"></icon-close>
       <icon-arrow-down v-if="select"
-                       :class="['icon', 'icon-down', { '-reverse': showOptions }]"
-                       @click.native.stop="onArrowClick"></icon-arrow-down>
+        :class="['icon', 'icon-down', { '-reverse': showOptions }]"
+        @click.native.stop="onArrowClick"></icon-arrow-down>
       <div class="input-spinner"
-           v-if="loading && !select">
+        v-if="loading && !select">
         <spinner color="#8a8f99"
-                 d="1.4em"></spinner>
+          d="1.4em"></spinner>
       </div>
       <transition name="errmsg">
         <span class="input-errmsg"
-              v-if="errmsg">{{errmsg}}</span>
+          v-if="errmsg">{{errmsg}}</span>
       </transition>
       <transition name="suggestions">
         <div class="suggestions"
-             v-if="suggestions && suggestions.length && showSuggestions">
+          v-if="suggestions && suggestions.length && showSuggestions">
           <div :class="['suggestion-item', { '-active': index == activeIndex }]"
-               v-for="(item, index) in suggestions"
-               :key="item"
-               @click="onSuggestionItemClick(item, index)">{{item}}</div>
+            v-for="(item, index) in suggestions"
+            :key="item"
+            @click="onSuggestionItemClick(item, index)">{{item}}</div>
         </div>
       </transition>
       <transition name="options">
         <div class="options"
-             v-if="showOptions"
-             ref="options"
-             @DOMMouseScroll.stop="handleWheel"
-             @wheel.stop="handleWheel"
-             @mousewheel.stop="handleWheel">
+          v-if="showOptions"
+          ref="options"
+          @DOMMouseScroll.stop="handleWheel"
+          @wheel.stop="handleWheel"
+          @mousewheel.stop="handleWheel">
           <div :class="['option-item', { '-active': index == activeIndex }]"
-               v-for="(item, index) in options"
-               :key="item[optionValueKey]"
-               @click="onOptionItemClick(item, index)">{{item[optionTextKey]}}</div>
+            v-for="(item, index) in options"
+            :key="item[optionValueKey]"
+            @click="onOptionItemClick(item, index)">{{item[optionTextKey]}}</div>
         </div>
       </transition>
     </div>
@@ -334,7 +334,8 @@
         if (!this.scrollableList) return
         evt.preventDefault()
         var options = this.$refs.options
-        var marginTop = +window.getComputedStyle(options).marginTop.match(/-?\d+/)[0] || 0
+        var marginTop =
+          +window.getComputedStyle(options).marginTop.match(/-?\d+/)[0] || 0
         if (marginTop <= this.scrollMin) {
           marginTop = this.scrollMin + 1
         }

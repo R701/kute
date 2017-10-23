@@ -1,6 +1,6 @@
 {
   "name": "kute",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A vue component kit.",
   "main": "dist/kute.js",
   "scripts": {
@@ -78,7 +78,7 @@
     "object-assign": "^4.1.1",
     "object.omit": "^3.0.0",
     "sortablejs": "^1.6.1",
-    "v-dragged": "0.0.2",
+    "v-dragged": "0.0.5",
     "vue-croppa": "^1.0.2",
     "vue-outside-events": "^1.1.0"
   },
