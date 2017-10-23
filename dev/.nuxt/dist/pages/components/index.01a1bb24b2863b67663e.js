@@ -1,0 +1,2 @@
+webpackJsonp([29],{lR6X:function(n,e,l){"use strict";e.a={asyncData:function(n){(0,n.redirect)("/components/color")},render:function(){return null}}},x2Vk:function(n,e,l){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var t=l("lR6X"),u=l("VU/8"),r=u(t.a,null,!1,null,null,null);e.default=r.exports}});
+//# sourceMappingURL=index.01a1bb24b2863b67663e.js.map

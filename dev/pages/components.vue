@@ -1,12 +1,22 @@
 <template>
-  <k-container pv="36" flex>
-    <k-container class="left" w="20em" ph="2em">
+  <k-container pv="36"
+    flex>
+    <k-container class="left"
+      w="20em"
+      ph="2em">
       <keep-alive>
-        <k-navigator :items="navigator" style="margin-top: -1em" base-path="/components/" badge-color="$grey-darker" router ref="nav"></k-navigator>
+        <k-navigator :items="navigator"
+          style="margin-top: -1em"
+          base-path="/components/"
+          badge-color="$grey-darker"
+          router
+          ref="nav"></k-navigator>
       </keep-alive>
     </k-container>
-    <k-container class="right" pr="60">
-      <k-panel :header="currentTitle" style="position: relative">
+    <k-container class="right"
+      pr="60">
+      <k-panel :header="currentTitle"
+        style="position: relative">
         <k-container>
           <keep-alive>
             <nuxt-child></nuxt-child>
@@ -181,8 +191,7 @@
           {
             text: 'List',
             href: 'list',
-            ch: '列表',
-            badge: 'TODO'
+            ch: '列表'
           },
           {
             text: 'Table',
