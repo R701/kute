@@ -249,7 +249,7 @@
         } else if (window) {
           path = window.location.pathname
         }
-        var matches = /\/components\/(.+)/.exec(path)
+        var matches = /\/components\/([\w]+)/.exec(path)
         var key = matches && matches[1] ? matches[1] : 'color'
         return key
       }
