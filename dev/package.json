@@ -5,7 +5,7 @@
   "author": "zhanziyang <zhanziyang126@hotmail.com>",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "cross-env NODE_ENV=development nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -20,6 +20,7 @@
     "axis": "^1.0.0",
     "babel-eslint": "^7.2.3",
     "babel-preset-vue-app": "^1.2.1",
+    "cross-env": "^5.1.0",
     "css-loader": "^0.28.5",
     "eslint": "^4.3.0",
     "eslint-config-standard": "^10.2.1",

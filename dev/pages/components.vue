@@ -243,7 +243,13 @@
 
     computed: {
       path () {
-        var matches = /\/components\/(.+)/.exec(this.$route.path)
+        var path
+        if (this.$route && this.$route.path) {
+          path = this.$route.path
+        } else if (window) {
+          path = window.location.pathname
+        }
+        var matches = /\/components\/(.+)/.exec(path)
         var key = matches && matches[1] ? matches[1] : 'color'
         return key
       }
