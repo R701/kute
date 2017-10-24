@@ -1,22 +1,23 @@
 <template>
   <component :is="root"
-             :to="fullHref"
-             :href="fullHref"
-             :disabled="disabled || (disableWhileLoading && loading)"
-             :class="['button', size ? `-${size}` : '', state ? `-${state}-bg` : '', { '-link': href, '-no-outline': !outline,  '-block': block,  '-no-text': emptySlot, '-ghost': ghost } ]"
-             @click="onClick"
-             @focus="onFocus"
-             @blur="onBlur">
+    :to="fullHref"
+    :href="fullHref"
+    :target="blank ? '_blank' : '_self'"
+    :disabled="disabled || (disableWhileLoading && loading)"
+    :class="['button', size ? `-${size}` : '', state ? `-${state}-bg` : '', { '-link': href, '-no-outline': !outline,  '-block': block,  '-no-text': emptySlot, '-ghost': ghost } ]"
+    @click="onClick"
+    @focus="onFocus"
+    @blur="onBlur">
     <div class="button-spinner"
-         v-if="loading">
+      v-if="loading">
       <spinner></spinner>
     </div>
     <span :class="[ 'button-text', { '-faded': loading } ]">
       <i :class="['button-icon', 'prepend', `${config$.iconClassPrefix}${icon}`]"
-         v-if="icon && iconPosition == 'prepend'"></i>
+        v-if="icon && iconPosition == 'prepend'"></i>
       <slot></slot>
       <i :class="['button-icon', 'append', `${config$.iconClassPrefix}${icon}`]"
-         v-if="icon && iconPosition == 'append'"></i>
+        v-if="icon && iconPosition == 'append'"></i>
     </span>
   </component>
 </template>

@@ -24,7 +24,7 @@ module.exports = {
       {
         rel: 'stylesheet',
         type: 'text/css',
-        href: '//at.alicdn.com/t/font_408131_ea0jbjd6r3k57b9.css'
+        href: '//at.alicdn.com/t/font_408131_mk89leo60fpyzaor.css'
       }
     ]
   },
@@ -39,7 +39,7 @@ module.exports = {
     /*
     ** Run ESLINT on save
     */
-    // publicPath: '/kute/_nuxt/',
+    publicPath: '/kute/_nuxt/',
     extend (config, ctx) {
       if (ctx.dev && ctx.isClient) {
         config.module.rules.push({
@@ -89,9 +89,9 @@ module.exports = {
     }
   },
 
-  plugins: ['~/plugins/kute']
+  plugins: ['~/plugins/kute'],
 
-  // router: {
-  //   base: process.env.NODE_ENV === 'development' ? '/' : '/kute/'
-  // }
+  router: {
+    base: process.env.NODE_ENV === 'development' ? '/' : '/kute/'
+  }
 }

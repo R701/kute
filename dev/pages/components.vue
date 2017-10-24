@@ -1,28 +1,36 @@
 <template>
-  <k-container pv="36"
-    flex>
-    <k-container class="left"
-      w="20em"
-      ph="2em">
-      <keep-alive>
-        <k-navigator :items="navigator"
-          style="margin-top: -1em"
-          base-path="/components/"
-          badge-color="$grey-darker"
-          router
-          ref="nav"></k-navigator>
-      </keep-alive>
+  <k-container>
+    <k-container pl="2em"
+      class="header"
+      pv="30">
+      <k-breadcrumbs :data="breadcrumbs"
+        nuxt />
     </k-container>
-    <k-container class="right"
-      pr="60">
-      <k-panel :header="currentTitle"
-        style="position: relative">
-        <k-container>
-          <keep-alive>
-            <nuxt-child></nuxt-child>
-          </keep-alive>
-        </k-container>
-      </k-panel>
+    <k-container pv="36"
+      flex>
+      <k-container class="left"
+        w="20em"
+        ph="2em">
+        <keep-alive>
+          <k-navigator :items="navigator"
+            style="margin-top: -1em"
+            base-path="/components/"
+            badge-color="$grey-darker"
+            router
+            ref="nav"></k-navigator>
+        </keep-alive>
+      </k-container>
+      <k-container class="right"
+        pr="60">
+        <k-panel :header="currentTitle"
+          style="position: relative">
+          <k-container>
+            <keep-alive>
+              <nuxt-child></nuxt-child>
+            </keep-alive>
+          </k-container>
+        </k-panel>
+      </k-container>
     </k-container>
   </k-container>
 </template>
@@ -32,6 +40,17 @@
     data () {
       this.setNav()
       return {
+        breadcrumbs: [
+          {
+            text: 'Home',
+            icon: 'home',
+            href: '/'
+          },
+          {
+            text: 'Components',
+            href: '/components'
+          }
+        ],
         navigator: [
           { divider: true, color: '$grey', margin: '2em', text: 'Basic' },
           {
@@ -116,13 +135,6 @@
             ch: '滚动容器'
           },
           {
-            text: 'Carousel',
-            href: 'carousel',
-            ch: '轮播',
-            badge: 'TODO',
-            disabled: true
-          },
-          {
             text: 'Panel',
             href: 'panel',
             ch: '板块'
@@ -131,6 +143,13 @@
             text: 'Divider',
             href: 'divider',
             ch: '分割线'
+          },
+          {
+            text: 'Carousel',
+            href: 'carousel',
+            ch: '轮播',
+            badge: 'TODO',
+            disabled: true
           },
           { divider: true, color: '$grey', margin: '2em', text: 'Navigation' },
           {
@@ -143,11 +162,15 @@
             href: 'navigator',
             ch: '导航栏'
           },
+          // {
+          //   text: 'Breadcrumb',
+          //   href: 'breadcrumb',
+          //   ch: '面包屑导航'
+          // },
           {
             text: 'Breadcrumb',
-            href: 'breadcrumb',
-            ch: '面包屑导航',
-            badge: 'TODO'
+            href: 'breadcrumb2',
+            ch: '面包屑导航'
           },
           {
             text: 'Tabs',
@@ -183,11 +206,23 @@
             ch: '弹窗'
           },
           {
+            text: 'Drawer',
+            href: 'drawer',
+            ch: '抽屉',
+            badge: 'TODO',
+            disabled: true
+          },
+          {
             text: 'Loading',
             href: 'loading',
             ch: '加载遮罩'
           },
           { divider: true, color: '$grey', margin: '2em', text: 'Data' },
+          {
+            text: 'Progress',
+            href: 'progress',
+            ch: '进度条'
+          },
           {
             text: 'List',
             href: 'list',
@@ -199,11 +234,6 @@
             ch: '表格',
             badge: 'TODO',
             disabled: true
-          },
-          {
-            text: 'Progress',
-            href: 'progress',
-            ch: '进度条'
           }
         ],
         initialNav: [0],
@@ -266,3 +296,9 @@
     }
   }
 </script>
+
+<style lang="stylus" scoped>
+.header
+  background $black-darker
+  box-shadow $shadow-basic
+</style>

@@ -23,8 +23,9 @@ import PopoverLink from './components/Popover/PopoverLink'
 import Progress from './components/Progress/Progress'
 import Tabs from './components/Tabs/Tabs'
 import TabPane from './components/Tabs/TabPane'
-import Breadcrumb from './components/Breadcrumb/Breadcrumb'
-import BreadcrumbItem from './components/Breadcrumb/BreadcrumbItem'
+// import Breadcrumb from './components/Breadcrumb/Breadcrumb'
+// import BreadcrumbItem from './components/Breadcrumb/BreadcrumbItem'
+import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs'
 import List from './components/List/List'
 
 var components = {
@@ -50,8 +51,9 @@ var components = {
   progress: Progress,
   tabs: Tabs,
   'tab-pane': TabPane,
-  breadcrumb: Breadcrumb,
-  'breadcrumb-item': BreadcrumbItem,
+  // breadcrumb: Breadcrumb,
+  // 'breadcrumb-item': BreadcrumbItem,
+  breadcrumbs: Breadcrumbs,
   list: List
 }
 
@@ -124,7 +126,8 @@ export {
   Progress,
   Tabs,
   TabPane,
-  Breadcrumb,
-  BreadcrumbItem,
+  // Breadcrumb,
+  // BreadcrumbItem,
+  Breadcrumbs,
   List
 }

@@ -1,2 +1,0 @@
-webpackJsonp([22],{"/TYz":function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var s=n("k7GA"),a=n("2WhE"),r=n("VU/8"),u=r(s.a,a.a,!1,null,null,null);e.default=u.exports},"2WhE":function(t,e,n){"use strict";var s=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("section",{staticClass:"container"},[n("k-button",[t._v("PLEASE DON'T LEAVE ME")])],1)},a=[],r={render:s,staticRenderFns:a};e.a=r},k7GA:function(t,e,n){"use strict";var s=n("2u/B");e.a={components:{KButton:s.a}}}});
-//# sourceMappingURL=index.2afd7b0ee42e527c864d.js.map
