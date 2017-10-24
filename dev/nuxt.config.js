@@ -9,14 +9,15 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'kute',
+    title: 'Kute - A vue.js component kit',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: 'Main page for project kute.'
+        content:
+          'Main page for project kute, a vue.js component kit with dark cool theme.'
       }
     ],
     link: [

@@ -30,7 +30,7 @@
 
     </k-container>
     <k-button :style="{width: '115px'}"
-      href="/components">Components</k-button>
+      href="components">Components</k-button>
     <k-button :style="{width: '115px'}"
       blank
       href="https://github.com/R701/kute">Github</k-button>
