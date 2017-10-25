@@ -33,6 +33,9 @@
       href="components">Components</k-button>
     <k-button :style="{width: '115px'}"
       blank
+      href="https://github.com/R701/kute/tree/master/dev/pages/components">Demo Code</k-button>
+    <k-button :style="{width: '115px'}"
+      blank
       href="https://github.com/R701/kute">Github</k-button>
   </section>
 </template>

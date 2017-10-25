@@ -5,11 +5,11 @@ const LoadingConstructor = Vue.extend(Loading)
 
 var instance
 
-const startLoading = function ({ onShow, onClose, onProgress, onTimeout, timeout, ...rest } = {}) {
+const startLoading = function (
+  { onShow, onClose, onProgress, onTimeout, timeout, ...rest } = {}
+) {
   if (instance) return
-  console.log(rest)
   instance = new LoadingConstructor({
-
     propsData: {
       ...rest
     },

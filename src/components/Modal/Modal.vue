@@ -1,25 +1,26 @@
 <template>
   <overlay transition="fade"
-           transition-duration="300"
-           ref="overlay"
-           stay
-           @enter="maskEnter"
-           @after-leave="afterMaskLeave"
-           v-if="innerShow">
+    transition-duration="300"
+    ref="overlay"
+    stay
+    @enter="maskEnter"
+    @after-leave="afterMaskLeave"
+    v-if="innerShow">
     <div class="mask"
-         ref="mask"
-         @click="onMaskClick">
+      ref="mask"
+      @click="onMaskClick">
       <transition name="bounce-zoom-in-2"
-                  @enter="onModalEnter"
-                  @after-leave="afterModalLeave">
+        @enter="onModalEnter"
+        @after-leave="afterModalLeave">
         <div :class="['modal', {'-freezing': freezeScreen}]"
-             ref="modal"
-             v-if="entered">
+          ref="modal"
+          v-if="entered"
+          @click.stop>
           <icon-close class="modal-close"
-                      v-if="!noCloseBtn"
-                      @click.native="close"></icon-close>
+            v-if="!noCloseBtn"
+            @click.native="close"></icon-close>
           <div :class="['modal-header', state ? `-${state}-gradient` : '']"
-               v-if="$slots.header">
+            v-if="$slots.header">
             <slot name="header"></slot>
           </div>
           <slot></slot>

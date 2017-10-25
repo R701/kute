@@ -208,9 +208,7 @@
           {
             text: 'Drawer',
             href: 'drawer',
-            ch: '抽屉',
-            badge: 'TODO',
-            disabled: true
+            ch: '抽屉'
           },
           {
             text: 'Loading',

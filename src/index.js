@@ -18,6 +18,7 @@ import { notify, Notification } from './components/Notification'
 import { showDialog, Dialog } from './components/Dialog'
 import { startLoading, stopLoading, Loading } from './components/Loading'
 import Modal from './components/Modal/Modal'
+import Drawer from './components/Drawer/Drawer'
 import Popover from './components/Popover/Popover'
 import PopoverLink from './components/Popover/PopoverLink'
 import Progress from './components/Progress/Progress'
@@ -46,6 +47,7 @@ var components = {
   dialog: Dialog,
   loading: Loading,
   modal: Modal,
+  drawer: Drawer,
   popover: Popover,
   'popover-link': PopoverLink,
   progress: Progress,
@@ -121,6 +123,7 @@ export {
   Dialog,
   Loading,
   Modal,
+  Drawer,
   Popover,
   PopoverLink,
   Progress,

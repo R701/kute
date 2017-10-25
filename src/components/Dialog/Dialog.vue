@@ -1,32 +1,33 @@
 <template>
   <overlay transition="fade"
-           transition-duration="300"
-           ref="overlay"
-           @enter="maskEnter">
+    transition-duration="300"
+    ref="overlay"
+    @enter="maskEnter">
     <div class="mask"
-         ref="mask">
+      ref="mask">
       <transition name="bounce-zoom-in"
-                  @enter="onDialogEnter"
-                  @after-leave="afterDialogLeave">
+        @enter="onDialogEnter"
+        @after-leave="afterDialogLeave">
         <div :class="['dialog', state ? `-${state}` : '', {'-freezing': freezeScreen}]"
-             ref="dialog"
-             v-if="entered">
+          ref="dialog"
+          v-if="entered"
+          @click.stop>
           <icon-close class="dialog-close"
-                      @click.native="close"></icon-close>
+            @click.native="close"></icon-close>
           <div class="dialog-title">
             <i :class="['dialog-icon', `${config$.iconClassPrefix}${icon}`]"
-               v-if="icon"
-               :style="{ fontSize: iconSize }"></i>
+              v-if="icon"
+              :style="{ fontSize: iconSize }"></i>
             <span>{{title}}</span>
           </div>
           <div class="dialog-message"
-               ref="content">{{message}}</div>
+            ref="content">{{message}}</div>
           <div class="dialog-btns">
             <k-button :state="primaryButton == 'confirm' ? state : 'default'"
-                      @click="onConfirmClick">{{confirmText}}</k-button>
+              @click="onConfirmClick">{{confirmText}}</k-button>
             <k-button :state="primaryButton == 'cancel' ? state : 'default'"
-                      @click="onCancelClick"
-                      v-if="!hideCancelButton">{{cancelText}}</k-button>
+              @click="onCancelClick"
+              v-if="!hideCancelButton">{{cancelText}}</k-button>
           </div>
         </div>
       </transition>
