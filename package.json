@@ -1,6 +1,6 @@
 {
   "name": "kute",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A vue component kit.",
   "main": "dist/kute.js",
   "scripts": {
