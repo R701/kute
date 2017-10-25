@@ -1,27 +1,29 @@
 <template>
   <overlay transition="fade"
-           transition-duration="300"
-           ref="overlay"
-           @enter="maskEnter">
-    <div class="mask"
-         ref="mask">
+    transition-duration="300"
+    ref="overlay"
+    @enter="maskEnter">
+    <div :class="['mask', {'-local': local}]"
+      ref="mask">
       <transition name="fade"
-                  @enter="onLoadingEnter"
-                  @after-leave="afterLoadingLeave">
+        @enter="onLoadingEnter"
+        @after-leave="afterLoadingLeave">
         <div :class="['loading', {'-freezing': freezeScreen}]"
-             v-if="entered">
+          v-if="entered">
           <div class="bar-wrapper"
-               v-if="bar">
+            v-if="bar"
+            :style="{width: `${240 * scale}px`}">
             <k-progress size="small"
-                        :percent="progress"
-                        v-bind="$attrs"></k-progress>
+              :percent="progress"
+              v-bind="$attrs"></k-progress>
           </div>
           <k-spinner v-else
-                     rainbow
-                     d="100"
-                     :stroke-width="3"
-                     v-bind="$attrs"></k-spinner>
-          <div class="message">{{_message}}</div>
+            rainbow
+            :d="100 * scale"
+            :stroke-width="3"
+            v-bind="$attrs"></k-spinner>
+          <div class="message"
+            v-if="message">{{_message}}</div>
         </div>
       </transition>
     </div>
@@ -113,7 +115,7 @@
 
       maskEnter () {
         this.entered = true
-        if (this.freezeScreen) {
+        if (this.freezeScreen && !this.local) {
           document.documentElement.style.overflow = 'hidden'
         }
       },
@@ -121,7 +123,6 @@
       onLoadingEnter () {
         // ref here
       }
-
     }
   }
 </script>

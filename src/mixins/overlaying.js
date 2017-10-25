@@ -2,6 +2,9 @@ import Overlay from '~components/_Helpers/Overlay'
 
 export default {
   components: { Overlay },
+  props: {
+    local: Boolean
+  },
   methods: {
     insert (onInsert) {
       if (this.$isServer) return

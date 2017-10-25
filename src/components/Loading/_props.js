@@ -5,5 +5,9 @@ export default {
     default: true
   },
   bar: Boolean,
-  autoProgress: Boolean
+  autoProgress: Boolean,
+  scale: {
+    type: Number,
+    default: 1
+  }
 }
