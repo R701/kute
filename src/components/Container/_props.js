@@ -1,4 +1,8 @@
 export default {
+  tag: {
+    type: String,
+    default: 'div'
+  },
   inline: Boolean,
   flex: Boolean,
   column: Boolean,

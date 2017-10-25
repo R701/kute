@@ -1,10 +1,11 @@
 <template>
-  <div :class="['container', computedClassNames]"
-       :style="boxStyle"
-       @scroll="onScroll"
-       ref="container">
+  <component :is="tag"
+    :class="['container', computedClassNames]"
+    :style="boxStyle"
+    @scroll="onScroll"
+    ref="container">
     <slot></slot>
-  </div>
+  </component>
 </template>
 
 <script>
