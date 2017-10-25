@@ -1,2 +1,0 @@
-webpackJsonp([30],{jWWC:function(n,e,t){"use strict";e.a={asyncData:function(n){(0,n.redirect)("/components/color")},render:function(){return null}}},x2Vk:function(n,e,t){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var u=t("jWWC"),l=t("VU/8"),r=l(u.a,null,!1,null,null,null);e.default=r.exports}});
-//# sourceMappingURL=index.8adb90c80db65b312343.js.map
