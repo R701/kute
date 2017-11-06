@@ -16,7 +16,6 @@
     },
     computed: {
       active () {
-        console.log(this.$parent.priCurrentKey)
         return this.$parent.priCurrentKey === this.tabKey
       }
 

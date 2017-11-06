@@ -6,7 +6,7 @@ psShadow($color, $alpha, $angle, $distance, $spread, $size, $inset = false)
   $v-offset = round(sin($angle) * $distance)
   $css-spread = ($size * $spread / 100)
   $blur = $size - $css-spread
-  ($inset ? inset : null) $h-offset $v-offset $blur $css-spread alpha($color, $alpha)
+  ($inset ? inset : null) $h-offset $v-offset $blur alpha($color, $alpha)
 
 psPosition($x = 0, $y = 0, $w, $h)
   position: absolute

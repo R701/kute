@@ -33,7 +33,6 @@
         const currentPosiOfBar = this.currentPosiOfBar
         this.currentPosiOfBar = currentPosiOfBar - (scrollBarClientReact.left - activeTabClientReact.left)
         this.barWidth = activeTabClientReact.width
-        console.log(this.currentPosiOfBar, this.barWidth)
       }
     },
     watch: {

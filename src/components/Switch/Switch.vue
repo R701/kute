@@ -1,12 +1,12 @@
 <template>
   <div :class="['switch', size ? `-${size}` : '', { '-disabled': disabled, '-light': light, '-checked': innerChecked, }]"
-       @click="onClick">
+    @click="onClick">
     <input type="checkbox"
-           ref="checkbox"
-           :checked="innerChecked"
-           :disabled="disabled"
-           @change="onChange"
-           @click.stop>
+      ref="checkbox"
+      :checked="innerChecked"
+      :disabled="disabled"
+      @change="onChange"
+      @click.stop>
     <div :class="['switch-indicator', state ? `-${state}-bg` : '']"></div>
   </div>
 </template>
@@ -41,7 +41,6 @@
 
     methods: {
       onClick () {
-        console.log('hhi')
         this.$refs.checkbox.click()
       },
 

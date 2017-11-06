@@ -102,7 +102,6 @@
         var stopped = false
         if (this.confirmHandler) {
           stopped = this.confirmHandler()
-          console.log(stopped)
         }
         if (!stopped) {
           this.close()

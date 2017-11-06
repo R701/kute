@@ -1,6 +1,7 @@
 import vOutsideEvents from 'vue-outside-events'
 
 import '~stylus/main'
+import utils from '~utils'
 import Button from './components/Button/Button'
 import Container from './components/Container/Container'
 import Panel from './components/Panel/Panel'
@@ -70,7 +71,7 @@ export default {
         Vue.component(`${namespace}-${key}`, components[key])
       }
     }
-    console.log('env:', process.env.NODE_ENV)
+    // console.log('env:', process.env.NODE_ENV)
     Vue.mixin({
       props:
         process.env.NODE_ENV === 'development'
@@ -102,7 +103,8 @@ export default {
     Vue.prototype.$stopLoading = stopLoading
   },
 
-  ...components
+  ...components,
+  utils
 }
 
 export {

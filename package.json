@@ -1,31 +1,25 @@
 {
-  "name": "kute",
+  "name": "vkute",
   "version": "0.0.3",
   "description": "A vue component kit.",
   "main": "dist/kute.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env NODE_ENV=development webpack --config webpack.dev.config.js",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js",
+    "dev":
+      "cross-env NODE_ENV=development webpack --config webpack.dev.config.js",
+    "build":
+      "cross-env NODE_ENV=production webpack --config webpack.prod.config.js",
     "commit": "git-cz",
     "lint": "eslint src/*.js src/*.vue --cache --config .eslintrc.js --fix",
     "deploy": "git-directory-deploy --directory dev/dist --branch gh-pages"
   },
-  "eslintIgnore": [
-    "dist"
-  ],
+  "eslintIgnore": ["dist"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/R701/kute.git"
   },
-  "keywords": [
-    "vue",
-    "component",
-    "kit",
-    "library",
-    "ui"
-  ],
-  "author": "R701",
+  "keywords": ["vue", "component", "kit", "library", "ui"],
+  "author": "zhanziyang",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/R701/kute/issues"
@@ -76,9 +70,7 @@
     "webpack": "^3.5.5",
     "webpack-merge": "^4.1.0"
   },
-  "pre-commit": [
-    "lint"
-  ],
+  "pre-commit": ["lint"],
   "dependencies": {
     "is-css-color": "^1.0.0",
     "object-assign": "^4.1.1",
