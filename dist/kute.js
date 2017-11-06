@@ -1,5 +1,5 @@
 /*!
- *     kute v0.0.3
+ *     kute v0.0.4
  *     https://github.com/R701/kute
  * 
  *     Copyright (c) 2017 zhanziyang & thisisandy
@@ -308,80 +308,8 @@ var vue_outside_events_min_default = /*#__PURE__*/__webpack_require__.n(vue_outs
 var main = __webpack_require__(5);
 var main_default = /*#__PURE__*/__webpack_require__.n(main);
 
-// CONCATENATED MODULE: ./src/components/Button/_props.js
-/* harmony default export */ var _props = ({
-  outline: Boolean,
-  block: Boolean,
-  disabled: Boolean,
-  loading: Boolean,
-  disableWhileLoading: {
-    type: Boolean,
-    default: true
-  },
-  ghost: Boolean,
-  state: {
-    type: String,
-    default: 'default'
-  }
-});
-// CONCATENATED MODULE: ./src/mixins/with-icon.js
-/* harmony default export */ var with_icon = ({
-  props: {
-    icon: {
-      default: ''
-    },
-    iconPosition: {
-      default: 'prepend',
-      validator: function validator(val) {
-        return val == 'prepend' || val == 'append';
-      }
-    },
-    iconClickable: Boolean,
-    iconColor: {
-      default: 'inherit'
-    },
-    iconSize: {
-      default: 'inherit'
-    }
-  }
-});
-// CONCATENATED MODULE: ./src/mixins/linkable.js
-/* harmony default export */ var linkable = ({
-  props: {
-    router: Boolean,
-    nuxt: Boolean,
-    href: {
-      type: String,
-      default: ''
-    },
-    basePath: {
-      default: ''
-    },
-    blank: Boolean,
-    preventDefault: Boolean
-  },
-
-  computed: {
-    fullHref: function fullHref() {
-      return '' + (this.basePath || '') + this.href;
-    }
-  }
-});
-// CONCATENATED MODULE: ./src/mixins/size.js
-/* harmony default export */ var size = ({
-  props: {
-    size: {
-      type: String,
-      default: 'default',
-      validator: function validator(val) {
-        var valid = ['default', 'large', 'small'];
-        return valid.indexOf(val) >= 0;
-      }
-    }
-  }
-});
 // EXTERNAL MODULE: ./node_modules/is-css-color/index.js
-var is_css_color = __webpack_require__(11);
+var is_css_color = __webpack_require__(9);
 var is_css_color_default = /*#__PURE__*/__webpack_require__.n(is_css_color);
 
 // CONCATENATED MODULE: ./src/utils/styling.js
@@ -475,7 +403,7 @@ var is_css_color_default = /*#__PURE__*/__webpack_require__.n(is_css_color);
   }
 });
 // EXTERNAL MODULE: ./node_modules/object.omit/index.js
-var object_omit = __webpack_require__(12);
+var object_omit = __webpack_require__(10);
 var object_omit_default = /*#__PURE__*/__webpack_require__.n(object_omit);
 
 // EXTERNAL MODULE: ./node_modules/object-assign/index.js
@@ -517,6 +445,78 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
   noop: function noop() {}
 }));
+// CONCATENATED MODULE: ./src/components/Button/_props.js
+/* harmony default export */ var _props = ({
+  outline: Boolean,
+  block: Boolean,
+  disabled: Boolean,
+  loading: Boolean,
+  disableWhileLoading: {
+    type: Boolean,
+    default: true
+  },
+  ghost: Boolean,
+  state: {
+    type: String,
+    default: 'default'
+  }
+});
+// CONCATENATED MODULE: ./src/mixins/with-icon.js
+/* harmony default export */ var with_icon = ({
+  props: {
+    icon: {
+      default: ''
+    },
+    iconPosition: {
+      default: 'prepend',
+      validator: function validator(val) {
+        return val == 'prepend' || val == 'append';
+      }
+    },
+    iconClickable: Boolean,
+    iconColor: {
+      default: 'inherit'
+    },
+    iconSize: {
+      default: 'inherit'
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/mixins/linkable.js
+/* harmony default export */ var linkable = ({
+  props: {
+    router: Boolean,
+    nuxt: Boolean,
+    href: {
+      type: String,
+      default: ''
+    },
+    basePath: {
+      default: ''
+    },
+    blank: Boolean,
+    preventDefault: Boolean
+  },
+
+  computed: {
+    fullHref: function fullHref() {
+      return '' + (this.basePath || '') + this.href;
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/mixins/size.js
+/* harmony default export */ var size = ({
+  props: {
+    size: {
+      type: String,
+      default: 'default',
+      validator: function validator(val) {
+        var valid = ['default', 'large', 'small'];
+        return valid.indexOf(val) >= 0;
+      }
+    }
+  }
+});
 // CONCATENATED MODULE: ./src/components/Spinner/_props.js
 /* harmony default export */ var Spinner__props = ({
   d: {
@@ -580,7 +580,7 @@ var esExports = { render: Spinner_render, staticRenderFns: staticRenderFns }
 /* harmony default export */ var Spinner_Spinner = (esExports);
 // CONCATENATED MODULE: ./src/components/Spinner/Spinner.vue
 function injectStyle (ssrContext) {
-  __webpack_require__(10)
+  __webpack_require__(15)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -695,7 +695,7 @@ var Button_esExports = { render: Button_render, staticRenderFns: Button_staticRe
 /* harmony default export */ var Button_Button = (Button_esExports);
 // CONCATENATED MODULE: ./src/components/Button/Button.vue
 function Button_injectStyle (ssrContext) {
-  __webpack_require__(9)
+  __webpack_require__(14)
 }
 var Button_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -2601,7 +2601,6 @@ var Radio_Component = Radio_normalizeComponent(
 
   methods: {
     onClick: function onClick() {
-      console.log('hhi');
       this.$refs.checkbox.click();
     },
     onChange: function onChange(evt) {
@@ -3503,7 +3502,6 @@ var notify = function notify($router) {
       var stopped = false;
       if (this.confirmHandler) {
         stopped = this.confirmHandler();
-        console.log(stopped);
       }
       if (!stopped) {
         this.close();
@@ -4498,7 +4496,6 @@ var babel_helper_vue_jsx_merge_props_default = /*#__PURE__*/__webpack_require__.
       var currentPosiOfBar = this.currentPosiOfBar;
       this.currentPosiOfBar = currentPosiOfBar - (scrollBarClientReact.left - activeTabClientReact.left);
       this.barWidth = activeTabClientReact.width;
-      console.log(this.currentPosiOfBar, this.barWidth);
     }
   },
   watch: {
@@ -4673,7 +4670,6 @@ var Tabs_Component = Tabs_normalizeComponent(
   },
   computed: {
     active: function active() {
-      console.log(this.$parent.priCurrentKey);
       return this.$parent.priCurrentKey === this.tabKey;
     }
   }
@@ -5280,6 +5276,7 @@ var src__extends = Object.assign || function (target) { for (var i = 1; i < argu
 
 
 
+
 // import Breadcrumb from './components/Breadcrumb/Breadcrumb'
 // import BreadcrumbItem from './components/Breadcrumb/BreadcrumbItem'
 
@@ -5328,7 +5325,7 @@ var components = {
         Vue.component(namespace + '-' + key, components[key]);
       }
     }
-    console.log('env:', "production");
+    // console.log('env:', process.env.NODE_ENV)
     Vue.mixin({
       props:  false ? {
         debug: Boolean
@@ -5356,7 +5353,9 @@ var components = {
     Vue.prototype.$startLoading = startLoading;
     Vue.prototype.$stopLoading = stopLoading;
   }
-}, components));
+}, components, {
+  utils: utils
+}));
 
 
 
@@ -5719,18 +5718,6 @@ module.exports = function listToStyles (parentId, list) {
 
 /***/ }),
 /* 9 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5951,7 +5938,7 @@ module.exports = function(str) {
 
 
 /***/ }),
-/* 12 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5964,7 +5951,7 @@ module.exports = function(str) {
 
 
 
-var isObject = __webpack_require__(13);
+var isObject = __webpack_require__(11);
 
 module.exports = function omit(obj, props, fn) {
   if (!isObject(obj)) return {};
@@ -5995,7 +5982,7 @@ module.exports = function omit(obj, props, fn) {
 
 
 /***/ }),
-/* 13 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6008,7 +5995,7 @@ module.exports = function omit(obj, props, fn) {
 
 
 
-var isPlainObject = __webpack_require__(14);
+var isPlainObject = __webpack_require__(12);
 
 module.exports = function isExtendable(val) {
   return isPlainObject(val) || typeof val === 'function' || Array.isArray(val);
@@ -6016,7 +6003,7 @@ module.exports = function isExtendable(val) {
 
 
 /***/ }),
-/* 14 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6029,7 +6016,7 @@ module.exports = function isExtendable(val) {
 
 
 
-var isObject = __webpack_require__(15);
+var isObject = __webpack_require__(13);
 
 function isObjectObject(o) {
   return isObject(o) === true
@@ -6060,7 +6047,7 @@ module.exports = function isPlainObject(o) {
 
 
 /***/ }),
-/* 15 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6077,6 +6064,18 @@ module.exports = function isObject(val) {
   return val != null && typeof val === 'object' && Array.isArray(val) === false;
 };
 
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 16 */
