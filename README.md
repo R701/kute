@@ -68,4 +68,8 @@ npm run build
 
 ## TO DO
 
-- [ ] **Container** add tag prop.
+- [ ] Picker
+- [ ] Editor
+- [ ] Carousel
+- [ ] Pagination
+- [ ] Table

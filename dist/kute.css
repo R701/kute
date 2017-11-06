@@ -1,5 +1,5 @@
 /*!
- *     kute v0.0.2
+ *     kute v0.0.3
  *     https://github.com/R701/kute
  * 
  *     Copyright (c) 2017 zhanziyang & thisisandy
@@ -410,6 +410,9 @@ article footer {
   bottom: 0;
   left: 0;
   right: 0;
+}
+.mask.-local {
+  position: absolute !important;
 }
 .k-notifications {
   position: fixed;
@@ -2382,6 +2385,51 @@ span.radio-content[data-v-31544d4f] {
   -webkit-transform: translate(-50%, -50%) scale(0.7) !important;
           transform: translate(-50%, -50%) scale(0.7) !important;
   opacity: 0 !important;
+}
+.drawer[data-v-d0c5d712] {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  background: #dcdee0;
+  color: #272727;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, .5), 0 2px 2px rgba(0, 0, 0, .34), 0 3px 1px rgba(0, 0, 0, .32);
+          box-shadow: 0 1px 5px rgba(0, 0, 0, .5), 0 2px 2px rgba(0, 0, 0, .34), 0 3px 1px rgba(0, 0, 0, .32);
+}
+.drawer.-left-side[data-v-d0c5d712] {
+  left: 0;
+}
+.drawer.-right-side[data-v-d0c5d712] {
+  right: 0;
+}
+.slide-in-left-enter-active[data-v-d0c5d712],
+.slide-in-left-leave-active[data-v-d0c5d712] {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.slide-in-left-leave-active[data-v-d0c5d712] {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.slide-in-left-enter[data-v-d0c5d712],
+.slide-in-left-leave-to[data-v-d0c5d712] {
+  -webkit-transform: translatex(-100%) !important;
+          transform: translatex(-100%) !important;
+}
+.slide-in-right-enter-active[data-v-d0c5d712],
+.slide-in-right-leave-active[data-v-d0c5d712] {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.slide-in-right-leave-active[data-v-d0c5d712] {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.slide-in-right-enter[data-v-d0c5d712],
+.slide-in-right-leave-to[data-v-d0c5d712] {
+  -webkit-transform: translatex(100%) !important;
+          transform: translatex(100%) !important;
 }
 .popover-wrapper[data-v-3a0913a3] {
   position: relative;

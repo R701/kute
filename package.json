@@ -44,6 +44,7 @@
     "babel-preset-stage-3": "^6.24.1",
     "babel-preset-vue-app": "^1.2.1",
     "clean-webpack-plugin": "^0.1.16",
+    "cross-env": "^5.1.0",
     "css-loader": "^0.28.5",
     "cssnano": "^3.10.0",
     "cssnano-preset-default": "^4.0.0-rc.2",
