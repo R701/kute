@@ -2,71 +2,71 @@
   <div class="c-navigator">
     <k-container flex>
       <k-container w="1/3"
-                   mr="5%">
+        mr="5%">
         <k-navigator :items="data"
-                     v-model="value"
-                     @select="onSelect"
-                     :blank="blank"
-                     :initial-toggle-indexes="[0, 1]"
-                     :auto-toggle="autoToggle"
-                     :prevent-default="prevent"></k-navigator>
+          v-model="value"
+          @select="onSelect"
+          :blank="blank"
+          :initial-toggle-indexes="[0, 1]"
+          :auto-toggle="autoToggle"
+          :prevent-default="prevent"></k-navigator>
       </k-container>
       <k-container>
         <k-checkbox label="one level"
-                    :checked.sync="oneLevel"></k-checkbox>
+          :checked.sync="oneLevel"></k-checkbox>
         <br>
         <k-checkbox label="prevent-default"
-                    :checked.sync="prevent"></k-checkbox>
+          :checked.sync="prevent"></k-checkbox>
         <br>
         <k-checkbox label="blank"
-                    :checked.sync="blank"></k-checkbox>
+          :checked.sync="blank"></k-checkbox>
         <br>
         <k-checkbox label="autoToggle"
-                    :checked.sync="autoToggle"></k-checkbox>
+          :checked.sync="autoToggle"></k-checkbox>
         <br>
         <p>value: {{value}}</p>
       </k-container>
     </k-container>
     <k-divider margin="3em"
-               :direct-parent="false"></k-divider>
+      :direct-parent="false"></k-divider>
     <k-container flex>
       <k-container w="1/3"
-                   mr="5%">
+        mr="5%">
         <k-navigator :items="horizontalData"
-                     :horizontal="horizontal"
-                     :horizontal-item-width="setWidth ? '1/4' : null"
-                     :horizontal-gap="setGap ? 5 : null"
-                     prevent-default
-                     :auto-toggle="autoToggle"
-                     :united="united"
-                     v-model="value2"
-                     @select="onSelect2"></k-navigator>
+          :horizontal="horizontal"
+          :horizontal-item-width="setWidth ? '1/4' : null"
+          :horizontal-gap="setGap ? 5 : null"
+          prevent-default
+          :auto-toggle="autoToggle"
+          :united="united"
+          v-model="value2"
+          @select="onSelect2"></k-navigator>
         <br><br><br><br>
         <k-navigator :items="horizontalData2"
-                     :horizontal="horizontal"
-                     :horizontal-item-width="setWidth ? '1/4' : null"
-                     :horizontal-gap="setGap ? 5 : null"
-                     prevent-default
-                     :auto-toggle="autoToggle"
-                     :united="united"
-                     v-model="value3"
-                     @select="onSelect2"></k-navigator>
+          :horizontal="horizontal"
+          :horizontal-item-width="setWidth ? '1/4' : null"
+          :horizontal-gap="setGap ? 5 : null"
+          prevent-default
+          :auto-toggle="autoToggle"
+          :united="united"
+          v-model="value3"
+          @select="onSelect2"></k-navigator>
       </k-container>
       <k-container>
         <k-checkbox label="horizontal"
-                    :checked.sync="horizontal"></k-checkbox>
+          :checked.sync="horizontal"></k-checkbox>
         <br>
         <k-checkbox label="set width: 1/4"
-                    :checked.sync="setWidth"></k-checkbox>
+          :checked.sync="setWidth"></k-checkbox>
         <br>
         <k-checkbox label="set gap: 5"
-                    :checked.sync="setGap"></k-checkbox>
+          :checked.sync="setGap"></k-checkbox>
         <br>
         <k-checkbox label="united"
-                    :checked.sync="united"></k-checkbox>
+          :checked.sync="united"></k-checkbox>
         <br>
         <k-checkbox label="autoToggle"
-                    :checked.sync="autoToggle"></k-checkbox>
+          :checked.sync="autoToggle"></k-checkbox>
         <br>
         <p>
           <br>
@@ -76,19 +76,19 @@
       </k-container>
     </k-container>
     <k-divider margin="3em"
-               :direct-parent="false"></k-divider>
+      :direct-parent="false"></k-divider>
     <h3>Small</h3>
     <br>
     <k-container>
       <k-navigator :items="horizontalData2"
-                   :horizontal="horizontal"
-                   :horizontal-item-width="setWidth ? '1/4' : null"
-                   :horizontal-gap="setGap ? 5 : null"
-                   prevent-default
-                   :auto-toggle="autoToggle"
-                   :united="united"
-                   size="small"
-                   v-model="value4"></k-navigator>
+        :horizontal="horizontal"
+        :horizontal-item-width="setWidth ? '1/4' : null"
+        :horizontal-gap="setGap ? 5 : null"
+        prevent-default
+        :auto-toggle="autoToggle"
+        :united="united"
+        size="small"
+        v-model="value4"></k-navigator>
     </k-container>
     <k-divider v-if="!horizontal"></k-divider>
     <br v-else>
@@ -96,14 +96,14 @@
     <br>
     <k-container>
       <k-navigator :items="horizontalData2"
-                   :horizontal="horizontal"
-                   :horizontal-item-width="setWidth ? '1/4' : null"
-                   :horizontal-gap="setGap ? 5 : null"
-                   prevent-default
-                   :auto-toggle="autoToggle"
-                   :united="united"
-                   size="default"
-                   v-model="value5"></k-navigator>
+        :horizontal="horizontal"
+        :horizontal-item-width="setWidth ? '1/4' : null"
+        :horizontal-gap="setGap ? 5 : null"
+        prevent-default
+        :auto-toggle="autoToggle"
+        :united="united"
+        size="default"
+        v-model="value5"></k-navigator>
     </k-container>
     <k-divider v-if="!horizontal"></k-divider>
     <br v-else>
@@ -111,14 +111,14 @@
     <br>
     <k-container>
       <k-navigator :items="horizontalData2"
-                   :horizontal="horizontal"
-                   :horizontal-item-width="setWidth ? '1/4' : null"
-                   :horizontal-gap="setGap ? 5 : null"
-                   prevent-default
-                   :auto-toggle="autoToggle"
-                   :united="united"
-                   size="large"
-                   v-model="value6"></k-navigator>
+        :horizontal="horizontal"
+        :horizontal-item-width="setWidth ? '1/4' : null"
+        :horizontal-gap="setGap ? 5 : null"
+        prevent-default
+        :auto-toggle="autoToggle"
+        :united="united"
+        size="large"
+        v-model="value6"></k-navigator>
     </k-container>
   </div>
 </template>
@@ -129,52 +129,47 @@
       return {
         multiLevelData: [
           {
-            text: 'Straight',
+            text: '一级',
             children: [
               {
-                text: 'Asian',
-                href: 'https://www.pornhub.com/video?c=1',
+                text: '二级',
+                href: 'https://www.baidu.com/',
                 children: [
-                  { text: 'Japanese', href: 'https://www.pornhub.com/video?c=111', badge: 51 },
-                  { text: 'Korean', href: 'https://www.pornhub.com/video?c=103' },
-                  { text: 'India', href: 'https://www.pornhub.com/video?c=101' }
+                  { text: '三级', href: 'https://www.baidu.com/', badge: 51 },
+                  { text: '三级', href: 'https://www.baidu.com/' },
+                  { text: '三级', href: 'https://www.baidu.com/' }
                 ]
               },
-              { text: 'Mature', href: 'https://www.pornhub.com/video?c=28' },
-              { text: 'Cartoon', href: 'https://www.pornhub.com/video?c=86' },
-              { text: 'Big Tits', href: 'https://www.pornhub.com/video?c=8' },
-              { text: 'Amateur', href: 'https://www.pornhub.com/video?c=3' },
-              { text: 'Celebrity', href: 'https://www.pornhub.com/video?c=12' },
-              { text: 'Hidden Section', icon: 'unview' }
+              { text: '二级', href: 'https://www.baidu.com/' },
+              { text: '二级', href: 'https://www.baidu.com/' },
+              { text: '二级', href: 'https://www.baidu.com/' },
+              { text: '二级', href: 'https://www.baidu.com/' },
+              { text: '二级', href: 'https://www.baidu.com/' },
+              { text: '二级', icon: 'unview' }
             ]
           },
           {
-            text: 'Gay',
+            text: '一级',
             children: [
-              { text: 'Asian', href: 'https://www.pornhub.com/gay/video?c=48' },
-              { text: 'Bareback', href: 'https://www.pornhub.com/gay/video?c=40' },
-              { text: 'Big Dick', href: 'https://www.pornhub.com/gay/video?c=58' },
-              { text: 'Blowjob', href: 'https://www.pornhub.com/gay/video?c=56' },
-              { text: 'Collage', href: 'https://www.pornhub.com/gay/video?c=68' },
-              { text: 'Group', href: 'https://www.pornhub.com/gay/video?c=62' },
-              { text: 'Latino', href: 'https://www.pornhub.com/gay/video?c=50' },
-              { text: 'Military', href: 'https://www.pornhub.com/gay/video?c=402' },
-              { text: 'Public', href: 'https://www.pornhub.com/gay/video?c=84' },
-              { text: 'Twink', href: 'https://www.pornhub.com/gay/video?c=49' }
+              { text: '二级', href: 'https://www.baidu.com/' },
+              { text: '二级', href: 'https://www.baidu.com/' },
+              { text: '二级', href: 'https://www.baidu.com/' },
+              { text: '二级', href: 'https://www.baidu.com/' },
+              { text: '二级', href: 'https://www.baidu.com/' }
             ]
           },
           {
-            text: 'Bi',
+            text: '一级',
             badge: 'new',
             badgeColor: '$state-error'
           }
         ],
 
         oneLevelData: [
-          { text: 'Straight' },
-          { text: 'Gay' },
+          { text: '一级' },
+          { text: '一级' },
           {
-            text: 'Bi',
+            text: '一级',
             badge: 'new',
             badgeColor: '$state-error'
           }
