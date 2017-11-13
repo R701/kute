@@ -288,11 +288,13 @@
         }
       },
 
-      async validate () {
+      validate () {
         if (typeof this.validator === 'function') {
           var returnValue = this.validator(this.value)
           if (returnValue instanceof Promise) {
-            this.errmsg = await returnValue
+            returnValue.then(msg => {
+              this.errmsg = msg
+            })
           } else {
             this.errmsg = returnValue
           }
@@ -424,7 +426,7 @@
         display block
         width 1em
         height 100%
-        font-size percentage(16px / 14px)
+        font-size percentage((16px / 14px))
 
       .suggestions
         background-color $white

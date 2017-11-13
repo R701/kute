@@ -1,8 +1,9 @@
 <script>
-  /* eslint-disable */
   import TabNav from './TabNav'
-  /* eslint-enable */
   export default {
+    components: {
+      TabNav
+    },
     props: {
       defaultActiveKey: {
         type: null
@@ -16,10 +17,10 @@
       },
       width: {
         type: String,
-        default: '250px'},
+        default: '250px' },
       gap: {
         type: String,
-        default: '5px'}
+        default: '5px' }
     },
     data () {
       return { priCurrentKey: 2 }

@@ -23,6 +23,23 @@
         which often feature characters forging their respective ways through an established and rigid social hierarchy, bear similarities to such works of Johnson’s contemporaries as Pamela, written by Samuel Richardson. Austen’s novels also display an ambiguity about emotion and an appreciation for intelligence and natural beauty that aligns them with Romanticism. In their awareness of the conditions of modernity and city life and the consequences for family structure and individual characters, they prefigure much Victorian literature (as does her usage of such elements as frequent formal social gatherings, sketchy characters, and scandal).
       </k-tab-pane>
     </k-tabs>
+    <br>
+    <k-tabs type="tab">
+      <k-tab-pane tabKey='1' label='123'>
+        <div>asfsdfasdfsdf</div>
+      </k-tab-pane>
+      <k-tab-pane tabKey='2' label='112331231232'>
+        <k-button>sdfsadfsdaf</k-button>
+        <div>
+          Socially regimented ideas of appropriate behavior for each gender factored into Austen’s work as well. While social advancement for young men lay in the military, church, or law, the chief method of self-improvement for women was the acquisition of wealth. Women could only accomplish this goal through successful marriage, which explains the ubiquity of matrimony as a goal and topic of conversation in Austen’s writing. Though young women of Austen’s day had more freedom to choose their husbands than in the early eighteenth century, practical considerations continued to limit their options.
+        </div>
+      </k-tab-pane>
+      <k-tab-pane tabKey='3' label='12131'>
+        <k-container>
+          kdsjfkldsawhich often feature characters forging their respective ways through an established and rigid social hierarchy, bear similarities to such works of Johnson’s contemporaries as Pamela, written by Samuel Richardson. Austen’s novels also display an ambiguity about emotion and an appreciation for intelligence and natural beauty that aligns them with Romanticism. In their awareness of the conditions of modernity and city life and the consequences for family structure and individual characters, they prefigure much Victorian literature (as does her usage of such elements as frequent formal social gatherings, sketchy characters, and scandal).
+        </k-container>
+      </k-tab-pane>
+    </k-tabs>
   </k-container>
 </template>
 
