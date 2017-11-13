@@ -289,16 +289,20 @@
       },
 
       validate () {
-        if (typeof this.validator === 'function') {
-          var returnValue = this.validator(this.value)
-          if (returnValue instanceof Promise) {
-            returnValue.then(msg => {
-              this.errmsg = msg
-            })
-          } else {
-            this.errmsg = returnValue
+        return new Promise((resolve, reject) => {
+          if (typeof this.validator === 'function') {
+            var returnValue = this.validator(this.value)
+            if (returnValue instanceof Promise) {
+              returnValue.then(msg => {
+                this.errmsg = msg
+                resolve(msg === '')
+              })
+            } else {
+              this.errmsg = returnValue
+              resolve(returnValue === '')
+            }
           }
-        }
+        })
       },
 
       onClearClick () {
