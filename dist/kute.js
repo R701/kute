@@ -1,5 +1,5 @@
 /*!
- *     kute v0.0.4
+ *     kute v0.0.5
  *     https://github.com/R701/kute
  * 
  *     Copyright (c) 2017 zhanziyang & thisisandy
@@ -1910,8 +1910,6 @@ var ArrowDown_Component = ArrowDown_normalizeComponent(
 /* harmony default export */ var _Icons_ArrowDown = (ArrowDown_Component.exports);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./src/components/Input/Input.vue
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
 //
 //
 //
@@ -2199,42 +2197,16 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
     validate: function validate() {
       var _this3 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        var returnValue;
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                if (!(typeof _this3.validator === 'function')) {
-                  _context.next = 9;
-                  break;
-                }
-
-                returnValue = _this3.validator(_this3.value);
-
-                if (!(returnValue instanceof Promise)) {
-                  _context.next = 8;
-                  break;
-                }
-
-                _context.next = 5;
-                return returnValue;
-
-              case 5:
-                _this3.errmsg = _context.sent;
-                _context.next = 9;
-                break;
-
-              case 8:
-                _this3.errmsg = returnValue;
-
-              case 9:
-              case 'end':
-                return _context.stop();
-            }
-          }
-        }, _callee, _this3);
-      }))();
+      if (typeof this.validator === 'function') {
+        var returnValue = this.validator(this.value);
+        if (returnValue instanceof Promise) {
+          returnValue.then(function (msg) {
+            _this3.errmsg = msg;
+          });
+        } else {
+          this.errmsg = returnValue;
+        }
+      }
     },
     onClearClick: function onClearClick() {
       this.$emit('sync', '');
@@ -4546,10 +4518,11 @@ var TabNav_Component = TabNav_normalizeComponent(
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./src/components/Tabs/Tabs.vue
 
 
-/* eslint-disable */
 
-/* eslint-enable */
 /* harmony default export */ var Tabs = ({
+  components: {
+    TabNav: components_Tabs_TabNav
+  },
   props: {
     defaultActiveKey: {
       type: null
