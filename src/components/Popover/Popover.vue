@@ -1,22 +1,22 @@
 <template>
   <div class="popover-wrapper"
-       v-click-outside="onClickOutside">
+    v-click-outside="onClickOutside">
     <slot></slot>
     <div v-show="innerShow"
-         :class="['popover', `-${position}`]"
-         :style="{width: realWidth}">
+      :class="['popover', `-${position}`]"
+      :style="{width: realWidth}">
       <slot v-if="!links"
-            name="content"></slot>
+        name="content"></slot>
       <template v-else
-                v-for="(link, index) in links">
+        v-for="(link, index) in links">
         <k-divider margin="4"
-                   color="$white-darker"
-                   v-if="link.divider"
-                   :key="index"></k-divider>
+          color="$white-darker"
+          v-if="link.divider"
+          :key="index"></k-divider>
         <p-link v-else
-                v-bind="linkItemProp(link)"
-                :key="index"
-                @click="onLinkClick(index)"></p-link>
+          v-bind="linkItemProp(link)"
+          :key="index"
+          @click="onLinkClick(index)"></p-link>
       </template>
     </div>
   </div>
@@ -55,7 +55,7 @@
       }
     },
 
-    mounted () {
+    created () {
       this.innerShow = this.show
     },
 

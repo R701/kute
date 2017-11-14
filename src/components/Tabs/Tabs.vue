@@ -1,63 +1,46 @@
+<template>
+  <div :class="`tabs -${this.type}`">
+    <tab-nav :panes="panesProps"
+      :active-key="priCurrentKey"
+      :width="width"
+      :gap="gap"
+      @active-change="handleUpdate"></tab-nav>
+    <div class="tabs-content">
+      <slot></slot>
+    </div>
+  </div>
+</template>
+
+
 <script>
   import TabNav from './TabNav'
+  import { main as props } from './_props'
   export default {
     components: {
       TabNav
     },
-    props: {
-      defaultActiveKey: {
-        type: null
-      },
-      currentKey: {
-        type: null
-      },
-      type: {
-        type: String,
-        default: 'default'
-      },
-      width: {
-        type: String,
-        default: '250px' },
-      gap: {
-        type: String,
-        default: '5px' }
-    },
+    props,
     data () {
-      return { priCurrentKey: 2 }
+      return {
+        priCurrentKey: null,
+        panesProps: null
+      }
+    },
+
+    watch: {
+      currentKey (val) {
+        this.priCurrentKey = val
+      }
     },
     created () {
       this.priCurrentKey = this.defaultActiveKey || this.$slots.default[0].componentOptions.propsData['tabKey']
+      this.panesProps = this.$slots.default.map(i => i.componentOptions.propsData)
     },
     methods: {
       handleUpdate (key) {
         this.$emit('keyChanged', key)
         this.priCurrentKey = key
       }
-    },
-    updated () {
-      if (this.currentKey) {
-        this.priCurrentKey = this.currentKey
-      }
-    },
-    render () {
-      const panes = this.$slots.default.map(i => i.componentOptions.propsData)
-      const data = {
-        props: {
-          panes: panes,
-          activeKey: this.priCurrentKey,
-          width: this.width,
-          gap: this.gap
-        }
-      }
-      return (
-        <div class={`-${this.type} tabs`}>
-          <TabNav {...data} onUpdateActiveKey={i => this.handleUpdate(i)}></TabNav>
-          <div class="tabs-content">{this.$slots.default}</div>
-        </div>
-      )
     }
   }
 </script>
-
-<style lang="stylus" scoped>
-</style>

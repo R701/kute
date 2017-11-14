@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div v-show="active">
     <slot>
     </slot>
@@ -6,19 +6,13 @@
 </template>
 
 <script>
+  import { pane as props } from './_props'
   export default {
-    created () {
-    },
-    props: {
-      tabKey: String,
-      label: String,
-      disabled: Boolean
-    },
+    props,
     computed: {
       active () {
         return this.$parent.priCurrentKey === this.tabKey
       }
-
     }
   }
 </script>

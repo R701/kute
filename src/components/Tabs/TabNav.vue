@@ -1,49 +1,57 @@
-<template lang="html">
+<template>
   <div class="tabs-nav">
-    <div class="tabs-nav-activebar" ref="activeScrollBar" :style="{'transform':`translateX(${currentPosiOfBar}px)`,'width':`${barWidth}px`}"></div>
     <div ref="nav">
-        <span v-for="item in panes"  @click="$emit('updateActiveKey',item.tabKey)" class="tabs-nav-item" :class="{'-active':activeKey===item.tabKey, '-disabled':item.disabled}" :style="{'width':width, 'margin-right':gap}">{{item.label}}</span>
+      <span :class="['tabs-nav-item', {'-active':activeKey===item.tabKey, '-disabled':item.disabled}]"
+        v-for="(item, i) in panes"
+        :key="i"
+        @click="onNavClick(item.tabKey)"
+        :style="{'width':width, 'margin-right':gap}">
+        {{item.label}}
+      </span>
     </div>
+    <div class="tabs-nav-activebar"
+      ref="activeScrollBar"
+      :style="{'transform':`translateX(${currentPosiOfBar}px)`,'width':`${barWidth}px`}"></div>
   </div>
 </template>
 
 <script>
+  import { nav as props } from './_props'
   export default {
-    props: {
-      panes: Array,
-      activeKey: null,
-      width: {
-        type: String,
-        default: '250px'
-      },
-      gap: {
-        type: String,
-        default: '5px'
+    props,
+
+    data () {
+      return {
+        currentPosiOfBar: 0,
+        barWidth: 0
       }
     },
+
     mounted () {
       this.scrollToActive()
     },
-    methods: {
-      scrollToActive () {
-        const { nav, activeScrollBar } = this.$refs
-        const activeTab = nav.querySelector('.-active')
-        const activeTabClientReact = activeTab.getBoundingClientRect()
-        const scrollBarClientReact = activeScrollBar.getBoundingClientRect()
-        const currentPosiOfBar = this.currentPosiOfBar
-        this.currentPosiOfBar = currentPosiOfBar - (scrollBarClientReact.left - activeTabClientReact.left)
-        this.barWidth = activeTabClientReact.width
-      }
-    },
+
     watch: {
       activeKey (newTabKey) {
         this.$nextTick(this.scrollToActive)
       }
     },
-    data () {
-      return {
-        currentPosiOfBar: 0,
-        barWidth: 0
+
+    methods: {
+      scrollToActive () {
+        const { nav, activeScrollBar } = this.$refs
+        const activeTab = nav.querySelector('.-active')
+        if (activeTab) {
+          const activeTabClientRect = activeTab.getBoundingClientRect()
+          const scrollBarClientReact = activeScrollBar.getBoundingClientRect()
+          const currentPosiOfBar = this.currentPosiOfBar
+          this.currentPosiOfBar = currentPosiOfBar - (scrollBarClientReact.left - activeTabClientRect.left)
+          this.barWidth = activeTabClientRect.width
+        }
+      },
+
+      onNavClick (key) {
+        this.$emit('active-change', key)
       }
     }
   }
@@ -52,13 +60,13 @@
 <style lang="stylus" scoped>
   .tabs
     &-nav
-      border-bottom 2px solid #737780
+      border-bottom 1px solid #737780
       position relative
 
       &-activebar
         position absolute
-        bottom -2px
-        height 2px
+        bottom -1px
+        height 1px
         background-color $theme-primary-lighter
         z-index 1
         transition transform 0.3s $ease-in-out-circ
@@ -89,6 +97,8 @@
           background-color $theme-secondary-lighter
 
         &-item
+          border-radius 2px
+
           &:hover, &.-active
             color $theme-primary-lighter
 

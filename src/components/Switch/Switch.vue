@@ -35,7 +35,7 @@
       }
     },
 
-    mounted () {
+    created () {
       this.innerChecked = this.checked
     },
 

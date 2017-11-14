@@ -50,12 +50,6 @@
       }
     },
 
-    mounted () {
-      if (this.debug) {
-        console.log(this.$scopedSlots)
-      }
-    },
-
     methods: {
       itemProps (item) {
         return u.assign({}, this.$attrs, item)
@@ -65,26 +59,28 @@
 </script>
 
 <style lang="stylus" scoped>
-.breadcrumb-sep
-  padding 0 10px
-  color $grey-lighter
-  &.-default
-    &:before
-      content ' '
-      border 2px solid $grey-lighter
-      display inline-block
-      vertical-align middle
-      width 0.4em
-      height 0.4em
-      background-color transparent
-      position relative
-      left -0.1em
-      // top 0.7em
-      transform rotate(-45deg)
-      border-top 0
-      border-left 0
-  &.-active
-    // color $theme-secondary !important
-    &:before
-      border-color $theme-secondary !important
+  .breadcrumb-sep
+    padding 0 10px
+    color $grey-lighter
+
+    &.-default
+      &:before
+        content ' '
+        border 2px solid $grey-lighter
+        display inline-block
+        vertical-align middle
+        width 0.4em
+        height 0.4em
+        background-color transparent
+        position relative
+        left -0.1em
+        // top 0.7em
+        transform rotate(-45deg)
+        border-top 0
+        border-left 0
+
+    &.-active
+      // color $theme-secondary !important
+      &:before
+        border-color $theme-secondary !important
 </style>

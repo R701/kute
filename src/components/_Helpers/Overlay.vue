@@ -1,12 +1,12 @@
 <template>
   <div class="floater"
-       :style="{zIndex}">
+    :style="{zIndex}">
     <transition :name="transition"
-                @before-enter="beforeEnter"
-                @enter="onEnter"
-                @after-enter="afterEnter"
-                @leave="onLeave"
-                @after-leave="afterLeave">
+      @before-enter="beforeEnter"
+      @enter="onEnter"
+      @after-enter="afterEnter"
+      @leave="onLeave"
+      @after-leave="afterLeave">
       <slot v-if="mounted"></slot>
     </transition>
   </div>
@@ -84,3 +84,8 @@
     }
   }
 </script>
+
+<style lang="stylus" scoped>
+  .floater
+    position relative
+</style>
