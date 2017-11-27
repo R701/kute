@@ -1,5 +1,5 @@
 /*!
- *     kute v0.0.7
+ *     kute v0.0.8
  *     https://github.com/R701/kute
  * 
  *     Copyright (c) 2017 zhanziyang & thisisandy
@@ -309,7 +309,7 @@ var main = __webpack_require__(5);
 var main_default = /*#__PURE__*/__webpack_require__.n(main);
 
 // EXTERNAL MODULE: ./node_modules/is-css-color/index.js
-var is_css_color = __webpack_require__(9);
+var is_css_color = __webpack_require__(6);
 var is_css_color_default = /*#__PURE__*/__webpack_require__.n(is_css_color);
 
 // CONCATENATED MODULE: ./src/utils/styling.js
@@ -403,7 +403,7 @@ var is_css_color_default = /*#__PURE__*/__webpack_require__.n(is_css_color);
   }
 });
 // EXTERNAL MODULE: ./node_modules/object.omit/index.js
-var object_omit = __webpack_require__(10);
+var object_omit = __webpack_require__(7);
 var object_omit_default = /*#__PURE__*/__webpack_require__.n(object_omit);
 
 // EXTERNAL MODULE: ./node_modules/object-assign/index.js
@@ -580,7 +580,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ var Spinner_Spinner = (esExports);
 // CONCATENATED MODULE: ./src/components/Spinner/Spinner.vue
 function injectStyle (ssrContext) {
-  __webpack_require__(15)
+  __webpack_require__(12)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -695,7 +695,7 @@ var Button_esExports = { render: Button_render, staticRenderFns: Button_staticRe
 /* harmony default export */ var Button_Button = (Button_esExports);
 // CONCATENATED MODULE: ./src/components/Button/Button.vue
 function Button_injectStyle (ssrContext) {
-  __webpack_require__(14)
+  __webpack_require__(11)
 }
 var Button_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -951,7 +951,7 @@ var Container_esExports = { render: Container_render, staticRenderFns: Container
 /* harmony default export */ var Container_Container = (Container_esExports);
 // CONCATENATED MODULE: ./src/components/Container/Container.vue
 function Container_injectStyle (ssrContext) {
-  __webpack_require__(16)
+  __webpack_require__(13)
 }
 var Container_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -1033,7 +1033,7 @@ var Panel_esExports = { render: Panel_render, staticRenderFns: Panel_staticRende
 /* harmony default export */ var Panel_Panel = (Panel_esExports);
 // CONCATENATED MODULE: ./src/components/Panel/Panel.vue
 function Panel_injectStyle (ssrContext) {
-  __webpack_require__(17)
+  __webpack_require__(14)
 }
 var Panel_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -1195,7 +1195,7 @@ var Divider_esExports = { render: Divider_render, staticRenderFns: Divider_stati
 /* harmony default export */ var Divider_Divider = (Divider_esExports);
 // CONCATENATED MODULE: ./src/components/Divider/Divider.vue
 function Divider_injectStyle (ssrContext) {
-  __webpack_require__(18)
+  __webpack_require__(15)
 }
 var Divider_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -1346,7 +1346,7 @@ var NavigatorItem_esExports = { render: NavigatorItem_render, staticRenderFns: N
 /* harmony default export */ var Navigator_NavigatorItem = (NavigatorItem_esExports);
 // CONCATENATED MODULE: ./src/components/Navigator/NavigatorItem.vue
 function NavigatorItem_injectStyle (ssrContext) {
-  __webpack_require__(20)
+  __webpack_require__(17)
 }
 var NavigatorItem_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -1671,7 +1671,7 @@ var Navigator_esExports = { render: Navigator_render, staticRenderFns: Navigator
 /* harmony default export */ var Navigator_Navigator = (Navigator_esExports);
 // CONCATENATED MODULE: ./src/components/Navigator/Navigator.vue
 function Navigator_injectStyle (ssrContext) {
-  __webpack_require__(19)
+  __webpack_require__(16)
 }
 var Navigator_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -1776,7 +1776,7 @@ var Navigator_Component = Navigator_normalizeComponent(
 });
 // CONCATENATED MODULE: ./src/components/Group/Group.vue
 function Group_injectStyle (ssrContext) {
-  __webpack_require__(21)
+  __webpack_require__(18)
 }
 var Group_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -1853,7 +1853,7 @@ var Close_esExports = { render: Close_render, staticRenderFns: Close_staticRende
 /* harmony default export */ var Close = (Close_esExports);
 // CONCATENATED MODULE: ./src/components/_Icons/Close.vue
 function Close_injectStyle (ssrContext) {
-  __webpack_require__(23)
+  __webpack_require__(20)
 }
 var Close_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -2263,7 +2263,7 @@ var Input_esExports = { render: Input_render, staticRenderFns: Input_staticRende
 /* harmony default export */ var Input_Input = (Input_esExports);
 // CONCATENATED MODULE: ./src/components/Input/Input.vue
 function Input_injectStyle (ssrContext) {
-  __webpack_require__(22)
+  __webpack_require__(19)
 }
 var Input_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -2315,7 +2315,7 @@ var Check_esExports = { render: Check_render, staticRenderFns: Check_staticRende
 /* harmony default export */ var Check = (Check_esExports);
 // CONCATENATED MODULE: ./src/components/_Icons/Check.vue
 function Check_injectStyle (ssrContext) {
-  __webpack_require__(25)
+  __webpack_require__(22)
 }
 var Check_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -2411,7 +2411,7 @@ var Checkbox_esExports = { render: Checkbox_render, staticRenderFns: Checkbox_st
 /* harmony default export */ var Checkbox_Checkbox = (Checkbox_esExports);
 // CONCATENATED MODULE: ./src/components/Checkbox/Checkbox.vue
 function Checkbox_injectStyle (ssrContext) {
-  __webpack_require__(24)
+  __webpack_require__(21)
 }
 var Checkbox_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -2505,7 +2505,7 @@ var Radio_esExports = { render: Radio_render, staticRenderFns: Radio_staticRende
 /* harmony default export */ var Radio_Radio = (Radio_esExports);
 // CONCATENATED MODULE: ./src/components/Radio/Radio.vue
 function Radio_injectStyle (ssrContext) {
-  __webpack_require__(26)
+  __webpack_require__(23)
 }
 var Radio_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -2592,7 +2592,7 @@ var Switch_esExports = { render: Switch_render, staticRenderFns: Switch_staticRe
 /* harmony default export */ var Switch_Switch = (Switch_esExports);
 // CONCATENATED MODULE: ./src/components/Switch/Switch.vue
 function Switch_injectStyle (ssrContext) {
-  __webpack_require__(27)
+  __webpack_require__(24)
 }
 var Switch_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -2643,7 +2643,7 @@ var Switch_Component = Switch_normalizeComponent(
   lineColor: [String, Array]
 });
 // EXTERNAL MODULE: ./node_modules/v-dragged/dist/v-dragged.js
-var v_dragged = __webpack_require__(29);
+var v_dragged = __webpack_require__(26);
 var v_dragged_default = /*#__PURE__*/__webpack_require__.n(v_dragged);
 
 // CONCATENATED MODULE: ./src/mixins/draggable.js
@@ -2843,7 +2843,7 @@ var Slider_esExports = { render: Slider_render, staticRenderFns: Slider_staticRe
 /* harmony default export */ var Slider_Slider = (Slider_esExports);
 // CONCATENATED MODULE: ./src/components/Slider/Slider.vue
 function Slider_injectStyle (ssrContext) {
-  __webpack_require__(28)
+  __webpack_require__(25)
 }
 var Slider_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -2962,7 +2962,7 @@ var Overlay_esExports = { render: Overlay_render, staticRenderFns: Overlay_stati
 /* harmony default export */ var _Helpers_Overlay = (Overlay_esExports);
 // CONCATENATED MODULE: ./src/components/_Helpers/Overlay.vue
 function Overlay_injectStyle (ssrContext) {
-  __webpack_require__(31)
+  __webpack_require__(28)
 }
 var Overlay_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -3118,7 +3118,7 @@ var Toast_esExports = { render: Toast_render, staticRenderFns: Toast_staticRende
 /* harmony default export */ var Toast_Toast = (Toast_esExports);
 // CONCATENATED MODULE: ./src/components/Toast/Toast.vue
 function Toast_injectStyle (ssrContext) {
-  __webpack_require__(30)
+  __webpack_require__(27)
 }
 var Toast_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -3284,7 +3284,7 @@ var Notification_esExports = { render: Notification_render, staticRenderFns: Not
 /* harmony default export */ var Notification_Notification = (Notification_esExports);
 // CONCATENATED MODULE: ./src/components/Notification/Notification.vue
 function Notification_injectStyle (ssrContext) {
-  __webpack_require__(32)
+  __webpack_require__(29)
 }
 var Notification_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -3505,7 +3505,7 @@ var Dialog_esExports = { render: Dialog_render, staticRenderFns: Dialog_staticRe
 /* harmony default export */ var Dialog_Dialog = (Dialog_esExports);
 // CONCATENATED MODULE: ./src/components/Dialog/Dialog.vue
 function Dialog_injectStyle (ssrContext) {
-  __webpack_require__(33)
+  __webpack_require__(30)
 }
 var Dialog_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -3662,7 +3662,7 @@ var Progress_esExports = { render: Progress_render, staticRenderFns: Progress_st
 /* harmony default export */ var Progress_Progress = (Progress_esExports);
 // CONCATENATED MODULE: ./src/components/Progress/Progress.vue
 function Progress_injectStyle (ssrContext) {
-  __webpack_require__(35)
+  __webpack_require__(32)
 }
 var Progress_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -3840,7 +3840,7 @@ var Loading_esExports = { render: Loading_render, staticRenderFns: Loading_stati
 /* harmony default export */ var Loading_Loading = (Loading_esExports);
 // CONCATENATED MODULE: ./src/components/Loading/Loading.vue
 function Loading_injectStyle (ssrContext) {
-  __webpack_require__(34)
+  __webpack_require__(31)
 }
 var Loading_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -4052,7 +4052,7 @@ var Modal_esExports = { render: Modal_render, staticRenderFns: Modal_staticRende
 /* harmony default export */ var Modal_Modal = (Modal_esExports);
 // CONCATENATED MODULE: ./src/components/Modal/Modal.vue
 function Modal_injectStyle (ssrContext) {
-  __webpack_require__(36)
+  __webpack_require__(33)
 }
 var Modal_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -4189,7 +4189,7 @@ var Drawer_esExports = { render: Drawer_render, staticRenderFns: Drawer_staticRe
 /* harmony default export */ var Drawer_Drawer = (Drawer_esExports);
 // CONCATENATED MODULE: ./src/components/Drawer/Drawer.vue
 function Drawer_injectStyle (ssrContext) {
-  __webpack_require__(37)
+  __webpack_require__(34)
 }
 var Drawer_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -4291,7 +4291,7 @@ var PopoverLink_esExports = { render: PopoverLink_render, staticRenderFns: Popov
 /* harmony default export */ var Popover_PopoverLink = (PopoverLink_esExports);
 // CONCATENATED MODULE: ./src/components/Popover/PopoverLink.vue
 function PopoverLink_injectStyle (ssrContext) {
-  __webpack_require__(39)
+  __webpack_require__(36)
 }
 var PopoverLink_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -4405,7 +4405,7 @@ var Popover_esExports = { render: Popover_render, staticRenderFns: Popover_stati
 /* harmony default export */ var Popover_Popover = (Popover_esExports);
 // CONCATENATED MODULE: ./src/components/Popover/Popover.vue
 function Popover_injectStyle (ssrContext) {
-  __webpack_require__(38)
+  __webpack_require__(35)
 }
 var Popover_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -4540,7 +4540,7 @@ var TabNav_esExports = { render: TabNav_render, staticRenderFns: TabNav_staticRe
 /* harmony default export */ var Tabs_TabNav = (TabNav_esExports);
 // CONCATENATED MODULE: ./src/components/Tabs/TabNav.vue
 function TabNav_injectStyle (ssrContext) {
-  __webpack_require__(40)
+  __webpack_require__(37)
 }
 var TabNav_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -4664,15 +4664,12 @@ var Tabs_Component = Tabs_normalizeComponent(
     }
   }
 });
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-6497c254","hasScoped":false,"buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/components/Tabs/TabPane.vue
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-1aae04f3","hasScoped":false,"buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/components/Tabs/TabPane.vue
 var TabPane_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.active),expression:"active"}]},[_vm._t("default")],2)}
 var TabPane_staticRenderFns = []
 var TabPane_esExports = { render: TabPane_render, staticRenderFns: TabPane_staticRenderFns }
 /* harmony default export */ var Tabs_TabPane = (TabPane_esExports);
 // CONCATENATED MODULE: ./src/components/Tabs/TabPane.vue
-function TabPane_injectStyle (ssrContext) {
-  __webpack_require__(41)
-}
 var TabPane_normalizeComponent = __webpack_require__(0)
 /* script */
 
@@ -4681,7 +4678,7 @@ var TabPane_normalizeComponent = __webpack_require__(0)
 /* template functional */
 var TabPane___vue_template_functional__ = false
 /* styles */
-var TabPane___vue_styles__ = TabPane_injectStyle
+var TabPane___vue_styles__ = null
 /* scopeId */
 var TabPane___vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -4766,7 +4763,7 @@ var BreadcrumbItem_esExports = { render: BreadcrumbItem_render, staticRenderFns:
 /* harmony default export */ var Breadcrumbs_BreadcrumbItem = (BreadcrumbItem_esExports);
 // CONCATENATED MODULE: ./src/components/Breadcrumbs/BreadcrumbItem.vue
 function BreadcrumbItem_injectStyle (ssrContext) {
-  __webpack_require__(44)
+  __webpack_require__(39)
 }
 var BreadcrumbItem_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -4861,7 +4858,7 @@ var Breadcrumbs_esExports = { render: Breadcrumbs_render, staticRenderFns: Bread
 /* harmony default export */ var Breadcrumbs_Breadcrumbs = (Breadcrumbs_esExports);
 // CONCATENATED MODULE: ./src/components/Breadcrumbs/Breadcrumbs.vue
 function Breadcrumbs_injectStyle (ssrContext) {
-  __webpack_require__(43)
+  __webpack_require__(38)
 }
 var Breadcrumbs_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -4932,7 +4929,7 @@ var Breadcrumbs_Component = Breadcrumbs_normalizeComponent(
   }
 });
 // EXTERNAL MODULE: ./node_modules/sortablejs/Sortable.js
-var Sortable = __webpack_require__(46);
+var Sortable = __webpack_require__(41);
 var Sortable_default = /*#__PURE__*/__webpack_require__.n(Sortable);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./src/components/List/List.vue
@@ -5179,7 +5176,7 @@ var List_esExports = { render: List_render, staticRenderFns: List_staticRenderFn
 /* harmony default export */ var List_List = (List_esExports);
 // CONCATENATED MODULE: ./src/components/List/List.vue
 function List_injectStyle (ssrContext) {
-  __webpack_require__(45)
+  __webpack_require__(40)
 }
 var List_normalizeComponent = __webpack_require__(0)
 /* script */
@@ -5365,342 +5362,6 @@ var components = {
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*
-  MIT License http://www.opensource.org/licenses/mit-license.php
-  Author Tobias Koppers @sokra
-  Modified by Evan You @yyx990803
-*/
-
-var hasDocument = typeof document !== 'undefined'
-
-if (typeof DEBUG !== 'undefined' && DEBUG) {
-  if (!hasDocument) {
-    throw new Error(
-    'vue-style-loader cannot be used in a non-browser environment. ' +
-    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
-  ) }
-}
-
-var listToStyles = __webpack_require__(8)
-
-/*
-type StyleObject = {
-  id: number;
-  parts: Array<StyleObjectPart>
-}
-
-type StyleObjectPart = {
-  css: string;
-  media: string;
-  sourceMap: ?string
-}
-*/
-
-var stylesInDom = {/*
-  [id: number]: {
-    id: number,
-    refs: number,
-    parts: Array<(obj?: StyleObjectPart) => void>
-  }
-*/}
-
-var head = hasDocument && (document.head || document.getElementsByTagName('head')[0])
-var singletonElement = null
-var singletonCounter = 0
-var isProduction = false
-var noop = function () {}
-
-// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-// tags it will allow on a page
-var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
-
-module.exports = function (parentId, list, _isProduction) {
-  isProduction = _isProduction
-
-  var styles = listToStyles(parentId, list)
-  addStylesToDom(styles)
-
-  return function update (newList) {
-    var mayRemove = []
-    for (var i = 0; i < styles.length; i++) {
-      var item = styles[i]
-      var domStyle = stylesInDom[item.id]
-      domStyle.refs--
-      mayRemove.push(domStyle)
-    }
-    if (newList) {
-      styles = listToStyles(parentId, newList)
-      addStylesToDom(styles)
-    } else {
-      styles = []
-    }
-    for (var i = 0; i < mayRemove.length; i++) {
-      var domStyle = mayRemove[i]
-      if (domStyle.refs === 0) {
-        for (var j = 0; j < domStyle.parts.length; j++) {
-          domStyle.parts[j]()
-        }
-        delete stylesInDom[domStyle.id]
-      }
-    }
-  }
-}
-
-function addStylesToDom (styles /* Array<StyleObject> */) {
-  for (var i = 0; i < styles.length; i++) {
-    var item = styles[i]
-    var domStyle = stylesInDom[item.id]
-    if (domStyle) {
-      domStyle.refs++
-      for (var j = 0; j < domStyle.parts.length; j++) {
-        domStyle.parts[j](item.parts[j])
-      }
-      for (; j < item.parts.length; j++) {
-        domStyle.parts.push(addStyle(item.parts[j]))
-      }
-      if (domStyle.parts.length > item.parts.length) {
-        domStyle.parts.length = item.parts.length
-      }
-    } else {
-      var parts = []
-      for (var j = 0; j < item.parts.length; j++) {
-        parts.push(addStyle(item.parts[j]))
-      }
-      stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts }
-    }
-  }
-}
-
-function createStyleElement () {
-  var styleElement = document.createElement('style')
-  styleElement.type = 'text/css'
-  head.appendChild(styleElement)
-  return styleElement
-}
-
-function addStyle (obj /* StyleObjectPart */) {
-  var update, remove
-  var styleElement = document.querySelector('style[data-vue-ssr-id~="' + obj.id + '"]')
-
-  if (styleElement) {
-    if (isProduction) {
-      // has SSR styles and in production mode.
-      // simply do nothing.
-      return noop
-    } else {
-      // has SSR styles but in dev mode.
-      // for some reason Chrome can't handle source map in server-rendered
-      // style tags - source maps in <style> only works if the style tag is
-      // created and inserted dynamically. So we remove the server rendered
-      // styles and inject new ones.
-      styleElement.parentNode.removeChild(styleElement)
-    }
-  }
-
-  if (isOldIE) {
-    // use singleton mode for IE9.
-    var styleIndex = singletonCounter++
-    styleElement = singletonElement || (singletonElement = createStyleElement())
-    update = applyToSingletonTag.bind(null, styleElement, styleIndex, false)
-    remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true)
-  } else {
-    // use multi-style-tag mode in all other cases
-    styleElement = createStyleElement()
-    update = applyToTag.bind(null, styleElement)
-    remove = function () {
-      styleElement.parentNode.removeChild(styleElement)
-    }
-  }
-
-  update(obj)
-
-  return function updateStyle (newObj /* StyleObjectPart */) {
-    if (newObj) {
-      if (newObj.css === obj.css &&
-          newObj.media === obj.media &&
-          newObj.sourceMap === obj.sourceMap) {
-        return
-      }
-      update(obj = newObj)
-    } else {
-      remove()
-    }
-  }
-}
-
-var replaceText = (function () {
-  var textStore = []
-
-  return function (index, replacement) {
-    textStore[index] = replacement
-    return textStore.filter(Boolean).join('\n')
-  }
-})()
-
-function applyToSingletonTag (styleElement, index, remove, obj) {
-  var css = remove ? '' : obj.css
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = replaceText(index, css)
-  } else {
-    var cssNode = document.createTextNode(css)
-    var childNodes = styleElement.childNodes
-    if (childNodes[index]) styleElement.removeChild(childNodes[index])
-    if (childNodes.length) {
-      styleElement.insertBefore(cssNode, childNodes[index])
-    } else {
-      styleElement.appendChild(cssNode)
-    }
-  }
-}
-
-function applyToTag (styleElement, obj) {
-  var css = obj.css
-  var media = obj.media
-  var sourceMap = obj.sourceMap
-
-  if (media) {
-    styleElement.setAttribute('media', media)
-  }
-
-  if (sourceMap) {
-    // https://developer.chrome.com/devtools/docs/javascript-debugging
-    // this makes source maps inside style tags work properly in Chrome
-    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
-    // http://stackoverflow.com/a/26603875
-    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
-  }
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = css
-  } else {
-    while (styleElement.firstChild) {
-      styleElement.removeChild(styleElement.firstChild)
-    }
-    styleElement.appendChild(document.createTextNode(css))
-  }
-}
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-/**
- * Translates the list format produced by css-loader into something
- * easier to manipulate.
- */
-module.exports = function listToStyles (parentId, list) {
-  var styles = []
-  var newStyles = {}
-  for (var i = 0; i < list.length; i++) {
-    var item = list[i]
-    var id = item[0]
-    var css = item[1]
-    var media = item[2]
-    var sourceMap = item[3]
-    var part = {
-      id: parentId + ':' + i,
-      css: css,
-      media: media,
-      sourceMap: sourceMap
-    }
-    if (!newStyles[id]) {
-      styles.push(newStyles[id] = { id: id, parts: [part] })
-    } else {
-      newStyles[id].parts.push(part)
-    }
-  }
-  return styles
-}
-
-
-/***/ }),
-/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5921,7 +5582,7 @@ module.exports = function(str) {
 
 
 /***/ }),
-/* 10 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5934,7 +5595,7 @@ module.exports = function(str) {
 
 
 
-var isObject = __webpack_require__(11);
+var isObject = __webpack_require__(8);
 
 module.exports = function omit(obj, props, fn) {
   if (!isObject(obj)) return {};
@@ -5965,7 +5626,7 @@ module.exports = function omit(obj, props, fn) {
 
 
 /***/ }),
-/* 11 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5978,7 +5639,7 @@ module.exports = function omit(obj, props, fn) {
 
 
 
-var isPlainObject = __webpack_require__(12);
+var isPlainObject = __webpack_require__(9);
 
 module.exports = function isExtendable(val) {
   return isPlainObject(val) || typeof val === 'function' || Array.isArray(val);
@@ -5986,7 +5647,7 @@ module.exports = function isExtendable(val) {
 
 
 /***/ }),
-/* 12 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5999,7 +5660,7 @@ module.exports = function isExtendable(val) {
 
 
 
-var isObject = __webpack_require__(13);
+var isObject = __webpack_require__(10);
 
 function isObjectObject(o) {
   return isObject(o) === true
@@ -6030,7 +5691,7 @@ module.exports = function isPlainObject(o) {
 
 
 /***/ }),
-/* 13 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6047,6 +5708,24 @@ module.exports = function isObject(val) {
   return val != null && typeof val === 'object' && Array.isArray(val) === false;
 };
 
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 14 */
@@ -6122,24 +5801,6 @@ module.exports = function isObject(val) {
 
 /***/ }),
 /* 26 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -6368,6 +6029,24 @@ return VDragged;
 
 
 /***/ }),
+/* 27 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
 /* 30 */
 /***/ (function(module, exports) {
 
@@ -6435,51 +6114,6 @@ return VDragged;
 
 /***/ }),
 /* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(42);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(7)("318f19f3", content, true);
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(6)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**!
