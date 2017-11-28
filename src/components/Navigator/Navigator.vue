@@ -1,30 +1,30 @@
 <template>
   <div :class="['navigator', size ? `-${size}` : '', {'-horizontal': horizontal, '-united': horizontal && united }]"
-       ref="container"
-       v-click-outside="onClickOutside">
+    ref="container"
+    v-click-outside="onClickOutside">
     <template v-for="(item, index) in items">
       <k-divider v-if="item.divider && !horizontal"
-                 :key="index"
-                 v-bind="item"></k-divider>
+        :key="index"
+        v-bind="item"></k-divider>
       <navigator-item v-else
-                      :key="index"
-                      v-bind="itemProps(item)"
-                      :index="index"
-                      :level="level"
-                      :active="activeIndex === index || item.active"
-                      :show-children="isToggled(index)"
-                      @item-click="onItemClick"
-                      ref="item">
+        :key="index"
+        v-bind="itemProps(item)"
+        :index="index"
+        :level="level"
+        :active="activeIndex === index || item.active"
+        :show-children="isToggled(index)"
+        @item-click="onItemClick"
+        ref="item">
         <k-navigator v-show="isToggled(index)"
-                     :items="item.children"
-                     :level="level + 1"
-                     :parent-index="index"
-                     :value="innerValue"
-                     :initial-toggle-indexes="getNestedInitialToggleIndexes(index)"
-                     v-bind="inheritableProps"
-                     v-on="$listeners"
-                     ref="nested"
-                     @select:inside="onNestedSelect">
+          :items="item.children"
+          :level="level + 1"
+          :parent-index="index"
+          :value="innerValue"
+          :initial-toggle-indexes="getNestedInitialToggleIndexes(index)"
+          v-bind="inheritableProps"
+          v-on="$listeners"
+          ref="nested"
+          @select:inside="onNestedSelect">
         </k-navigator>
       </navigator-item>
 
@@ -306,7 +306,7 @@
   .navigator-item
     color white
     position relative
-    line-height 2
+    line-height 3
 
     >>> a
       padding-left 1em
@@ -346,7 +346,7 @@
       height 1.2em
       border-radius 1.5px
       position absolute
-      top 0.5em
+      top 0.96em
       left 0
       background-color alpha($grey, 0.5)
       transition all 0.2s
@@ -360,7 +360,7 @@
 
       &:before
         content ' '
-        top 0.6em
+        top 1em
         transform rotate(45deg)
         border 3px solid $grey
         width 0.7em
@@ -384,19 +384,19 @@
         height 0.7em
         background-color transparent
         left -0.3em
-        top 0.7em
+        top 1.2em
         transform rotate(-45deg)
         border-top 0
         border-left 0
 
       &.-parent
         &:before
-          top 0.9em
+          top 1.4em
           transform rotate(-135deg)
 
       &.-toggled
         &:before
-          top 0.6em
+          top 1em
           transform rotate(45deg)
 
     &.-disabled
