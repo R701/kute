@@ -2,7 +2,7 @@ const containerProps = {
   items: {
     type: Array, // [itemProps+]
     required: true,
-    default: () => ([])
+    default: () => []
   },
   level: {
     type: Number,
@@ -12,7 +12,7 @@ const containerProps = {
   value: Array,
   horizontal: Boolean,
   horizontalGap: {
-    default: 10,
+    default: 0,
     type: Number
   },
   horizontalItemWidth: [Number, String],
@@ -22,7 +22,7 @@ const containerProps = {
   },
   autoToggle: Boolean,
   initialToggleIndexes: {
-    default: () => ([]),
+    default: () => [],
     type: Array
   }
 }

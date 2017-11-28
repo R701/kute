@@ -27,8 +27,9 @@
           @select:inside="onNestedSelect">
         </k-navigator>
       </navigator-item>
-
     </template>
+    <div class="horizontal-active-line"
+      :style="{ width: `${itemWidth}px`, transform: `translateX(${horizontalActiveLineOffset}px)` }"></div>
   </div>
 </template>
 
@@ -61,7 +62,8 @@
         activeIndex: null,
         showChildrenIndex: null,
         toggledIndexes: [],
-        inited: false
+        inited: false,
+        itemWidth: null
       }
     },
 
@@ -73,6 +75,11 @@
 
       isNested () {
         return this.isNumber(this.parentIndex)
+      },
+
+      horizontalActiveLineOffset () {
+        if (!this.itemWidth) return 0
+        return this.activeIndex * (this.horizontalGap + this.itemWidth)
       }
     },
 
@@ -230,10 +237,16 @@
 
           items.forEach((item, i) => {
             if (i < itemLen - 1) {
-              item.$el.style.marginRight = (this.horizontalGap || 10) + 'px'
+              item.$el.style.marginRight = this.horizontalGap + 'px'
             }
-            item.$el.style.width = w
+            if (!w) {
+              item.$el.style.flex = 1
+            } else {
+              item.$el.style.width = w
+            }
           })
+
+          this.itemWidth = this.$refs.item[0] ? this.$refs.item[0].$el.clientWidth : 0
         }
       },
 
@@ -414,26 +427,32 @@
 
     > .navigator-item
       padding 0
-      line-height 2
-      margin-right 10px
-      transition all 0.2s
-      border-radius 4px
+      line-height 3
+      // margin-right 10px
+      // transition all 0.2s
+      // border-radius 4px
+      border-top-left-radius 4px
+      border-top-right-radius 4px
+      border-bottom-left-radius 0
+      border-bottom-right-radius 0
       text-align center
       flex 1
       white-space nowrap
+      flex-basis 250px
 
       &:last-child
         margin-right 0
 
       &:before
+        display none
         width 100%
-        height 2px
+        height 1px
         bottom 0px
         top auto
         border 0
         cursor default
         font-size inherit
-        margin-bottom -0.44em
+        // margin-bottom -0.44em
         z-index 2
 
       >>> a
@@ -446,13 +465,15 @@
         left 0.2em
 
       &:hover
-        background-color alpha($black-darker, 0.6)
+        // background-color alpha($black-darker, 0.6)
+        color $theme-primary-lighter
 
         &:before
           background-color $grey
 
       &.-toggled
-        background-color alpha($black-darker, 0.75)
+        color $theme-primary-lighter
+        // background-color alpha($black-darker, 0.75)
 
       &.-active
         background-color alpha($black-darker, 0.75)
@@ -460,7 +481,7 @@
         &:before
           background-color $theme-secondary
           width 100%
-          height 2px
+          height 1px
           border none
           left 0
           top auto
@@ -506,8 +527,21 @@
       position absolute
       bottom 0
       left 0
-      border-bottom 2px solid $grey
+      border-bottom 1px solid $grey
       width 100%
-      margin-bottom -0.44em
+      // margin-bottom -0.44em
+
+  .horizontal-active-line
+    position absolute
+    height 1px
+    bottom 0px
+    top auto
+    border 0
+    cursor default
+    font-size inherit
+    // margin-bottom -0.44em
+    z-index 2
+    background-color $theme-secondary
+    transition transform 0.2s $ease-in-out-circ
 </style>
 
