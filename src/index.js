@@ -134,5 +134,6 @@ export {
   // Breadcrumb,
   // BreadcrumbItem,
   Breadcrumbs,
-  List
+  List,
+  utils
 }
