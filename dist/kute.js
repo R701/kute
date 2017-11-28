@@ -1,5 +1,5 @@
 /*!
- *     kute v0.0.8
+ *     kute v0.0.9
  *     https://github.com/R701/kute
  * 
  *     Copyright (c) 2017 zhanziyang & thisisandy
@@ -1664,7 +1664,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     }
   }
 });
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-12b4a1c6","hasScoped":true,"buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/components/Navigator/Navigator.vue
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-5a340ef3","hasScoped":true,"buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/components/Navigator/Navigator.vue
 var Navigator_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.onClickOutside),expression:"onClickOutside"}],ref:"container",class:['navigator', _vm.size ? ("-" + _vm.size) : '', {'-horizontal': _vm.horizontal, '-united': _vm.horizontal && _vm.united }]},[_vm._l((_vm.items),function(item,index){return [(item.divider && !_vm.horizontal)?_c('k-divider',_vm._b({key:index},'k-divider',item,false)):_c('navigator-item',_vm._b({key:index,ref:"item",refInFor:true,attrs:{"index":index,"level":_vm.level,"active":_vm.activeIndex === index || item.active,"show-children":_vm.isToggled(index)},on:{"item-click":_vm.onItemClick}},'navigator-item',_vm.itemProps(item),false),[_c('k-navigator',_vm._g(_vm._b({directives:[{name:"show",rawName:"v-show",value:(_vm.isToggled(index)),expression:"isToggled(index)"}],ref:"nested",refInFor:true,attrs:{"items":item.children,"level":_vm.level + 1,"parent-index":index,"value":_vm.innerValue,"initial-toggle-indexes":_vm.getNestedInitialToggleIndexes(index)},on:{"select:inside":_vm.onNestedSelect}},'k-navigator',_vm.inheritableProps,false),_vm.$listeners))],1)]})],2)}
 var Navigator_staticRenderFns = []
 var Navigator_esExports = { render: Navigator_render, staticRenderFns: Navigator_staticRenderFns }
@@ -1683,7 +1683,7 @@ var Navigator___vue_template_functional__ = false
 /* styles */
 var Navigator___vue_styles__ = Navigator_injectStyle
 /* scopeId */
-var Navigator___vue_scopeId__ = "data-v-12b4a1c6"
+var Navigator___vue_scopeId__ = "data-v-5a340ef3"
 /* moduleIdentifier (server only) */
 var Navigator___vue_module_identifier__ = null
 var Navigator_Component = Navigator_normalizeComponent(
