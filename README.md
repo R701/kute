@@ -73,3 +73,5 @@ npm run build
 - [ ] Carousel
 - [ ] Pagination
 - [ ] Table
+- [ ] Label
+- [ ] Button Selector
